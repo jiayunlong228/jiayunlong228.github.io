@@ -1,6 +1,14 @@
 site_name: Yunlong's blog
+site_author: 贾云龙
+site_description: 贾云龙的博客
 site_url: https://jiayunlong228.github.io/
 repo_url: https://github.com/jiayunlong228/jiayunlong228.github.io
+
+nav:
+  - About me:
+    - index.md
+
+
 theme:
   name: material
   # [切换日间模式和夜间模式]
