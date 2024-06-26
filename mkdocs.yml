@@ -5,8 +5,8 @@ site_url: https://jiayunlong228.github.io/
 repo_url: https://github.com/jiayunlong228/jiayunlong228.github.io
 
 nav:
-  - About me:
-    - index.md
+  - 我:
+    - Me/index.md
 
 
 theme:
