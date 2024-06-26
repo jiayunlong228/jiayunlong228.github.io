@@ -5,7 +5,7 @@ site_url: https://jiayunlong228.github.io/
 repo_url: https://github.com/jiayunlong228/jiayunlong228.github.io
 
 nav:
-  - 我:
+  - Me:
     - Me/index.md
 
 
@@ -43,7 +43,7 @@ theme:
     - navigation.top
     # 给每个 Tab 添加一个 index.md，且在点击 Tab 时打开
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages-with-section-index-pages
-    - navigation.indexes
+#    - navigation.indexes
     # 打开 Tab 时左侧目录全部展开
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion
     - navigation.expand
