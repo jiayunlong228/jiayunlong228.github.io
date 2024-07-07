@@ -7,7 +7,9 @@ repo_url: https://github.com/jiayunlong228/jiayunlong228.github.io
 nav:
 #  - index.md
   - Me:
-    - Me/index.md
+    - me/index.md
+  - 生活记录:
+    - monthly_notes/2024_notes.md
 
 
 theme:
