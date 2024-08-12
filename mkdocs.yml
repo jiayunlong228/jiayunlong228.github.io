@@ -9,7 +9,8 @@ nav:
   - Me:
     - me/index.md
   - 生活记录:
-    - monthly_notes/2024_07_notes.md
+    - monthly_notes/2024_notes_07.md
+    - monthly_notes/2024_notes_08.md
 
 
 theme:
