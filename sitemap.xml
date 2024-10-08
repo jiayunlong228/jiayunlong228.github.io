@@ -2,37 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jiayunlong228.github.io/</loc>
-         <lastmod>2024-09-23</lastmod>
+         <lastmod>2024-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/code_share/create_new_blog/</loc>
-         <lastmod>2024-09-23</lastmod>
+         <lastmod>2024-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/data_analysis/user_retention/</loc>
-         <lastmod>2024-09-23</lastmod>
+         <lastmod>2024-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/me/</loc>
-         <lastmod>2024-09-23</lastmod>
+         <lastmod>2024-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/monthly_notes/2024_notes_07/</loc>
-         <lastmod>2024-09-23</lastmod>
+         <lastmod>2024-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/monthly_notes/2024_notes_08/</loc>
-         <lastmod>2024-09-23</lastmod>
+         <lastmod>2024-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/monthly_notes/2024_notes_09/</loc>
-         <lastmod>2024-09-23</lastmod>
+         <lastmod>2024-10-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jiayunlong228.github.io/monthly_notes/2024_notes_10/</loc>
+         <lastmod>2024-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
