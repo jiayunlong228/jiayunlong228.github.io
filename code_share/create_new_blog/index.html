@@ -15,6 +15,8 @@
         <link rel="canonical" href="https://jiayunlong228.github.io/code_share/create_new_blog/">
       
       
+        <link rel="prev" href="../../monthly_notes/2024_notes_10/">
+      
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -251,6 +253,28 @@
     
   
   生活记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  技术分享
 
         </a>
       </li>
@@ -502,6 +526,139 @@
   
 
     
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    技术分享
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            技术分享
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    基于 MkDocs 构建博客
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    基于 MkDocs 构建博客
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mkdocs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、MkDocs 简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、创建博客流程
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -607,7 +764,35 @@
 <ol>
 <li>将本地仓库关联到github</li>
 </ol>
-<p>先在github</p>
+<p>先在github上创建一个github.io结尾的仓库</p>
+<p>本地仓库中命令行
+<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">$<span class="w"> </span>git<span class="w"> </span>init
+</span><span id="__span-2-2">$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
+</span><span id="__span-2-3">$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;init&quot;</span>
+</span><span id="__span-2-4">
+</span><span id="__span-2-5"><span class="c1"># 关联远程仓库</span>
+</span><span id="__span-2-6">$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:jiayunlong228/jiayunlong228.git<span class="w"> </span><span class="c1"># change to your github repo</span>
+</span><span id="__span-2-7">$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+</span><span id="__span-2-8">$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div></td></tr></table></div></p>
+<p>仓库设置
+setting -&gt; pages -&gt; branch (gh-pages)</p>
+<ol>
+<li>写博客内容与发布
+文档配置：mkdocs.yml
+博客内容：docs</li>
+</ol>
+<p>写完内容后，使用命令将内容发布到网页端
+<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">$<span class="w"> </span>mkdocs<span class="w"> </span>gh-deploy
+</span></code></pre></div></td></tr></table></div></p>
+<p>以上是基于MkDocs和github pages构建个人博客的方式。更多的细节我会在使用过程中再更新到此文档中。</p>
 
 
 
