@@ -5,26 +5,18 @@ site_url: https://jiayunlong228.github.io/
 repo_url: https://github.com/jiayunlong228/jiayunlong228.github.io
 
 nav:
-#  - index.md
-  - Me:
-    - me/index.md
-#  - 生活记录:
-#    - monthly_notes/2024_notes_07.md
-#    - monthly_notes/2024_notes_08.md
-#    - monthly_notes/2024_notes_09.md
-#    - monthly_notes/2024_notes_10.md
-#    - monthly_notes/2024_notes_11.md
-#    - monthly_notes/2024_notes_12.md
-#    - monthly_notes/2024_summary.md
-#    - monthly_notes/2025_notes_01.md
-#    - monthly_notes/2025_notes_02.md
-#    - monthly_notes/2025_notes_03.md
-#    - monthly_notes/2025_notes_04.md
-#    - monthly_notes/2025_notes_05.md
-#    - monthly_notes/2025_notes_06.md
-  - 技术分享:
-    - code_share/create_new_blog.md
+  - 首页: index.md
+  - 行业观察:
+    - industry/index.md
+  - 产品思考:
+    - product/index.md
+  - 编程思想:
+    - programming/index.md
+    - 基于 MkDocs 构建博客: code_share/create_new_blog.md
 
+
+exclude_docs: |
+  monthly_notes/
 
 
 theme:
