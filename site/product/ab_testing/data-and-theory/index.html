@@ -739,6 +739,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 有效样本和影响窗口
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -783,6 +794,17 @@
     <span class="md-ellipsis">
       
         3. 诊断指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 固定分母和随机分母
       
     </span>
   </a>
@@ -840,7 +862,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 实验周期估算
@@ -1232,6 +1254,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 有效样本和影响窗口
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1276,6 +1309,17 @@
     <span class="md-ellipsis">
       
         3. 诊断指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 固定分母和随机分母
       
     </span>
   </a>
@@ -1333,7 +1377,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 实验周期估算
@@ -1525,12 +1569,28 @@
 
 <h1 id="_1">数据处理流程与理论背景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>A/B 实验的数据分析可以分成三层：</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">数据口径：哪些用户、哪些天、哪些事件进入分析
-</span><span id="__span-0-2">统计方法：差异是否可能来自随机波动
-</span><span id="__span-0-3">业务判断：差异是否足够大，风险是否可接受
-</span></code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>分析层</th>
+<th>关注问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据口径</td>
+<td>哪些用户、哪些天、哪些事件进入分析</td>
+</tr>
+<tr>
+<td>统计方法</td>
+<td>差异是否可能来自随机波动</td>
+</tr>
+<tr>
+<td>业务判断</td>
+<td>差异是否足够大，风险是否可接受</td>
+</tr>
+</tbody>
+</table>
 <p>这篇重点讲前两层。为了保持方法论清晰，不展开 SQL 实现。</p>
 <h2 id="_2">一、先定义数据口径<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="1">1. 用户口径<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
@@ -1607,6 +1667,42 @@
 <li>关卡完成数：每个用户实验窗口内完成次数。</li>
 </ul>
 <p>不要把事件数直接当成独立样本。一个重度用户可能产生很多事件，但它们不是彼此独立的用户。</p>
+<h3 id="4">4. 有效样本和影响窗口<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>Activation event 的核心价值，是把“不可能受到实验影响的用户”从结果口径里排除掉，从而提高信噪比。</p>
+<p>可以把实验用户分成两类：</p>
+<table>
+<thead>
+<tr>
+<th>用户类型</th>
+<th>是否应该进入结果口径</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已被分流但未到达改动影响场景</td>
+<td>通常不进入主结果口径</td>
+<td>行为不可能被实验改动影响，会稀释效果</td>
+</tr>
+<tr>
+<td>已触发激活事件的用户</td>
+<td>进入主结果口径</td>
+<td>已经到达实验影响窗口</td>
+</tr>
+</tbody>
+</table>
+<p>样本量和效应量的关系可以简化理解为：</p>
+<div class="arithmatex">\[
+n \propto \frac{1}{\delta^2}
+\]</div>
+<p>其中，<span class="arithmatex">\(n\)</span> 是所需样本量，<span class="arithmatex">\(\delta\)</span> 是希望检测到的真实差异。混入大量无效样本时，观测到的 <span class="arithmatex">\(\delta\)</span> 会变小，所需样本量会按平方级增加。</p>
+<p>一个抽象例子：</p>
+<blockquote>
+<p>改动只影响某个后续场景。</p>
+<p>在影响窗口内，实验组相对对照组提升 10%。</p>
+<p>如果把影响窗口之前的大量无关数据也算进来，整体观测提升可能被稀释到 5%。</p>
+</blockquote>
+<p>当观测差异从 10% 变成 5%，所需样本量大约会变成 4 倍。Activation event 不是为了“筛出好用户”，而是为了让统计口径对齐实验真正能产生影响的窗口。</p>
 <h2 id="_3">二、指标体系<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <h3 id="1_1">1. 主指标<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
 <p>主指标用于决定实验是否成功。它应该满足：</p>
@@ -1630,6 +1726,56 @@
 <h3 id="3_1">3. 诊断指标<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
 <p>诊断指标解释“为什么”。例如曝光、点击、漏斗分步、行为次数、分层指标等。</p>
 <p>诊断指标适合提出下一轮假设，不应轻易替代主指标成为最终决策依据。</p>
+<h3 id="4_1">4. 固定分母和随机分母<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>选择统计方法前，先判断分母是否稳定。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>分母是否固定</th>
+<th>推荐定位</th>
+<th>常见检验</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>留存率、转化率</td>
+<td>固定，分母是实验 cohort 用户</td>
+<td>决策指标</td>
+<td>两比例 z 检验</td>
+</tr>
+<tr>
+<td>LTV、人均收入</td>
+<td>固定，分母是实验 cohort 用户，未付费用户记 0</td>
+<td>决策指标</td>
+<td>Welch t 检验</td>
+</tr>
+<tr>
+<td>人均时长、人均次数、人均广告展示</td>
+<td>固定，分母是实验 cohort 用户</td>
+<td>辅助决策或诊断</td>
+<td>Welch t 检验</td>
+</tr>
+<tr>
+<td>ARPDAU、活跃用户人均指标</td>
+<td>随机，分母会被实验影响</td>
+<td>诊断指标</td>
+<td>线性化后再做 Welch t</td>
+</tr>
+<tr>
+<td>eCPM、每展示收入</td>
+<td>随机，分母是展示次数</td>
+<td>诊断指标</td>
+<td>线性化后再做 Welch t</td>
+</tr>
+</tbody>
+</table>
+<p>固定分母指标更适合直接做实验决策，因为每个用户都有明确的观测值。随机分母指标要更谨慎：如果实验改变了活跃用户构成，再只看活跃用户的人均表现，可能会产生选择偏差。</p>
+<p>对于比率指标，可以把分子和分母先转成用户级贡献，再做均值检验。常见线性化写法是：</p>
+<div class="arithmatex">\[
+L_i = Y_i - r_0 X_i
+\]</div>
+<p>其中，<span class="arithmatex">\(Y_i\)</span> 是用户 <span class="arithmatex">\(i\)</span> 的分子贡献，<span class="arithmatex">\(X_i\)</span> 是用户 <span class="arithmatex">\(i\)</span> 的分母贡献，<span class="arithmatex">\(r_0\)</span> 是对照组整体比率。随后比较实验组和对照组的 <span class="arithmatex">\(L_i\)</span> 均值，可以把随机分母问题转成更接近用户级均值比较的问题。</p>
 <h2 id="_4">三、样本量估算<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>样本量估算的目的，是在实验前判断实验能否回答问题。</p>
 <h3 id="1_2">1. 核心概念<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
@@ -1702,7 +1848,7 @@ n \approx \frac{2(Z_{\alpha/2}+Z_{\beta})^2\sigma^2}{\delta^2}
 <li><span class="arithmatex">\(\delta\)</span>：希望检测到的最小均值差异。</li>
 </ul>
 <p>均值类指标最关键的是方差。收入类指标通常长尾很强，方差大，需要的样本量会明显高于行为次数类指标。</p>
-<h3 id="4">4. 实验周期估算<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<h3 id="4_2">4. 实验周期估算<a class="headerlink" href="#4_2" title="Permanent link">&para;</a></h3>
 <p>先算进组天数：</p>
 <div class="arithmatex">\[
 D_{\mathrm{entry}} = \left\lceil \frac{n \times k}{d} \right\rceil
@@ -1777,18 +1923,22 @@ T_{\mathrm{total}} = D_{\mathrm{entry}} + W
 <p>如果重要属性不均衡，结果可能需要分层分析，严重时应重做实验。</p>
 <h3 id="3_3">3. 激活漏斗校验<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
 <p>激活漏斗用于检查实验链路是否正常。</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">目标人群人数
-</span><span id="__span-1-2">-&gt; 分流人数
-</span><span id="__span-1-3">-&gt; 激活人数
-</span><span id="__span-1-4">-&gt; 曝光人数
-</span><span id="__span-1-5">-&gt; 行为人数
-</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>目标人群人数。</li>
+<li>分流人数。</li>
+<li>激活人数。</li>
+<li>曝光人数。</li>
+<li>行为人数。</li>
+</ol>
 <p>如果某个环节在实验组和对照组之间差异异常，要先解释这个差异，再看主指标。</p>
 <h2 id="_6">五、显著性检验<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>统计检验的核心，是把“观察到的差异”除以“这种差异本身的随机波动”。可以先记住一个统一直觉：</p>
+<div class="arithmatex">\[
+\mathrm{statistic}
+= \frac{\mathrm{signal}}{\mathrm{noise}}
+= \frac{\mathrm{difference}}{\mathrm{standard\ error}}
+\]</div>
+<p>差异越大，统计量越大；标准误越大，统计量越小。不同检验方法的主要区别，在于它们对标准误的估计方式不同。</p>
 <h3 id="1-z">1. 比例类指标：两比例 z 检验<a class="headerlink" href="#1-z" title="Permanent link">&para;</a></h3>
 <p>两组比例：</p>
 <div class="arithmatex">\[
@@ -1847,68 +1997,32 @@ t = \frac{\Delta}{SE}
 </ul>
 <h2 id="_8">七、分析输出结构<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>一份方法论上完整的实验分析至少包含：</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">1. 实验设计
-</span><span id="__span-2-2">- 假设：
-</span><span id="__span-2-3">- 目标人群：
-</span><span id="__span-2-4">- 实验单位：
-</span><span id="__span-2-5">- 分组方案：
-</span><span id="__span-2-6">- 主指标：
-</span><span id="__span-2-7">- 护栏指标：
-</span><span id="__span-2-8">- MDE：
-</span><span id="__span-2-9">- 样本量和实验周期：
-</span><span id="__span-2-10">
-</span><span id="__span-2-11">2. 数据质量
-</span><span id="__span-2-12">- 分流比例：
-</span><span id="__span-2-13">- 属性均衡：
-</span><span id="__span-2-14">- 激活漏斗：
-</span><span id="__span-2-15">- 数据成熟窗口：
-</span><span id="__span-2-16">- 异常事件：
-</span><span id="__span-2-17">
-</span><span id="__span-2-18">3. 统计结果
-</span><span id="__span-2-19">- 主指标点估计：
-</span><span id="__span-2-20">- 绝对提升：
-</span><span id="__span-2-21">- 相对提升：
-</span><span id="__span-2-22">- p-value：
-</span><span id="__span-2-23">- 95% CI：
-</span><span id="__span-2-24">- 护栏指标：
-</span><span id="__span-2-25">
-</span><span id="__span-2-26">4. 结论
-</span><span id="__span-2-27">- 是否支持假设：
-</span><span id="__span-2-28">- 效果是否达到 MDE：
-</span><span id="__span-2-29">- 风险是否可接受：
-</span><span id="__span-2-30">- 决策建议：
-</span><span id="__span-2-31">- 后续观察：
-</span></code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>应包含内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实验设计</td>
+<td>假设、目标人群、实验单位、分组方案、主指标、护栏指标、MDE、样本量和实验周期</td>
+</tr>
+<tr>
+<td>数据质量</td>
+<td>分流比例、属性均衡、激活漏斗、数据成熟窗口、异常事件</td>
+</tr>
+<tr>
+<td>统计结果</td>
+<td>主指标点估计、绝对提升、相对提升、p-value、95% CI、护栏指标</td>
+</tr>
+<tr>
+<td>结论</td>
+<td>是否支持假设、效果是否达到 MDE、风险是否可接受、决策建议、后续观察</td>
+</tr>
+</tbody>
+</table>
 
 
 

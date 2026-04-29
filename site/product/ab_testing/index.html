@@ -904,15 +904,15 @@
 </tr>
 <tr>
 <td>实验能不能被正确执行</td>
-<td>设计分流、实验单位、样本量、周期和指标口径</td>
+<td>设计分流、实验单位、样本量、周期、入场条件和指标口径</td>
 </tr>
 <tr>
 <td>实验数据是否可信</td>
-<td>验证分流比例、用户属性均衡、埋点和成熟窗口</td>
+<td>验证分流比例、用户属性均衡、激活漏斗、埋点和成熟窗口</td>
 </tr>
 <tr>
 <td>实验结果如何转成决策</td>
-<td>结合效果大小、置信区间、显著性和护栏指标判断</td>
+<td>结合效果大小、置信区间、显著性、因果边界和护栏指标判断</td>
 </tr>
 </tbody>
 </table>
@@ -924,25 +924,18 @@
 </ul>
 <h2 id="_2">方法论主线<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>一次实验可以按下面顺序推进：</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">1. 明确问题和实验假设
-</span><span id="__span-0-2">2. 定义实验单位、目标人群和分流方案
-</span><span id="__span-0-3">3. 选择主指标、护栏指标和诊断指标
-</span><span id="__span-0-4">4. 估算样本量和实验周期
-</span><span id="__span-0-5">5. 配置实验并完成上线前 QA
-</span><span id="__span-0-6">6. 实验开始后先验证分流效果
-</span><span id="__span-0-7">7. 等待关键指标成熟后做统计分析
-</span><span id="__span-0-8">8. 根据主指标、护栏指标和业务价值做决策
-</span><span id="__span-0-9">9. 上线、放量、重做或沉淀为下一轮假设
-</span></code></pre></div></td></tr></table></div>
-<p>Firebase 的作用是帮助完成其中的实验配置、随机分流、参数下发和基础结果展示。真正决定实验质量的，仍然是方法论本身：假设是否清楚，分流是否可靠，样本量是否足够，指标口径是否稳定，结论是否克制。</p>
+<ol>
+<li>明确问题和实验假设</li>
+<li>定义实验单位、目标人群、分流方案和激活口径</li>
+<li>选择主指标、护栏指标和诊断指标</li>
+<li>估算样本量和实验周期</li>
+<li>配置实验并完成上线前 QA</li>
+<li>实验开始后先验证分流、属性均衡和激活漏斗</li>
+<li>等待关键指标成熟后做统计分析</li>
+<li>根据主指标、护栏指标、因果边界和业务价值做决策</li>
+<li>上线、放量、重做或沉淀为下一轮假设</li>
+</ol>
+<p>Firebase 的作用是帮助完成其中的实验配置、随机分流、参数下发、Activation event 入场和基础结果展示。真正决定实验质量的，仍然是方法论本身：假设是否清楚，分流是否可靠，有效样本是否足够，指标口径是否稳定，结论是否克制。</p>
 <h2 id="_3">参考资料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://firebase.google.com/docs/ab-testing">Firebase A/B Testing 概览</a></li>
