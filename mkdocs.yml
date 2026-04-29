@@ -10,6 +10,11 @@ nav:
     - industry/index.md
   - 产品思考:
     - product/index.md
+    - A/B 实验方法论:
+      - 总览: product/ab_testing/index.md
+      - 背景和操作流程: product/ab_testing/background-and-workflow.md
+      - 数据处理流程与理论背景: product/ab_testing/data-and-theory.md
+      - 如何解读实验结果: product/ab_testing/result-interpretation.md
   - 编程思想:
     - programming/index.md
     - 基于 MkDocs 构建博客: code_share/create_new_blog.md
