@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jiayunlong228.github.io/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/code_share/create_new_blog/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/industry/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/product/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/product/ab_testing/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/product/ab_testing/background-and-workflow/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/product/ab_testing/data-and-theory/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/product/ab_testing/result-interpretation/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
     </url>
     <url>
          <loc>https://jiayunlong228.github.io/programming/</loc>
-         <lastmod>2026-04-29</lastmod>
+         <lastmod>2026-05-06</lastmod>
+    </url>
+    <url>
+         <loc>https://jiayunlong228.github.io/programming/agent-common-concepts/</loc>
+         <lastmod>2026-05-06</lastmod>
     </url>
 </urlset>

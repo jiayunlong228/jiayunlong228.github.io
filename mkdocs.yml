@@ -17,6 +17,7 @@ nav:
       - 如何解读实验结果: product/ab_testing/result-interpretation.md
   - 编程思想:
     - programming/index.md
+    - Agent 常用概念: programming/agent-common-concepts.md
     - 基于 MkDocs 构建博客: code_share/create_new_blog.md
 
 
@@ -144,7 +145,11 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   # [Markdown 提示]
   # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
   - admonition

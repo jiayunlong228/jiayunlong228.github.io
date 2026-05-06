@@ -12,11 +12,13 @@
         <meta name="author" content="贾云龙">
       
       
-        <link rel="canonical" href="https://jiayunlong228.github.io/code_share/create_new_blog/">
+        <link rel="canonical" href="https://jiayunlong228.github.io/programming/agent-common-concepts/">
       
       
-        <link rel="prev" href="../../programming/agent-common-concepts/">
+        <link rel="prev" href="../">
       
+      
+        <link rel="next" href="../../code_share/create_new_blog/">
       
       
         
@@ -27,7 +29,7 @@
     
     
       
-        <title>基于 MkDocs 构建博客 - Yunlong's blog</title>
+        <title>Agent 常用概念 - Yunlong's blog</title>
       
     
     
@@ -84,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mkdocs" class="md-skip">
+        <a href="#agent" class="md-skip">
           跳转至
         </a>
       
@@ -118,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              基于 MkDocs 构建博客
+              Agent 常用概念
             
           </span>
         </div>
@@ -298,7 +300,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../programming/" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -731,7 +733,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../programming/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -772,34 +774,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../../programming/agent-common-concepts/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Agent 常用概念
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -819,7 +793,7 @@
   <span class="md-ellipsis">
     
   
-    基于 MkDocs 构建博客
+    Agent 常用概念
   
 
     
@@ -837,7 +811,7 @@
   <span class="md-ellipsis">
     
   
-    基于 MkDocs 构建博客
+    Agent 常用概念
   
 
     
@@ -863,10 +837,153 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mkdocs_1" class="md-nav__link">
+  <a href="#agent_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        一、MkDocs 简介
+        Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subagent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissions 和 Sandbox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command
       
     </span>
   </a>
@@ -877,7 +994,29 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        二、创建博客流程
+        这些概念怎么分层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最后
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
       
     </span>
   </a>
@@ -888,6 +1027,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_share/create_new_blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 MkDocs 构建博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -927,10 +1094,153 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mkdocs_1" class="md-nav__link">
+  <a href="#agent_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        一、MkDocs 简介
+        Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harness
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subagent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissions 和 Sandbox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command
       
     </span>
   </a>
@@ -941,7 +1251,29 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        二、创建博客流程
+        这些概念怎么分层
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最后
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
       
     </span>
   </a>
@@ -965,7 +1297,7 @@
 
 
   
-    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/code_share/create_new_blog.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/programming/agent-common-concepts.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -973,65 +1305,213 @@
   
 
 
-<h1 id="mkdocs">基于 MkDocs 构建博客<a class="headerlink" href="#mkdocs" title="Permanent link">&para;</a></h1>
-<h2 id="mkdocs_1">一、MkDocs 简介<a class="headerlink" href="#mkdocs_1" title="Permanent link">&para;</a></h2>
-<p>MkDocs 是一个静态网站生成器，它使用 Markdown（或其他可转换为HTML的格式）来创建项目文档。我的博客使用的是Material主题，页面看起来比较简洁，读者如果想了解更多的主题，可以自行了解并设置。</p>
-<h2 id="_1">二、创建博客流程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="agent">Agent 常用概念：从“会聊天”到“能干活”<a class="headerlink" href="#agent" title="Permanent link">&para;</a></h1>
+<p>理解 Agent 相关概念时，最容易卡住的地方不是名词本身，而是这些名词之间的边界。Agent、Skill、Plugin、MCP、Hook、Memory、Harness，一层又一层，看起来都很重要，但真正开始动手时，反而容易不知道每个东西应该放在哪。</p>
+<p>Agent 也很容易被理解成“更聪明的模型”。这个理解不算错，但不完整。模型当然重要，但 Agent 真正能做事，靠的不是模型自己突然长出了手脚，而是模型外面那一整套环境：它能读什么、能写什么、能调用什么工具、遇到危险操作时谁来拦、做完以后怎么验证。</p>
+<p>所以可以先用一个比较朴素的定义理解它：</p>
 <blockquote>
-<p>以下均在命令行实现</p>
+<p>Agent 不是一个模型，而是一个能循环感知、决策、行动、验证的工作系统。</p>
 </blockquote>
-<p>（1） 安装 MkDocs 和 Material 主题</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span><span class="c1"># 在python环境下安装mkdocs，目前 MkDocs 支持 Python 3.7 及更高版本。</span>
-</span><span id="__span-0-2">
-</span><span id="__span-0-3">mkdocs<span class="w"> </span>--version<span class="w"> </span><span class="c1"># 验证是否安装成功</span>
-</span><span id="__span-0-4">
-</span><span id="__span-0-5">pip<span class="w"> </span>install<span class="w"> </span>mkdocs-material<span class="w"> </span><span class="c1"># 安装 material 主题</span>
-</span></code></pre></div></td></tr></table></div>
-<p>（2） 创建博客项目</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="nb">cd</span><span class="w"> </span>~
-</span><span id="__span-1-2">
-</span><span id="__span-1-3">mkdocs<span class="w"> </span>new<span class="w"> </span>my_blog<span class="w"> </span><span class="c1"># 创建一个新项目，并给项目取个名字，这里我使用test作为展示。命令返回内容如下，说明执行成功。</span>
-</span><span id="__span-1-4"><span class="c1">#INFO    -  Creating project directory: test</span>
-</span><span id="__span-1-5"><span class="c1">#INFO    -  Writing config file: test/mkdocs.yml</span>
-</span><span id="__span-1-6"><span class="c1">#INFO    -  Writing initial docs: test/docs/index.md</span>
-</span></code></pre></div></td></tr></table></div>
-<p>（3） 将本地仓库关联到github</p>
-<p>先在github上创建一个github.io结尾的仓库</p>
-<p>本地仓库中命令行
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">$<span class="w"> </span>git<span class="w"> </span>init
-</span><span id="__span-2-2">$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
-</span><span id="__span-2-3">$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;init&quot;</span>
-</span><span id="__span-2-4">
-</span><span id="__span-2-5"><span class="c1"># 关联远程仓库</span>
-</span><span id="__span-2-6">$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:jiayunlong228/jiayunlong228.git<span class="w"> </span><span class="c1"># change to your github repo</span>
-</span><span id="__span-2-7">$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
-</span><span id="__span-2-8">$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
-</span></code></pre></div></td></tr></table></div></p>
-<p>仓库设置</p>
-<p>setting -&gt; pages -&gt; branch (gh-pages)</p>
-<p>（4） 写博客内容与发布</p>
-<p>文档配置：mkdocs.yml</p>
-<p>博客内容：docs</p>
-<p>写完内容后，使用命令将内容发布到网页端
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">$<span class="w"> </span>mkdocs<span class="w"> </span>gh-deploy
-</span></code></pre></div></td></tr></table></div></p>
-<p>以上是基于MkDocs和github pages构建个人博客的方式。更多的细节我会在使用过程中再更新到此文档中。</p>
+<p>Claude Code 这类工具有意思的地方就在这里。它不是单纯提供一个聊天框，而是把模型放进了一个工程环境里。模型负责判断下一步做什么，外层系统负责提供工具、上下文、权限和反馈。Harness 概念的核心也在这个方向：不要只想着“怎么让模型更聪明”，还要设计一套能把模型能力稳定释放出来的外壳。</p>
+<p>下面这张图可以先作为整体关系的入口。Agent 是中间的决策循环，Harness 是外层运行环境，Rules、Memory、Skill 主要影响上下文和流程，Tools、MCP、Hook、Permissions 则决定它能怎么行动、怎么被约束。</p>
+<pre class="mermaid"><code>flowchart TB
+    prompt[Prompt&lt;br/&gt;当前任务意图] --&gt; agent[Agent&lt;br/&gt;理解任务 / 决策 / 推进]
+    rules[Rules&lt;br/&gt;长期约束] --&gt; agent
+    memory[Memory&lt;br/&gt;长期背景] --&gt; context[Context&lt;br/&gt;当前可见信息]
+    skill[Skill&lt;br/&gt;特定场景流程] --&gt; context
+    context --&gt; agent
+
+    agent --&gt; loop{行动循环}
+    loop --&gt; observe[观察&lt;br/&gt;读文件 / 看日志 / 查结果]
+    loop --&gt; act[行动&lt;br/&gt;改文件 / 跑命令 / 调 API]
+    loop --&gt; verify[验证&lt;br/&gt;测试 / lint / review]
+    observe --&gt; context
+    act --&gt; verify
+    verify --&gt; agent
+
+    subgraph harness[Harness&lt;br/&gt;让 Agent 稳定工作的外壳]
+        tools[Tools&lt;br/&gt;本地工具]
+        mcp[MCP&lt;br/&gt;外部系统连接]
+        permissions[Permissions / Sandbox&lt;br/&gt;权限和运行边界]
+        hooks[Hooks&lt;br/&gt;固定时机检查]
+    end
+
+    agent --&gt; tools
+    agent --&gt; mcp
+    permissions -.限制.-&gt; tools
+    permissions -.限制.-&gt; mcp
+    hooks -.检查.-&gt; act
+    tools --&gt; observe
+    mcp --&gt; observe
+
+    plugin[Plugin&lt;br/&gt;可安装的能力包] -.打包.-&gt; skill
+    plugin -.打包.-&gt; mcp
+    plugin -.打包.-&gt; hooks
+    agent -.拆分任务.-&gt; subagent[Subagent&lt;br/&gt;专门职责]
+    subagent --&gt; context</code></pre>
+<h2 id="agent_1">Agent<a class="headerlink" href="#agent_1" title="Permanent link">&para;</a></h2>
+<p>Agent 可以先理解成“会自己推进任务的助手”。</p>
+<p>普通聊天更像一次问答：用户问一句，模型答一句。Agent 则会多一个循环：先理解任务，再收集上下文，然后调用工具行动，拿到结果后继续判断下一步，直到它认为任务完成。</p>
+<p>比如让一个 coding agent 修一个测试失败的问题，它不会只回答“可能是某某文件有问题”。它会先搜代码，读文件，运行测试，修改代码，再重新跑测试。这个过程里，模型一直在做判断，但真正改变环境的是工具。</p>
+<p>所以 Agent 的关键不是“它像不像人”，而是它有没有完成闭环：</p>
+<ul>
+<li>能不能看到环境里的信息。</li>
+<li>能不能采取行动。</li>
+<li>能不能根据行动结果继续修正。</li>
+<li>能不能在结束前做验证。</li>
+</ul>
+<p>没有工具和反馈，模型只是会说；有了这套循环，才开始像是在工作。</p>
+<h2 id="harness">Harness<a class="headerlink" href="#harness" title="Permanent link">&para;</a></h2>
+<p>Harness 这个词可以翻译成“驾驭层”或者“运行外壳”。它比“框架”更贴近 Agent 系统的实际状态，因为它强调的不是把模型包起来，而是给模型加上缰绳、仪表盘和护栏。</p>
+<p>在 Agent 系统里，Harness 通常包含这些东西：</p>
+<ul>
+<li>工具：文件读写、命令行、浏览器、数据库、API。</li>
+<li>知识：项目说明、代码规范、业务文档、历史决策。</li>
+<li>观察：日志、测试结果、diff、页面截图、报错信息。</li>
+<li>权限：哪些操作可以直接做，哪些必须等人确认。</li>
+<li>反馈：测试、lint、dry run、review、监控。</li>
+</ul>
+<p>这也是为什么构建 Agent 时，不能只盯着 prompt。Prompt 当然重要，但 prompt 更像“交代任务”；Harness 才决定这个助手能不能在真实环境里可靠地干活。</p>
+<p>一个不太严谨但好用的判断是：如果问题是“希望它知道什么”，通常是上下文或规则；如果问题是“希望它能做什么”，通常是工具或 MCP；如果问题是“希望它每次都按这个流程做”，通常是 Skill；如果问题是“不允许它越过某条线”，通常是权限、Hook 或沙箱。</p>
+<h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h2>
+<p>Rules 是常驻规则，适合放那些“每次都应该遵守”的约束。</p>
+<p>比如一个项目里可能会写：</p>
+<ul>
+<li>不要改某些目录。</li>
+<li>新增功能必须补测试。</li>
+<li>写 SQL 前先 dry run。</li>
+<li>用户确认和授权时必须用中文。</li>
+<li>私人内容只保存在本地，不要进入公开仓库。</li>
+</ul>
+<p>Rules 的价值在于稳定。它让 Agent 不用每次都靠临时提醒，就能知道这个项目的边界和习惯。</p>
+<p>但 Rules 也有一个问题：它会变成常驻上下文。写得越长，越容易变成背景噪音。真正适合 Rules 的东西，应该是短、硬、长期有效的约束。那些很长的流程、案例、模板，其实不适合一直塞在规则里。</p>
+<p>更适合把 Rules 当成“底线”和“项目习惯”，而不是万能说明书。</p>
+<h2 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h2>
+<p>Prompt 是当前任务中想让 Agent 做什么。</p>
+<p>它可以很短，比如“修这个 bug”；也可以很具体，比如“只改 SQL，不要动文档，输出可直接复制执行的 BigQuery 脚本”。Prompt 的作用是给当前任务定方向。</p>
+<p>Prompt 和 Rules 的区别在于：Prompt 是本次任务的意图，Rules 是长期存在的约束。</p>
+<p>如果一个要求只对这次有效，放在 Prompt 里就好。如果某件事每次都需要重复提醒，那它可能应该沉淀成 Rules 或 Skill。</p>
+<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h2>
+<p>Tools 是 Agent 的手。</p>
+<p>模型自己不能真的读文件、跑测试、打开网页、查数据库。它只能决定“需要调用什么工具”。真正执行动作的是工具系统。</p>
+<p>常见工具可以分为几类：</p>
+<ul>
+<li>读：读取文件、搜索代码、打开网页、查看数据库结构。</li>
+<li>写：修改文件、生成文档、创建 issue、写入表格。</li>
+<li>执行：运行测试、启动服务、调用命令行、跑脚本。</li>
+<li>连接：访问 GitHub、Notion、Slack、BigQuery、浏览器等外部系统。</li>
+</ul>
+<p>工具设计得好，Agent 的行动就清楚；工具设计得太碎，它会在选择上浪费很多判断；工具设计得太宽，又容易出现误操作。</p>
+<p>比较理想的工具不是越多越好，而是让 Agent 有几种可靠的基础能力，再用规则和权限限制边界。对 coding agent 来说，读文件、搜代码、改文件、跑命令这几类能力就已经很强了。</p>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
+<p>Context 是 Agent 当前能看到的信息。</p>
+<p>它不等于“模型知道的一切”。模型可能训练时见过很多知识，但在一次具体任务里，它真正能稳定使用的，是当前上下文里提供给它的东西：当前需求、历史对话、项目文件、工具返回结果、规则、Skill 描述等。</p>
+<p>很多 Agent 问题，本质上不是模型不会，而是上下文没给对。比如让它改一个复杂项目，如果它没有读到项目结构、没有看到相关文件、没有测试反馈，就很容易凭感觉写代码。</p>
+<p>Context 的难点是取舍。给少了，它看不清；给多了，它会被淹没。长日志、大文件、无关文档都会挤占空间。所以好的 Agent 工作流，通常会很重视“先搜，再读关键部分”，而不是一上来把所有东西都塞进去。</p>
+<h2 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h2>
+<p>Memory 是跨会话保留下来的上下文。</p>
+<p>它适合记录长期稳定的信息，比如个人偏好、项目约定、踩过的坑、某个目录的用途。它不适合记录一大段临时聊天，也不适合把所有历史都塞进去。</p>
+<p>Memory 更适合像一本薄薄的工作笔记，而不是完整录像。</p>
+<p>好的 Memory 会让 Agent 少问重复问题。比如它记得“这个博客里的月度日记是本地私有内容，不应该发布到站点”，下一次处理博客时就不容易踩线。</p>
+<p>但 Memory 也需要克制。过时的信息如果一直留着，反而会误导 Agent。所以 Memory 更适合放低频变化的事实，而不是每天都在变的状态。</p>
+<h2 id="skill">Skill<a class="headerlink" href="#skill" title="Permanent link">&para;</a></h2>
+<p>Skill 可以理解成“可复用的工作手册”。</p>
+<p>如果某一套流程经常被重复复制给 Agent，比如“怎么写一篇数据分析文档”“怎么处理一个 PR review”“怎么生成一份 PPT”，那这套流程就很适合沉淀成 Skill。</p>
+<p>一个 Skill 通常会包含：</p>
+<ul>
+<li>什么时候应该使用它。</li>
+<li>执行这个任务的步骤。</li>
+<li>需要注意的边界。</li>
+<li>示例、模板或脚本。</li>
+</ul>
+<p>Skill 和 Rules 的区别很重要。Rules 是每次都要遵守的底线，Skill 是特定场景下才加载的流程。把长流程写进 Rules，会污染所有任务的上下文；写成 Skill，就只有相关任务触发时才读。</p>
+<p>这也是 Skill 很实用的地方：它让经验可以被沉淀，但不必每次都挤进主上下文。</p>
+<h2 id="plugin">Plugin<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h2>
+<p>Plugin 比 Skill 更像一个完整工具包。</p>
+<p>一个 Plugin 可以打包很多东西：Skill、Agent、命令、Hook、MCP 连接、配置文件。它解决的问题不是“这个流程怎么做”，而是“如何把一整套能力安装到某个环境里”。</p>
+<p>比如一个数据分析 Plugin 可能包含：</p>
+<ul>
+<li>写 SQL 的 Skill。</li>
+<li>查询 BigQuery 的 MCP 工具。</li>
+<li>做 dry run 的 Hook。</li>
+<li>一个专门检查指标口径的子 Agent。</li>
+<li>几个常用命令。</li>
+</ul>
+<p>所以可以简单区分一下：</p>
+<ul>
+<li>Skill 是一份工作手册。</li>
+<li>Plugin 是一整套可安装、可分享的能力包。</li>
+</ul>
+<p>单人使用时，Skill 往往已经够了。团队协作时，Plugin 的价值会变大，因为它可以把一组约定和工具一起分发出去，减少“成员本地配置都不一样”的问题。</p>
+<h2 id="mcp">MCP<a class="headerlink" href="#mcp" title="Permanent link">&para;</a></h2>
+<p>MCP 可以理解成 Agent 连接外部世界的一种标准接口。</p>
+<p>Agent 想查数据库、读 Notion、看 GitHub PR、操作浏览器、调用内部系统，都需要某种连接方式。如果每个工具都写一套私有协议，生态会很难复用。MCP 做的事情，就是把这些外部能力包装成 Agent 可以发现和调用的工具。</p>
+<p>对使用者来说，MCP 的直观价值是：Agent 不只是读本地文件，还能进入真实工作的系统。</p>
+<p>但这也意味着风险变大了。能读数据库，就要考虑权限；能发消息，就要考虑误发；能改 issue，就要考虑审计。所以 MCP 往往要和权限、沙箱、只读模式一起设计。</p>
+<h2 id="hook">Hook<a class="headerlink" href="#hook" title="Permanent link">&para;</a></h2>
+<p>Hook 是固定时机触发的检查或动作。</p>
+<p>如果说 Rules 是告诉 Agent “应该怎么做”，Hook 更像是在关键节点放一个自动闸门。</p>
+<p>比如：</p>
+<ul>
+<li>在执行 shell 命令前，检查是不是危险命令。</li>
+<li>在修改文件后，自动跑 formatter。</li>
+<li>在提交前，自动跑测试。</li>
+<li>在 Agent 结束前，检查是否还有未完成的 todo。</li>
+</ul>
+<p>Hook 的好处是确定性更强。模型可能忘记某条提醒，但 Hook 到点就会执行。凡是“必须发生”的检查，尽量不要只靠自然语言提醒。</p>
+<p>当然 Hook 也不应该滥用。太多 Hook 会让系统变得难调试。适合写 Hook 的，通常是安全、质量、审计这类硬要求。</p>
+<h2 id="subagent">Subagent<a class="headerlink" href="#subagent" title="Permanent link">&para;</a></h2>
+<p>Subagent 是一个带专门职责的子助手。</p>
+<p>它通常有自己的上下文、自己的规则、自己的工具范围。主 Agent 可以把一部分任务交给它，然后只拿回结果摘要。</p>
+<p>这在长任务里很有用。比如主 Agent 正在改代码，可以让一个 Subagent 去读某个模块的历史设计，让另一个 Subagent 去检查测试失败原因。这样主对话不会被大量搜索结果和日志塞满。</p>
+<p>但 Subagent 不是“召唤一个更聪明的模型”。它更像任务拆分和上下文隔离工具。适合交给 Subagent 的任务，应该是边界清楚、可以独立完成、最后能汇总成结论的事情。</p>
+<p>如果任务本身还很模糊，或者主 Agent 下一步马上依赖这个结果，那拆出去反而可能变慢。</p>
+<h2 id="permissions-sandbox">Permissions 和 Sandbox<a class="headerlink" href="#permissions-sandbox" title="Permanent link">&para;</a></h2>
+<p>Permissions 是权限规则，Sandbox 是运行边界。</p>
+<p>Agent 能行动以后，安全问题就出现了。读文件还好，写文件、删文件、跑命令、访问外部服务，都可能产生真实后果。</p>
+<p>所以一个可靠的 Agent 系统，一定要回答几个问题：</p>
+<ul>
+<li>哪些操作可以自动执行？</li>
+<li>哪些操作必须先问人？</li>
+<li>哪些操作永远不允许？</li>
+<li>如果执行错了，影响范围被限制在哪里？</li>
+</ul>
+<p>Sandbox 的意义是把影响范围关起来。比如只允许写当前项目目录，不允许动系统目录；只允许读某些数据源，不允许写回生产表；只允许创建草稿，不允许直接发布。</p>
+<p>这部分看起来不如“智能”酷，但它决定了 Agent 能不能真正投入日常工作。没有边界的自动化，不是效率工具，而是风险源。</p>
+<h2 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h2>
+<p>Command 是用户主动触发的快捷操作。</p>
+<p>比如 <code>/commit</code>、<code>/review</code>、<code>/compact</code> 这类命令，本质上是把一段常用流程做成一个入口。和 Skill 不同，Command 通常更偏“现在明确要执行这个动作”。</p>
+<p>可以这样理解：</p>
+<ul>
+<li>Skill 偏自动触发，Agent 判断什么时候该用。</li>
+<li>Command 偏手动触发，用户明确告诉系统现在要做什么。</li>
+</ul>
+<p>有些场景两者会重叠。比如“生成提交信息”既可以做成 Skill，也可以做成 <code>/commit-message</code> 命令。区别不在能力，而在交互方式。</p>
+<h2 id="_1">这些概念怎么分层<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>从零开始构建一个 Agent 工作环境时，可以按下面的顺序分层：</p>
+<p>第一层，先写 Rules。把长期不变的项目习惯和安全边界写清楚，越短越好。</p>
+<p>第二层，整理 Tools。让 Agent 至少能读、搜、改、跑验证。没有工具，Agent 只能停留在建议层。</p>
+<p>第三层，把重复流程沉淀成 Skill。不要每次复制同一段操作手册，也不要把长流程塞进 Rules。</p>
+<p>第四层，接入必要的 MCP。只有当任务真的需要外部系统时再接，不要为了“看起来强大”把所有服务都连上。</p>
+<p>第五层，对高风险动作加 Permissions、Sandbox 和 Hook。尤其是写数据库、发消息、删文件、部署发布这些动作，一定要有硬边界。</p>
+<p>第六层，需要团队复用时，再考虑 Plugin。单人使用阶段不一定要过早做插件，先把 Skill 和规则跑顺更重要。</p>
+<p>第七层，长任务再拆 Subagent。能不拆就不拆，拆的时候要给它清楚的职责和交付物。</p>
+<h2 id="_2">最后<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>理解 Agent，其实是在理解一种新的工程分工。</p>
+<p>过去写程序，是人把步骤拆清楚，再交给机器确定性执行。现在 Agent 让模型参与了“下一步做什么”的判断，但这不代表工程消失了。相反，工程的重点往外移了：从写死每一步，变成设计环境、约束、反馈和恢复机制。</p>
+<p>也就是说，Agent 做得好不好，不只取决于模型有多强，还取决于是否给它一个适合工作的世界。</p>
+<p>这也是 Harness 这个词真正有启发的地方。重要的不是让模型自由狂奔，而是让它在合适的范围里跑起来，跑错了能停，跑完了能验，下一次还能跑得更稳。</p>
+<h2 id="_3">参考资料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/2021603278606087058">从 Claude Code 看 Harness Engineer 的设计 - 初级程序员的文章 - 知乎</a></li>
+<li><a href="https://code.claude.com/docs/en/how-claude-code-works">How Claude Code works - Claude Code Docs</a></li>
+<li><a href="https://code.claude.com/docs/en/features-overview">Extend Claude Code - Claude Code Docs</a></li>
+<li><a href="https://code.claude.com/docs/en/skills">Extend Claude with skills - Claude Code Docs</a></li>
+<li><a href="https://code.claude.com/docs/en/mcp">Connect Claude Code to tools via MCP - Claude Code Docs</a></li>
+<li><a href="https://code.claude.com/docs/en/hooks">Hooks reference - Claude Code Docs</a></li>
+<li><a href="https://code.claude.com/docs/en/sub-agents">Create custom subagents - Claude Code Docs</a></li>
+<li><a href="https://code.claude.com/docs/en/plugins">Create plugins - Claude Code Docs</a></li>
+</ul>
 
 
 
