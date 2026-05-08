@@ -18,6 +18,7 @@ nav:
   - 编程思想:
     - programming/index.md
     - Agent 常用概念: programming/agent-common-concepts.md
+    - Harness Engineering 分享: programming/harness-engineering-presentation-script.md
     - 基于 MkDocs 构建博客: code_share/create_new_blog.md
 
 
