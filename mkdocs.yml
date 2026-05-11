@@ -8,6 +8,11 @@ nav:
   - 首页: index.md
   - 行业观察:
     - industry/index.md
+  - AI 探索:
+    - ai_exploration/index.md
+    - 用 AI 搭建链上监控系统: ai_exploration/ai-onchain-monitoring.md
+    - Agent 常用概念: ai_exploration/agent-common-concepts.md
+    - Harness Engineering 分享: ai_exploration/harness-engineering-presentation-script.md
   - 产品思考:
     - product/index.md
     - A/B 实验方法论:
@@ -17,8 +22,6 @@ nav:
       - 如何解读实验结果: product/ab_testing/result-interpretation.md
   - 编程思想:
     - programming/index.md
-    - Agent 常用概念: programming/agent-common-concepts.md
-    - Harness Engineering 分享: programming/harness-engineering-presentation-script.md
     - 基于 MkDocs 构建博客: code_share/create_new_blog.md
 
 
