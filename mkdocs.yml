@@ -5,26 +5,28 @@ site_url: https://jiayunlong228.github.io/
 repo_url: https://github.com/jiayunlong228/jiayunlong228.github.io
 
 nav:
-#  - index.md
-  - Me:
-    - me/index.md
-  - 生活记录:
-    - monthly_notes/2024_notes_07.md
-    - monthly_notes/2024_notes_08.md
-    - monthly_notes/2024_notes_09.md
-    - monthly_notes/2024_notes_10.md
-    - monthly_notes/2024_notes_11.md
-    - monthly_notes/2024_notes_12.md
-    - monthly_notes/2024_summary.md
-    - monthly_notes/2025_notes_01.md
-    - monthly_notes/2025_notes_02.md
-    - monthly_notes/2025_notes_03.md
-    - monthly_notes/2025_notes_04.md
-    - monthly_notes/2025_notes_05.md
-    - monthly_notes/2025_notes_06.md
-  - 技术分享:
-    - code_share/create_new_blog.md
+  - 首页: index.md
+  - 行业观察:
+    - industry/index.md
+  - AI 探索:
+    - ai_exploration/index.md
+    - 用 AI 搭建链上监控系统: ai_exploration/ai-onchain-monitoring.md
+    - Agent 常用概念: ai_exploration/agent-common-concepts.md
+    - Harness Engineering 分享: ai_exploration/harness-engineering-presentation-script.md
+  - 产品思考:
+    - product/index.md
+    - A/B 实验方法论:
+      - 总览: product/ab_testing/index.md
+      - 背景和操作流程: product/ab_testing/background-and-workflow.md
+      - 数据处理流程与理论背景: product/ab_testing/data-and-theory.md
+      - 如何解读实验结果: product/ab_testing/result-interpretation.md
+  - 编程思想:
+    - programming/index.md
+    - 基于 MkDocs 构建博客: code_share/create_new_blog.md
 
+
+exclude_docs: |
+  monthly_notes/
 
 
 theme:
@@ -147,7 +149,11 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   # [Markdown 提示]
   # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
   - admonition

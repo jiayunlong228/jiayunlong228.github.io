@@ -12,11 +12,13 @@
         <meta name="author" content="贾云龙">
       
       
-        <link rel="canonical" href="https://jiayunlong228.github.io/code_share/create_new_blog/">
+        <link rel="canonical" href="https://jiayunlong228.github.io/ai_exploration/harness-engineering-presentation-script/">
       
       
-        <link rel="prev" href="../../programming/">
+        <link rel="prev" href="../agent-common-concepts/">
       
+      
+        <link rel="next" href="../../product/">
       
       
         
@@ -27,7 +29,7 @@
     
     
       
-        <title>基于 MkDocs 构建博客 - Yunlong's blog</title>
+        <title>Harness Engineering 分享 - Yunlong's blog</title>
       
     
     
@@ -84,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mkdocs" class="md-skip">
+        <a href="#harness-engineering" class="md-skip">
           跳转至
         </a>
       
@@ -118,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              基于 MkDocs 构建博客
+              Harness Engineering 分享
             
           </span>
         </div>
@@ -270,11 +272,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../ai_exploration/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -314,12 +318,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../../programming/" class="md-tabs__link">
           
   
@@ -479,6 +481,8 @@
       
   
   
+    
+  
   
   
     
@@ -498,20 +502,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../ai_exploration/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -529,13 +534,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -555,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ai_exploration/ai-onchain-monitoring/" class="md-nav__link">
+      <a href="../ai-onchain-monitoring/" class="md-nav__link">
         
   
   
@@ -583,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ai_exploration/agent-common-concepts/" class="md-nav__link">
+      <a href="../agent-common-concepts/" class="md-nav__link">
         
   
   
@@ -608,10 +613,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../ai_exploration/harness-engineering-presentation-script/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering 分享
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -627,6 +659,136 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#harness-engineering-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harness Engineering：让 Agent 稳定工作的外壳
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claudemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 CLAUDE.md 越写越长开始
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 是请求，Harness 是结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP：工具接口就是能力边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skillagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill：你脑子里的知识，Agent 不知道
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook：把提醒变成强制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subagent：限制不是缺陷，而是可靠性的来源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个完整场景：新增后端 API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        这不只是 Claude Code 的事
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -884,8 +1046,6 @@
       
   
   
-    
-  
   
   
     
@@ -901,17 +1061,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -933,13 +1092,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -956,37 +1115,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    基于 MkDocs 构建博客
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../code_share/create_new_blog/" class="md-nav__link">
         
   
   
@@ -1002,48 +1134,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mkdocs_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        一、MkDocs 简介
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        二、创建博客流程
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1083,10 +1173,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mkdocs_1" class="md-nav__link">
+  <a href="#harness-engineering-agent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        一、MkDocs 简介
+        Harness Engineering：让 Agent 稳定工作的外壳
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claudemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从 CLAUDE.md 越写越长开始
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 是请求，Harness 是结构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP：工具接口就是能力边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skillagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill：你脑子里的知识，Agent 不知道
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hook：把提醒变成强制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subagent：限制不是缺陷，而是可靠性的来源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一个完整场景：新增后端 API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        这不只是 Claude Code 的事
       
     </span>
   </a>
@@ -1097,7 +1275,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        二、创建博客流程
+        总结
       
     </span>
   </a>
@@ -1121,7 +1299,7 @@
 
 
   
-    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/code_share/create_new_blog.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/ai_exploration/harness-engineering-presentation-script.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1129,65 +1307,110 @@
   
 
 
-<h1 id="mkdocs">基于 MkDocs 构建博客<a class="headerlink" href="#mkdocs" title="Permanent link">&para;</a></h1>
-<h2 id="mkdocs_1">一、MkDocs 简介<a class="headerlink" href="#mkdocs_1" title="Permanent link">&para;</a></h2>
-<p>MkDocs 是一个静态网站生成器，它使用 Markdown（或其他可转换为HTML的格式）来创建项目文档。我的博客使用的是Material主题，页面看起来比较简洁，读者如果想了解更多的主题，可以自行了解并设置。</p>
-<h2 id="_1">二、创建博客流程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>以下均在命令行实现</p>
-</blockquote>
-<p>（1） 安装 MkDocs 和 Material 主题</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span><span class="c1"># 在python环境下安装mkdocs，目前 MkDocs 支持 Python 3.7 及更高版本。</span>
-</span><span id="__span-0-2">
-</span><span id="__span-0-3">mkdocs<span class="w"> </span>--version<span class="w"> </span><span class="c1"># 验证是否安装成功</span>
-</span><span id="__span-0-4">
-</span><span id="__span-0-5">pip<span class="w"> </span>install<span class="w"> </span>mkdocs-material<span class="w"> </span><span class="c1"># 安装 material 主题</span>
-</span></code></pre></div></td></tr></table></div>
-<p>（2） 创建博客项目</p>
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="nb">cd</span><span class="w"> </span>~
-</span><span id="__span-1-2">
-</span><span id="__span-1-3">mkdocs<span class="w"> </span>new<span class="w"> </span>my_blog<span class="w"> </span><span class="c1"># 创建一个新项目，并给项目取个名字，这里我使用test作为展示。命令返回内容如下，说明执行成功。</span>
-</span><span id="__span-1-4"><span class="c1">#INFO    -  Creating project directory: test</span>
-</span><span id="__span-1-5"><span class="c1">#INFO    -  Writing config file: test/mkdocs.yml</span>
-</span><span id="__span-1-6"><span class="c1">#INFO    -  Writing initial docs: test/docs/index.md</span>
-</span></code></pre></div></td></tr></table></div>
-<p>（3） 将本地仓库关联到github</p>
-<p>先在github上创建一个github.io结尾的仓库</p>
-<p>本地仓库中命令行
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">$<span class="w"> </span>git<span class="w"> </span>init
-</span><span id="__span-2-2">$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
-</span><span id="__span-2-3">$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;init&quot;</span>
-</span><span id="__span-2-4">
-</span><span id="__span-2-5"><span class="c1"># 关联远程仓库</span>
-</span><span id="__span-2-6">$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:jiayunlong228/jiayunlong228.git<span class="w"> </span><span class="c1"># change to your github repo</span>
-</span><span id="__span-2-7">$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
-</span><span id="__span-2-8">$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
-</span></code></pre></div></td></tr></table></div></p>
-<p>仓库设置</p>
-<p>setting -&gt; pages -&gt; branch (gh-pages)</p>
-<p>（4） 写博客内容与发布</p>
-<p>文档配置：mkdocs.yml</p>
-<p>博客内容：docs</p>
-<p>写完内容后，使用命令将内容发布到网页端
-<div class="language-sh highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">$<span class="w"> </span>mkdocs<span class="w"> </span>gh-deploy
-</span></code></pre></div></td></tr></table></div></p>
-<p>以上是基于MkDocs和github pages构建个人博客的方式。更多的细节我会在使用过程中再更新到此文档中。</p>
+<h1 id="harness-engineering">Harness Engineering 分享<a class="headerlink" href="#harness-engineering" title="Permanent link">&para;</a></h1>
+<h2 id="harness-engineering-agent">Harness Engineering：让 Agent 稳定工作的外壳<a class="headerlink" href="#harness-engineering-agent" title="Permanent link">&para;</a></h2>
+<p>分享一个最近比较火的话题：Harness Engineering。</p>
+<p>它听起来像一个新名词，但它背后其实是一个很朴素的问题：当我们开始认真使用 AI Agent，尤其是 Claude Code、Cursor、Codex 这类 coding agent 之后，为什么它有时候明明知道规则，还是会做错？</p>
+<p>比如我们已经告诉它不要直接 push 到 main，告诉它改完代码要跑测试，告诉它不要碰某些配置文件。但真实使用的时候，它还是可能绕到另一个错误路径上：它不直接 push 了，但开始在奇怪的时候 commit；它确实跑测试了，但跑的是一个不相关的测试文件；它说任务完成了，结果你一看，最关键的验证根本没做。</p>
+<p>很多时候，我们第一反应是继续补 prompt，继续往 <code>CLAUDE.md</code> 里写规则。今天我想讨论的是：这个方向有用，但不够。Agent 可靠性的核心，不应该只是写更长的提示词，而是给它设计一套更可靠的运行系统。</p>
+<p>这套运行系统，就是我理解的 Harness。</p>
+<h2 id="claudemd">从 <code>CLAUDE.md</code> 越写越长开始<a class="headerlink" href="#claudemd" title="Permanent link">&para;</a></h2>
+<p>很多人用 Claude Code 一段时间之后，都会经历一个阶段：开始疯狂往 <code>CLAUDE.md</code> 里写东西。</p>
+<p>一开始可能只有几条规则：用什么包管理器，提交前跑什么测试，不要改哪些目录。后来每踩一个坑，就补一条。它直接 push 了，就写“不要直接 push”；它没跑测试，就写“完成前必须跑测试”；它改了不该改的配置，就写“不要修改这些配置文件”。</p>
+<p>慢慢地，<code>CLAUDE.md</code> 从几十行变成几百行。我们以为规则越多，Agent 就越可靠。但实际体验往往不是这样。</p>
+<p>它确实可能不再犯原来的错误，但会出现错误的变种。你会发现，问题不只是“它有没有读到规则”，而是这些规则在长任务、长上下文、多轮工具调用之后，能不能持续稳定地影响它的行为。</p>
+<p>这就是自然语言约束的局限。Prompt 本质上是一种请求，它告诉模型“我希望你这么做”。但它不是机械约束，也不是系统保证。任务越复杂，上下文越长，模型越容易在推理链路末尾把某些早期约束淡忘掉。</p>
+<p>所以真正的问题是：哪些事情适合写进 prompt，哪些事情应该交给系统结构来保证？</p>
+<h2 id="prompt-harness">Prompt 是请求，Harness 是结构<a class="headerlink" href="#prompt-harness" title="Permanent link">&para;</a></h2>
+<p>我理解的 Harness Engineering，核心就是一句话：</p>
+<p>Agent 的可靠性，不应该主要依赖模型“记得要听话”，而应该来自外层系统结构的保证。</p>
+<p>这里的 Harness，可以理解成 Agent 的运行外壳。模型负责理解任务、做判断、决定下一步行动；Harness 负责提供工具、注入知识、限制权限、执行验证、保留关键状态。</p>
+<p>换句话说，模型像一个会思考的执行者，但它不能被直接丢进真实世界里自由发挥。它需要一套工作环境。这套环境要告诉它能调用什么工具，能看到什么上下文，哪些动作必须被拦截，哪些结果必须被验证，哪些知识应该在特定场景下出现。</p>
+<p>Claude Code 之所以是一个很好的观察入口，是因为它把这套 Harness 设计比较清楚地暴露出来了。MCP、Skill、Hook、Subagent 这几个机制，表面上看是功能点，但放在一起看，其实是在解决 Agent 系统里非常典型的四类问题。</p>
+<p>MCP 解决工具和外部世界的连接问题。Skill 解决隐性知识如何被按需注入的问题。Hook 解决关键动作如何被强制验证的问题。Subagent 解决任务如何隔离、限权和降噪的问题。</p>
+<p>接下来我会围绕这四个机制展开。</p>
+<h2 id="mcp">MCP：工具接口就是能力边界<a class="headerlink" href="#mcp" title="Permanent link">&para;</a></h2>
+<p>先看 MCP。</p>
+<p>很多人第一次接触 MCP，会把它理解成“让 Claude 能做更多事”的工具。比如接 GitHub、接数据库、接内部服务、接 Notion。这个理解没有错，但只看到了 MCP 的一半价值。</p>
+<p>MCP 更重要的价值，是它定义了 Agent 和外部世界之间的契约。</p>
+<p>假设没有 MCP，Agent 想查数据库，它可能会自己推断连接方式，猜认证逻辑，拼 SQL，处理报错。这个过程不是一定会失败，但每次执行路径都依赖模型现场推理，所以不稳定，也不容易复现。</p>
+<p>有了 MCP 之后，Agent 面对的是一个被你定义好的工具接口。比如它只需要调用 <code>query_database(sql: string)</code>。数据库在哪里，怎么认证，连接失败怎么重试，哪些表能查，哪些字段要脱敏，这些都可以放在 MCP Server 里，用确定性的代码处理。</p>
+<p>这时候，Agent 的能力不是无限的。它能做什么，取决于你暴露了什么工具。工具集中没有 <code>delete_user_data</code>，它就不能删除用户数据。不是因为你在 prompt 里写了“不要删除用户数据”，而是因为这个能力在架构层面不存在。</p>
+<p>这就是能力边界由架构决定。</p>
+<p>这个思路和软件工程里的最小权限原则是一样的。我们不会给一个普通服务账号开放生产库全部写权限，然后只在文档里提醒“不要乱删数据”。Agent 也是一样。能用工具边界限制的事情，就不要只靠语言提醒。</p>
+<p>还有一个容易被忽略的地方：MCP 的返回值也很重要。</p>
+<p>工具返回的数据会进入 Agent 的上下文。如果一个工具每次都返回完整数据库记录、完整日志、完整对象，它会把大量无关信息塞进上下文，干扰后续判断，也浪费 context。好的工具接口，不只是输入受控，输出也应该被整理过，只返回当前任务真正需要的信息。</p>
+<p>所以 MCP 不只是连接能力，它也是边界设计。</p>
+<h2 id="skillagent">Skill：你脑子里的知识，Agent 不知道<a class="headerlink" href="#skillagent" title="Permanent link">&para;</a></h2>
+<p>有了可靠的工具之后，Agent 还是可能做出不符合团队习惯的决定。</p>
+<p>比如它用了一个你们已经废弃的 API 版本，写了不符合项目风格的注释，绕过了团队约定的 Repository 模式，或者处理告警时没有按照你们平时的排查顺序来。</p>
+<p>这种时候，我们很容易继续往 <code>CLAUDE.md</code> 里补规则。但这里有一个更本质的问题：很多团队知识本来就是隐性的。</p>
+<p>它存在于老成员脑子里，存在于 code review 的口头反馈里，存在于“我们一直都这么做”的习惯里。Agent 不在你们团队里生活过，它当然不知道这些东西。</p>
+<p>每一次 Agent 因为团队习惯而失败，都可能是在提醒我们：某条隐性知识还没有被显式编码进系统。</p>
+<p>但把所有知识都塞进全局规则，也不是好办法。因为全局规则会常驻上下文，不管当前任务用不用得到，它都在那里占空间。久而久之，<code>CLAUDE.md</code> 会变成一个巨大、臃肿、所有场景共用的文档。</p>
+<p>Skill 更适合处理这类问题。</p>
+<p>你可以把“新增 API 端点时的规范”写成一个 Skill，把“处理生产告警时的排查流程”写成一个 Skill，把“提交 PR 前的检查清单”写成一个 Skill。它们不是每次都加载，而是在相关任务出现时才进入上下文。</p>
+<p>这样做的好处是，知识被沉淀下来了，但不会污染所有任务。每个 Skill 都更像一份可复用、可版本控制、可按需加载的工作手册。</p>
+<p>这也是 Agent 工程里很重要的一步：把人脑里的经验，变成系统能稳定使用的上下文。</p>
+<p>如果某段规则每次都要提醒，那它可能应该成为长期规则。如果某套流程只在某类任务里用，那它更适合成为 Skill。如果某个动作必须每次发生，那它甚至不应该停留在 Skill 或 prompt 里，而应该交给 Hook。</p>
+<h2 id="hook">Hook：把提醒变成强制<a class="headerlink" href="#hook" title="Permanent link">&para;</a></h2>
+<p>再看 Hook。</p>
+<p>我们经常会写一句话：“请确保测试通过。”这句话听起来很合理，但它本质上还是一个提醒。</p>
+<p>提醒的问题是，它可能被忘掉，可能被误解，也可能在长任务末尾被模型自己判断为“应该已经没问题了”。最后 Agent 说完成了，但测试没有跑，或者跑了错误的测试集。</p>
+<p>Hook 的价值，就是把这类“希望它发生的事情”变成“到点就会发生的事情”。</p>
+<p>比如 Stop Hook 可以挂在 Agent 声明完成的时候。它一说完成，系统就自动跑测试。测试通过，任务结束；测试失败，错误信息反馈给 Agent，让它继续修。</p>
+<p>这和在 prompt 里写“完成前请跑测试”完全不一样。前者是执行机制，后者是语言提醒。</p>
+<p>PreToolUse Hook 也很典型。它可以在工具调用前检查命令是否危险。比如当前分支是 main，却准备执行 push；或者命令里包含明显高风险的删除操作。这个时候 Hook 可以直接阻断，让操作在技术层面无法发生。</p>
+<p>PostToolUse Hook 可以在文件修改后自动跑格式化或 lint。PostCompact Hook 可以在上下文压缩之后重新注入关键约束，避免早期规则在压缩过程中丢掉。</p>
+<p>这里有一个判断原则：越接近安全、质量、发布这类硬要求，越应该用确定性机制，而不是继续写更多自然语言提醒。</p>
+<p>如果一件事情失败后代价很高，就不要指望模型每次都能记住。把它放进 Hook，让系统自动检查。</p>
+<h2 id="subagent">Subagent：限制不是缺陷，而是可靠性的来源<a class="headerlink" href="#subagent" title="Permanent link">&para;</a></h2>
+<p>最后看 Subagent。</p>
+<p>Subagent 很容易被理解成并行工具：让多个 Agent 同时工作，提高速度。这个理解没有错，但它不是最核心的价值。</p>
+<p>Subagent 更重要的作用，是隔离上下文和限制能力。</p>
+<p>一个专门做代码审查的 Subagent，可以只开放读权限。它能读文件、搜代码、看 diff，但没有写权限。这样它不只是被告知“不要修改文件”，而是根本没有修改文件的能力。</p>
+<p>一个负责高风险重构的 Subagent，可以在独立 worktree 或隔离环境里工作。主工作区不会直接受到影响。结果满意再合并，不满意就丢弃。</p>
+<p>这背后的思路有点反直觉：限制不是缺陷，限制是可靠性的来源。</p>
+<p>自由度越高，错误路径越多。一个拥有五十个工具的 Agent，理论上更强，但实际也更容易选择错误路径。一个只拥有五个工具、职责非常明确的 Subagent，反而更稳定。</p>
+<p>上下文隔离也一样。把探索、执行、验证都塞给同一个 Agent，它的上下文会越来越长，噪音会越来越多。拆成几个职责清晰的 Subagent，每个执行单元只看自己需要的信息，判断会更干净。</p>
+<p>所以 Subagent 不只是为了快，它是把复杂任务拆成更可控的执行单元。</p>
+<h2 id="api">一个完整场景：新增后端 API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<p>我们把 MCP、Skill、Hook、Subagent 串到一个场景里。</p>
+<p>假设我要让 Agent 给后端服务新增一个 API 端点。这个任务看起来很普通，但里面有很多隐性要求：要符合团队代码风格，要更新文档，要处理错误码，要补测试，要避免改到无关文件，最后还要做代码审查。</p>
+<p>如果只靠 prompt，我们可能会写一大段：</p>
+<p>请新增这个 API，遵循我们的 Repository 模式，错误码按团队规范来，记得更新文档，记得跑测试，不要直接 push，不要改无关文件，最后自己 review 一遍。</p>
+<p>这当然能提高成功率，但不够稳。</p>
+<p>换成 Harness 的思路，这个任务会被拆到系统结构里。</p>
+<p>MCP 提供内部 API 规范查询和 GitHub Issue 读取。Agent 不需要自己猜规范在哪里，也不需要自己处理认证。</p>
+<p>Skill 加载“新增 API 端点”的团队规范，包括目录结构、错误码规则、文档字段、测试要求。</p>
+<p>Hook 在文件修改后自动格式化，在 Agent 声明完成时自动跑测试。测试失败，系统不允许它结束。</p>
+<p>只读 Subagent 做最终代码审查。它可以指出风险，但不能直接改文件。</p>
+<p>这时候，用户只需要说：“给这个服务新增一个 API 端点。”很多约束不需要在这次 prompt 里重复，因为它们已经被 Harness 承接了。</p>
+<p>这就是 Harness Engineering 的价值：把一次次靠人提醒的要求，沉淀成系统默认会执行的结构。</p>
+<h2 id="claude-code">这不只是 Claude Code 的事<a class="headerlink" href="#claude-code" title="Permanent link">&para;</a></h2>
+<p>虽然今天一直在用 Claude Code 举例，但这个问题不只属于 Claude Code。</p>
+<p>只要我们构建足够复杂的 Agent 系统，都会遇到类似问题：工具调用不稳定，领域知识不完整，执行结果不能自验证，上下文越来越长，高风险动作需要权限边界。</p>
+<p>不同框架会用不同名字解决这些问题。</p>
+<p>有的框架叫 Tool Node，有的叫 Action，有的叫 Workflow。有的用 Conditional Edge 做流程判断，有的用 Guardrail 做拦截，有的用 Subgraph 或多 Agent 编排做任务拆分。名字不一样，但背后的结构性问题是一样的。</p>
+<p>所以理解 Harness Engineering 的价值，不是学会某个工具的配置，而是建立一套设计语言。</p>
+<p>以后换成别的模型、别的框架、别的 Agent 平台，这套语言仍然能用。</p>
+<p>当一个 Agent 出错时，我们可以先问几个问题：</p>
+<p>它是不是缺少一个明确的工具接口？</p>
+<p>它是不是缺少某条团队隐性知识？</p>
+<p>它是不是只收到了语言提醒，但没有机械验证？</p>
+<p>它是不是权限太大、上下文太乱、任务边界太宽？</p>
+<p>这些问题，比单纯问“是不是 prompt 写得不够好”更接近工程本质。</p>
+<h2 id="_1">总结<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>最后总结一下。</p>
+<p>Prompt 很重要，但 prompt 不是 Agent 可靠性的全部。</p>
+<p>MCP 告诉我们，工具接口就是能力边界。Agent 能做什么，应该由架构来定义。</p>
+<p>Skill 告诉我们，团队隐性知识需要被显式编码，并且按任务场景注入。</p>
+<p>Hook 告诉我们，重要检查不能只靠提醒，应该变成固定时机的执行机制。</p>
+<p>Subagent 告诉我们，限制、隔离和降噪不是削弱能力，而是在提高可靠性。</p>
+<p>所以 Harness Engineering 的核心，不是让模型变得更聪明，而是给模型一个更适合工作的世界。</p>
+<p>系统的可靠性不应该依赖执行者的自觉，而应该来自结构的保证。</p>
+<p>这也是我觉得 Agent 工程最有意思的地方：我们过去做软件工程，是把确定的步骤写成程序；现在我们让模型参与判断下一步怎么做，但工程并没有消失。它只是往外移了一层，变成了对工具、上下文、权限、验证和隔离的设计。</p>
+<p>未来真正好用的 Agent 系统，拼的不只是模型能力，也会拼 Harness 设计能力。</p>
 
 
 

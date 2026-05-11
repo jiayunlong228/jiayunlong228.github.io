@@ -1,0 +1,6 @@
+# Local-only notes
+docs/monthly_notes/
+site/monthly_notes/
+
+# System files
+.DS_Store
