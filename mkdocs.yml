@@ -10,8 +10,8 @@ nav:
     - industry/index.md
   - AI 探索:
     - ai_exploration/index.md
-    - 用 AI 搭建链上监控系统: ai_exploration/ai-onchain-monitoring.md
     - Agent 常用概念: ai_exploration/agent-common-concepts.md
+    - 用 AI 搭建链上监控系统: ai_exploration/ai-onchain-monitoring.md
     - Harness Engineering 分享: ai_exploration/harness-engineering-presentation-script.md
     - Hermes Agent 调研: ai_exploration/hermes-agent-research.md
     - Hermes Agent 云服务器配置: ai_exploration/hermes-agent-cloud-server-setup.md
