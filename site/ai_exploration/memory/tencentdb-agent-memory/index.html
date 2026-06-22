@@ -12,25 +12,31 @@
         <meta name="author" content="贾云龙">
       
       
+        <link rel="canonical" href="https://jiayunlong228.github.io/ai_exploration/memory/tencentdb-agent-memory/">
       
+      
+        <link rel="prev" href="../mempalace/">
+      
+      
+        <link rel="next" href="../../agent-common-concepts/">
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>Yunlong's blog</title>
+        <title>TencentDB-Agent-Memory 调研 - Yunlong's blog</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,11 +57,11 @@
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
     
-      <link rel="stylesheet" href="/mkdocs/css/no-footer.css">
+      <link rel="stylesheet" href="../../../mkdocs/css/no-footer.css">
     
-      <link rel="stylesheet" href="/mkdocs/css/unordered-list-symbols.css">
+      <link rel="stylesheet" href="../../../mkdocs/css/unordered-list-symbols.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -79,6 +85,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#tencentdb-agent-memory" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -89,7 +100,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="/." title="Yunlong&#39;s blog" class="md-header__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
+    <a href="../../.." title="Yunlong&#39;s blog" class="md-header__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -109,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              TencentDB-Agent-Memory 调研
             
           </span>
         </div>
@@ -222,7 +233,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -243,7 +254,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/industry/" class="md-tabs__link">
+        <a href="../../../industry/" class="md-tabs__link">
           
   
   
@@ -261,11 +272,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/ai_exploration/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -287,7 +300,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/product/" class="md-tabs__link">
+        <a href="../../../product/" class="md-tabs__link">
           
   
   
@@ -309,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/programming/" class="md-tabs__link">
+        <a href="../../../programming/" class="md-tabs__link">
           
   
   
@@ -345,7 +358,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Yunlong&#39;s blog" class="md-nav__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
+    <a href="../../.." title="Yunlong&#39;s blog" class="md-nav__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -375,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -425,7 +438,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/industry/" class="md-nav__link ">
+            <a href="../../../industry/" class="md-nav__link ">
               
   
   
@@ -468,6 +481,8 @@
       
   
   
+    
+  
   
   
     
@@ -493,20 +508,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/ai_exploration/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -524,13 +540,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -547,6 +563,8 @@
                 
   
   
+    
+  
   
   
     
@@ -575,17 +593,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/ai_exploration/memory/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -609,7 +625,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -629,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/memory/memory-projects-relationship/" class="md-nav__link">
+      <a href="../memory-projects-relationship/" class="md-nav__link">
         
   
   
@@ -657,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/memory/codex-memory/" class="md-nav__link">
+      <a href="../codex-memory/" class="md-nav__link">
         
   
   
@@ -685,7 +701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/memory/akitaonrails-ai-memory/" class="md-nav__link">
+      <a href="../akitaonrails-ai-memory/" class="md-nav__link">
         
   
   
@@ -713,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/memory/mem0ai-mem0/" class="md-nav__link">
+      <a href="../mem0ai-mem0/" class="md-nav__link">
         
   
   
@@ -741,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/memory/mempalace/" class="md-nav__link">
+      <a href="../mempalace/" class="md-nav__link">
         
   
   
@@ -766,10 +782,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/ai_exploration/memory/tencentdb-agent-memory/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TencentDB-Agent-Memory 调研
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -785,6 +828,258 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信息源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目定位
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub / 版本快照
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构拆解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="架构拆解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-host-neutral-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Host-neutral core
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-l0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. L0 捕获
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-l1l2l3-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. L1/L2/L3 pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 自动召回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 存储层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-offload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 短期记忆 Offload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目自述的评测结果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集成方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="集成方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openclaw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenClaw
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hermes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hermes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway-v100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gateway / v1.0.0 线
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        优势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        风险与限制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键判断
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -805,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/agent-common-concepts/" class="md-nav__link">
+      <a href="../../agent-common-concepts/" class="md-nav__link">
         
   
   
@@ -833,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/ai-onchain-monitoring/" class="md-nav__link">
+      <a href="../../ai-onchain-monitoring/" class="md-nav__link">
         
   
   
@@ -861,7 +1156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/harness-engineering-presentation-script/" class="md-nav__link">
+      <a href="../../harness-engineering-presentation-script/" class="md-nav__link">
         
   
   
@@ -889,7 +1184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/hermes-agent-research/" class="md-nav__link">
+      <a href="../../hermes-agent-research/" class="md-nav__link">
         
   
   
@@ -917,7 +1212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/ai_exploration/hermes-agent-cloud-server-setup/" class="md-nav__link">
+      <a href="../../hermes-agent-cloud-server-setup/" class="md-nav__link">
         
   
   
@@ -979,7 +1274,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/product/" class="md-nav__link ">
+            <a href="../../../product/" class="md-nav__link ">
               
   
   
@@ -1023,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/product/data-plugin-journey/" class="md-nav__link">
+      <a href="../../../product/data-plugin-journey/" class="md-nav__link">
         
   
   
@@ -1080,7 +1375,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/product/ab_testing/" class="md-nav__link ">
+            <a href="../../../product/ab_testing/" class="md-nav__link ">
               
   
   
@@ -1124,7 +1419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/product/ab_testing/background-and-workflow/" class="md-nav__link">
+      <a href="../../../product/ab_testing/background-and-workflow/" class="md-nav__link">
         
   
   
@@ -1152,7 +1447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/product/ab_testing/data-and-theory/" class="md-nav__link">
+      <a href="../../../product/ab_testing/data-and-theory/" class="md-nav__link">
         
   
   
@@ -1180,7 +1475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/product/ab_testing/result-interpretation/" class="md-nav__link">
+      <a href="../../../product/ab_testing/result-interpretation/" class="md-nav__link">
         
   
   
@@ -1248,7 +1543,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="/programming/" class="md-nav__link ">
+            <a href="../../../programming/" class="md-nav__link ">
               
   
   
@@ -1292,7 +1587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/code_share/create_new_blog/" class="md-nav__link">
+      <a href="../../../code_share/create_new_blog/" class="md-nav__link">
         
   
   
@@ -1337,6 +1632,248 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信息源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目定位
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub / 版本快照
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构拆解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="架构拆解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-host-neutral-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Host-neutral core
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-l0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. L0 捕获
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-l1l2l3-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. L1/L2/L3 pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 自动召回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 存储层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-offload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 短期记忆 Offload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目自述的评测结果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集成方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="集成方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openclaw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenClaw
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hermes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hermes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway-v100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gateway / v1.0.0 线
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        优势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        风险与限制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键判断
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1349,8 +1886,194 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  
+    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/ai_exploration/memory/tencentdb-agent-memory.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="tencentdb-agent-memory">TencentDB-Agent-Memory 调研<a class="headerlink" href="#tencentdb-agent-memory" title="Permanent link">&para;</a></h1>
+<p>调研日期：2026-06-19<br />
+用户提供仓库：<a href="https://github.com/Tencent/TencentDB-Agent-Memory">https://github.com/Tencent/TencentDB-Agent-Memory</a><br />
+当前 canonical 仓库：<a href="https://github.com/TencentCloud/TencentDB-Agent-Memory">https://github.com/TencentCloud/TencentDB-Agent-Memory</a><br />
+本地 clone commit：<code>ee76536f30ae49e598ad43f472da7e09f4155b8a</code><br />
+本地 clone 最近提交：2026-06-17 <code>Update README_CN.md (#229)</code><br />
+默认分支 package 版本：<code>@tencentdb-agent-memory/memory-tencentdb@0.3.6</code><br />
+最新公开 release 快照：<code>v1.0.0</code>，GitHub 标记为 prerelease，目标分支 <code>feat/server</code></p>
+<h2 id="_1">信息源<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>README_CN：<code>external/TencentDB-Agent-Memory/README_CN.md</code></li>
+<li>README：<code>external/TencentDB-Agent-Memory/README.md</code></li>
+<li>package：<code>external/TencentDB-Agent-Memory/package.json</code></li>
+<li>核心入口：<code>external/TencentDB-Agent-Memory/src/core/tdai-core.ts</code></li>
+<li>类型边界：<code>external/TencentDB-Agent-Memory/src/core/types.ts</code></li>
+<li>自动捕获：<code>external/TencentDB-Agent-Memory/src/core/hooks/auto-capture.ts</code></li>
+<li>自动召回：<code>external/TencentDB-Agent-Memory/src/core/hooks/auto-recall.ts</code></li>
+<li>pipeline：<code>external/TencentDB-Agent-Memory/src/utils/pipeline-manager.ts</code></li>
+<li>store 抽象：<code>external/TencentDB-Agent-Memory/src/core/store/types.ts</code></li>
+<li>offload 入口：<code>external/TencentDB-Agent-Memory/src/offload/index.ts</code></li>
+<li>GitHub API：<a href="https://api.github.com/repos/TencentCloud/TencentDB-Agent-Memory">https://api.github.com/repos/TencentCloud/TencentDB-Agent-Memory</a></li>
+<li>GitHub releases：<a href="https://github.com/TencentCloud/TencentDB-Agent-Memory/releases">https://github.com/TencentCloud/TencentDB-Agent-Memory/releases</a></li>
+</ul>
+<h2 id="_2">项目定位<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>TencentDB-Agent-Memory 是一个面向 AI Agent 的分层记忆系统。默认分支的主要形态是 OpenClaw 插件，并同时支持 Hermes / Gateway 路径；<code>v1.0.0</code> 预发布线进一步强调独立 Memory Gateway、HTTP v2 API 和 TypeScript/Python SDK。</p>
+<p>它有两条核心能力线：</p>
+<ol>
+<li>短期记忆：上下文卸载，把工具日志、长对话和中间过程压缩成可追溯的 Mermaid 符号图。</li>
+<li>长期记忆：L0 到 L3 的分层语义金字塔，把原始对话沉淀为 atom、scene、persona。</li>
+</ol>
+<p>一句话：它不是“给 agent 存几条笔记”，而是在 agent runtime 旁边加一套分层记忆和上下文压缩引擎。</p>
+<h2 id="github">GitHub / 版本快照<a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
+<ul>
+<li>创建时间：2026-04-07。</li>
+<li>语言：TypeScript 为主，另有 Python、Shell、JavaScript。</li>
+<li>GitHub API 快照：5896 stars，510 forks，99 open issues。</li>
+<li>LICENSE 文件为 MIT；GitHub API 目前未识别出 SPDX，因此 API 中显示 <code>NOASSERTION</code>。</li>
+<li>默认分支 <code>main</code> 的 package 版本是 <code>0.3.6</code>。</li>
+<li><code>v1.0.0</code> release 是 prerelease，说明其从 OpenClaw 嵌入式插件演进为独立 Gateway 服务，并把 0.x 与 1.x 描述为并行维护版本线。</li>
+</ul>
+<h2 id="_3">架构拆解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-host-neutral-core">1. Host-neutral core<a class="headerlink" href="#1-host-neutral-core" title="Permanent link">&para;</a></h3>
+<p><code>src/core/types.ts</code> 定义了 <code>HostAdapter</code>、<code>RuntimeContext</code>、<code>LLMRunner</code>、<code>LLMRunnerFactory</code> 等抽象。<code>TdaiCore</code> 依赖这些接口，而不是直接依赖 OpenClaw 或 Hermes。</p>
+<p>这使它可以在不同宿主环境中复用同一套记忆逻辑：</p>
+<ul>
+<li>OpenClaw：通过插件 API 和 OpenClaw host adapter。</li>
+<li>Hermes / Gateway：通过 standalone host adapter 和 HTTP 请求上下文。</li>
+<li>CLI / standalone：通过直接 LLM runner 或本地数据目录。</li>
+</ul>
+<h3 id="2-l0">2. L0 捕获<a class="headerlink" href="#2-l0" title="Permanent link">&para;</a></h3>
+<p><code>auto-capture.ts</code> 会在 turn 结束后：</p>
+<ul>
+<li>从 host messages 中过滤并记录新消息。</li>
+<li>写入 L0 conversation 文件。</li>
+<li>如果 store 和 embedding 服务可用，同步或后台写入 L0 vector index。</li>
+<li>通知 <code>MemoryPipelineManager</code>，由 pipeline 决定何时触发 L1/L2/L3。</li>
+</ul>
+<p>它的设计重点是“不阻塞主 agent”：SQLite 类后端支持先写 metadata/FTS，再异步补 embedding。</p>
+<h3 id="3-l1l2l3-pipeline">3. L1/L2/L3 pipeline<a class="headerlink" href="#3-l1l2l3-pipeline" title="Permanent link">&para;</a></h3>
+<p><code>pipeline-manager.ts</code> 把分层管线写得很清楚：</p>
+<ul>
+<li>L0：原始对话捕获。</li>
+<li>L1：批量抽取结构化记忆，支持阈值触发、idle timeout、warm-up。</li>
+<li>L2：按 session 聚合场景，带 min/max interval 和 delay-after-L1。</li>
+<li>L3：全局串行 persona 生成，避免并发写画像。</li>
+</ul>
+<p>该 pipeline 用 <code>SerialQueue</code> 控制各层串行执行，用 timer 机制减少长会话中的重复处理。</p>
+<h3 id="4">4. 自动召回<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p><code>auto-recall.ts</code> 在模型 turn 前注入相关上下文：</p>
+<ul>
+<li>L1：根据当前用户输入做 keyword / embedding / hybrid 检索。</li>
+<li>L3：读取 <code>persona.md</code>，放入 system context。</li>
+<li>L2：读取 scene index 并生成 scene navigation。</li>
+<li>工具指南：告诉 agent 何时主动调用 <code>tdai_memory_search</code> / <code>tdai_conversation_search</code> 深挖细节。</li>
+</ul>
+<p>召回输出分为：</p>
+<ul>
+<li><code>prependContext</code>：动态的 L1 相关记忆，前置到用户 prompt。</li>
+<li><code>appendSystemContext</code>：相对稳定的 persona、scene navigation、工具指南，适合 prompt caching。</li>
+</ul>
+<h3 id="5">5. 存储层<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p><code>src/core/store/types.ts</code> 定义了统一 <code>IMemoryStore</code>：</p>
+<ul>
+<li>L1/L0 upsert、query、FTS、vector、hybrid search。</li>
+<li>capability flags：<code>vectorSearch</code>、<code>ftsSearch</code>、<code>nativeHybridSearch</code>、<code>sparseVectors</code>。</li>
+<li>profile sync：L2/L3 profile row。</li>
+</ul>
+<p>默认本地路径是 SQLite + sqlite-vec + FTS5；也支持 Tencent Cloud VectorDB / TCVDB 路径。BM25 sparse encoding 由 <code>@tencentdb-agent-memory/tcvdb-text</code> 支持。</p>
+<h3 id="6-offload">6. 短期记忆 Offload<a class="headerlink" href="#6-offload" title="Permanent link">&para;</a></h3>
+<p><code>src/offload/index.ts</code> 是 context offload 入口。它围绕工具调用和长上下文压力工作：</p>
+<ul>
+<li>after-tool-call 捕获重型工具结果。</li>
+<li>L1/L1.5/L2 处理工具调用摘要、关系和 Mermaid 图。</li>
+<li>L3 压缩与 context budget 控制。</li>
+<li>MMD 注入：把历史 Mermaid 符号图注入上下文。</li>
+<li><code>node_id</code> 用于从符号图回溯到原始 <code>refs/*.md</code>。</li>
+</ul>
+<p>这是 Tencent 项目相对 ai-memory 最独特的部分：它不仅做长期记忆，还专门解决“单个长任务上下文膨胀”的问题。</p>
+<h2 id="_4">项目自述的评测结果<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>README 报告了以下结果，应视为项目方指标，尚未在本文中独立复现：</p>
+<ul>
+<li>WideSearch：OpenClaw 成功率从 33% 到 50%，token 从 221.31M 到 85.64M。</li>
+<li>SWE-bench：成功率从 58.4% 到 64.2%，token 从 3474.1M 到 2375.4M。</li>
+<li>AA-LCR：成功率从 44.0% 到 47.5%，token 从 112.0M 到 77.3M。</li>
+<li>PersonaMem：准确率从 48% 到 76%。</li>
+</ul>
+<p>这些数字说明项目重点不是单纯记住事实，而是试图同时提升长程任务成功率和 token efficiency。</p>
+<h2 id="_5">集成方式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="openclaw">OpenClaw<a class="headerlink" href="#openclaw" title="Permanent link">&para;</a></h3>
+<p>默认路径是 OpenClaw 插件：</p>
+<ul>
+<li><code>openclaw plugins install @tencentdb-agent-memory/memory-tencentdb</code></li>
+<li>插件配置开启 <code>memory-tencentdb.enabled</code></li>
+<li>optional offload 需要注册 <code>contextEngine</code> slot。</li>
+<li>README 中要求执行 <code>scripts/openclaw-after-tool-call-messages.patch.sh</code>，以保证工具调用结果可被卸载和回溯。</li>
+</ul>
+<h3 id="hermes">Hermes<a class="headerlink" href="#hermes" title="Permanent link">&para;</a></h3>
+<p>项目包含 <code>hermes-plugin/</code>，并提供 Docker 方式把 Hermes 与 memory provider 聚合。Gateway 默认监听 <code>:8420</code>。</p>
+<h3 id="gateway-v100">Gateway / v1.0.0 线<a class="headerlink" href="#gateway-v100" title="Permanent link">&para;</a></h3>
+<p>GitHub release <code>v1.0.0</code> 表明项目正在服务化：</p>
+<ul>
+<li>独立 Memory Gateway。</li>
+<li>v2 HTTP API。</li>
+<li>TypeScript / Python SDK。</li>
+<li>OpenTelemetry / Langfuse 等可观测性。</li>
+<li>Offload Server V2。</li>
+</ul>
+<p>但该 release 是 prerelease，且默认分支仍以 0.3.6 插件线为主；两条线需要分开评估。</p>
+<h2 id="_6">优势<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>分层设计完整：L0 原始证据、L1 原子事实、L2 场景、L3 persona。</li>
+<li>同时覆盖短期上下文卸载和长期个性化记忆。</li>
+<li>召回具备 hybrid 检索、persona 注入、scene navigation 和工具深挖路径。</li>
+<li>强调可追溯：高层摘要可下钻到 L0 或 refs 原文。</li>
+<li>OpenClaw / Hermes 集成较深，适合长程 agent runtime。</li>
+<li>1.x 线显示出服务化、多语言 SDK、多 Agent 接入的方向。</li>
+</ul>
+<h2 id="_7">风险与限制<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li>项目迭代很快，0.x 和 1.x 形态并存，选型前必须明确部署线。</li>
+<li>默认 OpenClaw 插件路径需要 host 特定能力和 patch 脚本，集成耦合度高。</li>
+<li>直接服务化的 v1.0.0 仍是 prerelease。</li>
+<li>benchmark 结果需要自行复现，尤其是与目标 agent、模型、任务集相关。</li>
+<li>LLM、embedding、vector backend、offload 压缩策略都会引入调优成本。</li>
+<li>如果和 Codex 内置 memory 或 ai-memory 同时启用，可能出现重复捕获、重复注入和上下文污染，需要明确分工。</li>
+</ul>
+<h2 id="_8">适用场景<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul>
+<li>OpenClaw / Hermes 长程 agent 场景。</li>
+<li>工具调用结果巨大、长 session 容易爆上下文的任务。</li>
+<li>需要 persona / scene / atom 多层抽象，而不是简单笔记。</li>
+<li>希望引入独立 Memory Gateway 和 SDK 的 Agent 平台。</li>
+<li>对 token 成本和长程成功率有明确优化目标。</li>
+</ul>
+<h2 id="_9">不适用场景<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ul>
+<li>只想给 Codex 轻量记住几个个人偏好。</li>
+<li>只需要跨 Claude/Codex/Cursor 的项目 handoff。</li>
+<li>不希望运行额外 LLM/embedding/数据库后端。</li>
+<li>对 prerelease 服务架构风险无法接受。</li>
+</ul>
+<h2 id="_10">关键判断<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>TencentDB-Agent-Memory 是五个项目中最像“Agent memory engine”的项目：它不仅持久化记忆，还主动参与 agent 的上下文压缩、召回和分层推理。它与 Codex 内置 memory 的关系不是替代，而是更重的外置 runtime 层；与 ai-memory 的关系是部分重叠但重心不同，Tencent 更偏“分层记忆 + token/offload”，ai-memory 更偏“跨 Agent wiki + handoff”；与 mem0 相比，Tencent 更靠近 agent runtime，mem0 更靠近应用 memory SDK/API/platform；与 MemPalace 相比，Tencent 更偏执行期 offload，MemPalace 更偏本地原文归档和检索。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1410,12 +2133,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="/mkdocs/javascripts/katex.js"></script>
+        <script src="../../../mkdocs/javascripts/katex.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
       

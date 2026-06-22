@@ -10,6 +10,14 @@ nav:
     - industry/index.md
   - AI 探索:
     - ai_exploration/index.md
+    - Memory 项目调研:
+      - 总览: ai_exploration/memory/index.md
+      - 五者关系与选型: ai_exploration/memory/memory-projects-relationship.md
+      - Codex Memory 调研: ai_exploration/memory/codex-memory.md
+      - ai-memory 调研: ai_exploration/memory/akitaonrails-ai-memory.md
+      - mem0 调研: ai_exploration/memory/mem0ai-mem0.md
+      - MemPalace 调研: ai_exploration/memory/mempalace.md
+      - TencentDB-Agent-Memory 调研: ai_exploration/memory/tencentdb-agent-memory.md
     - Agent 常用概念: ai_exploration/agent-common-concepts.md
     - 用 AI 搭建链上监控系统: ai_exploration/ai-onchain-monitoring.md
     - Harness Engineering 分享: ai_exploration/harness-engineering-presentation-script.md
@@ -17,6 +25,7 @@ nav:
     - Hermes Agent 云服务器配置: ai_exploration/hermes-agent-cloud-server-setup.md
   - 产品思考:
     - product/index.md
+    - 从 Text2SQL 到取数插件: product/data-plugin-journey.md
     - A/B 实验方法论:
       - 总览: product/ab_testing/index.md
       - 背景和操作流程: product/ab_testing/background-and-workflow.md
