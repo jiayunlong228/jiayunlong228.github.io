@@ -1,0 +1,2699 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="贾云龙的博客">
+      
+      
+        <meta name="author" content="贾云龙">
+      
+      
+        <link rel="canonical" href="https://jiayunlong228.github.io/ai_exploration/hermes-agent-cloud-server-setup/">
+      
+      
+        <link rel="prev" href="../hermes-agent-research/">
+      
+      
+        <link rel="next" href="../../product/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Hermes Agent 云服务器配置 - Yunlong's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hermes-agent" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Yunlong&#39;s blog" class="md-header__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yunlong's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hermes Agent 云服务器配置
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jiayunlong228/jiayunlong228.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jiayunlong228.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../industry/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  行业观察
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  AI 探索
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../product/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  产品思考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../programming/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  编程思想
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yunlong&#39;s blog" class="md-nav__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Yunlong's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jiayunlong228/jiayunlong228.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jiayunlong228.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../industry/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业观察
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    行业观察
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 探索
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 探索
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../memory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory 项目调研
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Memory 项目调研
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/memory-projects-relationship/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五者关系与选型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/codex-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex Memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/akitaonrails-ai-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ai-memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/mem0ai-mem0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mem0 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/mempalace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MemPalace 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/tencentdb-agent-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TencentDB-Agent-Memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent-common-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 常用概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-onchain-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用 AI 搭建链上监控系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harness-engineering-presentation-script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering 分享
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hermes-agent-research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes Agent 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes Agent 云服务器配置
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes Agent 云服务器配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        部署目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推荐服务器规格
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        部署模式选择
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="部署模式选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ahermes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 A：Hermes 直接运行在云服务器上
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-hermes-ssh-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 B：本地 Hermes 使用 SSH backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-hermes-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 C：云服务器上运行 Hermes，命令进入 Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 初始化服务器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 可选：安装 Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-hermes-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 安装 Hermes Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 配置模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 先验证 CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-docker-terminal-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 配置 Docker terminal backend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-telegram-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 配置 Telegram Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-discord-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 配置 Discord Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-gateway-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 安装 gateway 为 systemd 服务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 安装 gateway 为 systemd 服务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用户服务
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统服务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 配置 cron 定时任务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 常用运维命令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 常用运维命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看日志
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hermes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        更新 Hermes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        备份与恢复
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 安全检查清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. 故障排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. 最小可复制命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../product/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    产品思考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    产品思考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/data-plugin-journey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从 Text2SQL 到取数插件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../product/ab_testing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A/B 实验方法论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    A/B 实验方法论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/ab_testing/background-and-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    背景和操作流程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/ab_testing/data-and-theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据处理流程与理论背景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product/ab_testing/result-interpretation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何解读实验结果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../programming/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编程思想
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    编程思想
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_share/create_new_blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 MkDocs 构建博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        部署目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推荐服务器规格
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        部署模式选择
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="部署模式选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ahermes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 A：Hermes 直接运行在云服务器上
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-hermes-ssh-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 B：本地 Hermes 使用 SSH backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-hermes-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模式 C：云服务器上运行 Hermes，命令进入 Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 初始化服务器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 可选：安装 Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-hermes-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 安装 Hermes Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 配置模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 先验证 CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-docker-terminal-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 配置 Docker terminal backend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-telegram-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 配置 Telegram Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-discord-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 配置 Discord Gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-gateway-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 安装 gateway 为 systemd 服务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 安装 gateway 为 systemd 服务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用户服务
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统服务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 配置 cron 定时任务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 常用运维命令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 常用运维命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查看日志
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hermes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        更新 Hermes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        备份与恢复
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 安全检查清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. 故障排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. 最小可复制命令
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/ai_exploration/hermes-agent-cloud-server-setup.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="hermes-agent">Hermes Agent 云服务器配置操作文档<a class="headerlink" href="#hermes-agent" title="Permanent link">&para;</a></h1>
+<p>适用场景：在一台 Linux 云服务器上长期运行 Hermes Agent，并通过 CLI、Telegram / Discord gateway、cron 定时任务使用它。</p>
+<p>这份文档默认使用 Ubuntu 22.04 / 24.04 LTS。其他 Debian 系系统大体类似，但包名和 systemd 行为可能略有差异。</p>
+<h2 id="_1">部署目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>建议先做一个最小可用版本：</p>
+<ol>
+<li>Hermes Agent 安装在独立云服务器上。</li>
+<li>使用非 root 用户运行。</li>
+<li>先让 CLI 对话稳定可用。</li>
+<li>再接入 Telegram 或 Discord。</li>
+<li>最后把 gateway 装成 systemd 服务，让它重启后自动恢复。</li>
+<li>如果需要让 Agent 执行命令，优先使用 Docker terminal backend 做隔离。</li>
+</ol>
+<p>不建议一开始就把它装到生产业务服务器上。更稳妥的方式是单独开一台小 VPS，让 Hermes 通过只读 token、SSH 低权限账号、API 或 Docker 环境访问外部资源。</p>
+<h2 id="_2">推荐服务器规格<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>官方 README 提到 Hermes 可以跑在低成本 VPS 上。实际使用时，建议按下面的规格选：</p>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>建议规格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只跑 CLI / Telegram bot</td>
+<td>1-2 vCPU，2 GB 内存，20 GB 磁盘</td>
+</tr>
+<tr>
+<td>使用 Docker backend、cron、多个平台</td>
+<td>2 vCPU，4 GB 内存，40 GB 磁盘</td>
+</tr>
+<tr>
+<td>浏览器自动化、语音、本地 STT</td>
+<td>4 vCPU，8 GB 内存起步</td>
+</tr>
+</tbody>
+</table>
+<p>如果服务器只有 1-2 GB 内存，建议加 swap，避免安装依赖或跑 Node / browser 工具时 OOM。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">sudo<span class="w"> </span>fallocate<span class="w"> </span>-l<span class="w"> </span>2G<span class="w"> </span>/swapfile
+</span><span id="__span-0-2">sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/swapfile
+</span><span id="__span-0-3">sudo<span class="w"> </span>mkswap<span class="w"> </span>/swapfile
+</span><span id="__span-0-4">sudo<span class="w"> </span>swapon<span class="w"> </span>/swapfile
+</span><span id="__span-0-5"><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;/swapfile none swap sw 0 0&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/fstab
+</span><span id="__span-0-6">free<span class="w"> </span>-h
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_3">部署模式选择<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="ahermes">模式 A：Hermes 直接运行在云服务器上<a class="headerlink" href="#ahermes" title="Permanent link">&para;</a></h3>
+<p>这是最推荐的方式。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">手机 / 电脑
+</span><span id="__span-1-2">  -&gt; Telegram / Discord
+</span><span id="__span-1-3">  -&gt; Hermes Gateway on VPS
+</span><span id="__span-1-4">  -&gt; AIAgent
+</span><span id="__span-1-5">  -&gt; Docker / local shell / API
+</span></code></pre></div></td></tr></table></div>
+<p>优点是稳定常驻，不依赖本地电脑。适合个人助手、定时任务、远程巡检。</p>
+<h3 id="b-hermes-ssh-backend">模式 B：本地 Hermes 使用 SSH backend<a class="headerlink" href="#b-hermes-ssh-backend" title="Permanent link">&para;</a></h3>
+<p>如果你希望 Hermes 仍然在本地电脑上运行，但命令执行发生在云服务器上，可以使用 SSH backend。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>terminal.backend<span class="w"> </span>ssh
+</span><span id="__span-2-2">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>TERMINAL_SSH_HOST<span class="w"> </span>&lt;server_ip_or_domain&gt;
+</span><span id="__span-2-3">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>TERMINAL_SSH_USER<span class="w"> </span>hermes
+</span><span id="__span-2-4">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>TERMINAL_SSH_PORT<span class="w"> </span><span class="m">22</span>
+</span></code></pre></div></td></tr></table></div>
+<p>可选变量：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>TERMINAL_SSH_KEY<span class="w"> </span>~/.ssh/hermes_vps
+</span><span id="__span-3-2">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>TERMINAL_SSH_PERSISTENT<span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div></td></tr></table></div>
+<p>这种模式适合“本地聊天，远程执行”。但如果目标是 Telegram / Discord 随时唤起，还是建议用模式 A。</p>
+<h3 id="c-hermes-docker">模式 C：云服务器上运行 Hermes，命令进入 Docker<a class="headerlink" href="#c-hermes-docker" title="Permanent link">&para;</a></h3>
+<p>这是我最建议的长期形态。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1">Hermes Gateway on VPS
+</span><span id="__span-4-2">  -&gt; AIAgent
+</span><span id="__span-4-3">  -&gt; Docker container
+</span><span id="__span-4-4">  -&gt; /workspace
+</span></code></pre></div></td></tr></table></div>
+<p>Hermes 自己运行在服务器用户下，Agent 的终端命令尽量进入 Docker 容器执行。这样即使 Agent 生成了不理想的 shell 命令，也不至于直接污染宿主机。</p>
+<h2 id="1">1. 初始化服务器<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>先用 root 登录云服务器：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1">ssh<span class="w"> </span>root@&lt;server_ip&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>更新系统并安装基础工具：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">apt<span class="w"> </span>update
+</span><span id="__span-6-2">apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span><span id="__span-6-3">apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>curl<span class="w"> </span>ca-certificates<span class="w"> </span>ufw<span class="w"> </span>tmux<span class="w"> </span>jq<span class="w"> </span>unzip
+</span></code></pre></div></td></tr></table></div>
+<p>创建专门运行 Hermes 的用户：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1">adduser<span class="w"> </span>hermes
+</span><span id="__span-7-2">usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>hermes
+</span></code></pre></div></td></tr></table></div>
+<p>配置 SSH key。推荐从本地执行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1">ssh-copy-id<span class="w"> </span>hermes@&lt;server_ip&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>如果云厂商只给 root key，也可以在服务器上复制 root 的 authorized_keys：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1">mkdir<span class="w"> </span>-p<span class="w"> </span>/home/hermes/.ssh
+</span><span id="__span-9-2">cp<span class="w"> </span>/root/.ssh/authorized_keys<span class="w"> </span>/home/hermes/.ssh/authorized_keys
+</span><span id="__span-9-3">chown<span class="w"> </span>-R<span class="w"> </span>hermes:hermes<span class="w"> </span>/home/hermes/.ssh
+</span><span id="__span-9-4">chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>/home/hermes/.ssh
+</span><span id="__span-9-5">chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/home/hermes/.ssh/authorized_keys
+</span></code></pre></div></td></tr></table></div>
+<p>开启基础防火墙：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1">ufw<span class="w"> </span>allow<span class="w"> </span>OpenSSH
+</span><span id="__span-10-2">ufw<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-10-3">ufw<span class="w"> </span>status
+</span></code></pre></div></td></tr></table></div>
+<p>退出 root，改用 <code>hermes</code> 用户登录：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="nb">exit</span>
+</span><span id="__span-11-2">ssh<span class="w"> </span>hermes@&lt;server_ip&gt;
+</span></code></pre></div></td></tr></table></div>
+<h2 id="2-docker">2. 可选：安装 Docker<a class="headerlink" href="#2-docker" title="Permanent link">&para;</a></h2>
+<p>如果只想先跑 CLI，可以暂时跳过 Docker。长期运行 gateway 时，建议安装。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1">sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-12-2">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker.io
+</span><span id="__span-12-3">sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
+</span><span id="__span-12-4">sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span>hermes
+</span></code></pre></div></td></tr></table></div>
+<p>重新登录，让用户组生效：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><span class="nb">exit</span>
+</span><span id="__span-13-2">ssh<span class="w"> </span>hermes@&lt;server_ip&gt;
+</span><span id="__span-13-3">docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>hello-world
+</span></code></pre></div></td></tr></table></div>
+<p>如果 <code>hello-world</code> 能正常输出，说明 Docker 可用。</p>
+<h2 id="3-hermes-agent">3. 安装 Hermes Agent<a class="headerlink" href="#3-hermes-agent" title="Permanent link">&para;</a></h2>
+<p>官方安装命令如下：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1">curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</span></code></pre></div></td></tr></table></div>
+<p>如果是更谨慎的服务器，可以先下载脚本审查，再执行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1">curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh<span class="w"> </span>-o<span class="w"> </span>install-hermes.sh
+</span><span id="__span-15-2">less<span class="w"> </span>install-hermes.sh
+</span><span id="__span-15-3">bash<span class="w"> </span>install-hermes.sh
+</span></code></pre></div></td></tr></table></div>
+<p>安装完成后重新加载 shell：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div></td></tr></table></div>
+<p>检查命令是否可用：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1">hermes<span class="w"> </span>version
+</span><span id="__span-17-2">hermes<span class="w"> </span>doctor
+</span></code></pre></div></td></tr></table></div>
+<p>官方安装器会把代码放在 <code>~/.hermes/hermes-agent/</code>，把数据、配置、密钥、记忆、技能、session 等放在 <code>~/.hermes/</code>。</p>
+<h2 id="4">4. 配置模型<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>优先使用交互式配置：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1">hermes<span class="w"> </span>model
+</span></code></pre></div></td></tr></table></div>
+<p>根据提示选择 provider 和 model。常见选择：</p>
+<ul>
+<li>OpenRouter：模型多，适合快速试用。</li>
+<li>OpenAI：如果已有 API key 或 Codex / OAuth 路径。</li>
+<li>Anthropic：如果已有 Claude API key 或对应 OAuth 条件。</li>
+<li>Kimi / Moonshot、DeepSeek、DashScope、Gemini：按地区和账号情况选择。</li>
+<li>Custom Endpoint：自建 vLLM、SGLang、Ollama 或其他 OpenAI-compatible 服务。</li>
+</ul>
+<p>注意：Hermes 官方要求模型上下文至少 64K token。自建模型要确认 context size 足够，否则多步工具任务很容易失败。</p>
+<p>也可以手动写入 key。<code>hermes config set</code> 会把密钥类值写进 <code>~/.hermes/.env</code>：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>OPENROUTER_API_KEY<span class="w"> </span>&lt;your_openrouter_key&gt;
+</span><span id="__span-19-2">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>model<span class="w"> </span>&lt;provider/model&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>检查配置：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1">hermes<span class="w"> </span>config
+</span><span id="__span-20-2">hermes<span class="w"> </span>doctor
+</span></code></pre></div></td></tr></table></div>
+<h2 id="5-cli">5. 先验证 CLI<a class="headerlink" href="#5-cli" title="Permanent link">&para;</a></h2>
+<p>不要一上来就配置 gateway。先确认最基础的对话能跑通：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1">hermes<span class="w"> </span>chat<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;请用一句话说明你现在可以正常工作。&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>再测试工具能力：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1">hermes<span class="w"> </span>chat<span class="w"> </span>--toolsets<span class="w"> </span>terminal<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;执行 pwd 和 uname -a，然后解释这台机器的大致环境。&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>测试 session 恢复：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1">hermes<span class="w"> </span>--continue
+</span></code></pre></div></td></tr></table></div>
+<p>如果这些都正常，再继续配置 gateway 和 cron。</p>
+<h2 id="6-docker-terminal-backend">6. 配置 Docker terminal backend<a class="headerlink" href="#6-docker-terminal-backend" title="Permanent link">&para;</a></h2>
+<p>让 Agent 的终端命令尽量进入容器：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>terminal.backend<span class="w"> </span>docker
+</span></code></pre></div></td></tr></table></div>
+<p>打开配置文件检查：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1">hermes<span class="w"> </span>config<span class="w"> </span>edit
+</span></code></pre></div></td></tr></table></div>
+<p>可以按需要补充类似配置：</p>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><span class="nt">terminal</span><span class="p">:</span>
+</span><span id="__span-26-2"><span class="w">  </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+</span><span id="__span-26-3"><span class="w">  </span><span class="nt">docker_image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nikolaik/python-nodejs:python3.11-nodejs20&quot;</span>
+</span><span id="__span-26-4"><span class="w">  </span><span class="nt">docker_mount_cwd_to_workspace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-26-5"><span class="w">  </span><span class="nt">docker_run_as_host_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-26-6"><span class="w">  </span><span class="nt">container_cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</span><span id="__span-26-7"><span class="w">  </span><span class="nt">container_memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2048</span>
+</span><span id="__span-26-8"><span class="w">  </span><span class="nt">container_persistent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div></td></tr></table></div>
+<p>再次测试：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1">hermes<span class="w"> </span>chat<span class="w"> </span>--toolsets<span class="w"> </span>terminal<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;执行 pwd、whoami、python --version、node --version，并说明这些命令是否运行在 Docker 环境里。&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>注意：Docker backend 里的文件和宿主机文件不是天然同一套路径。以后如果需要让 Telegram / Discord 发送 Agent 生成的文件，最好把一个宿主机目录挂进容器，例如：</p>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">YAML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><span class="nt">terminal</span><span class="p">:</span>
+</span><span id="__span-28-2"><span class="w">  </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+</span><span id="__span-28-3"><span class="w">  </span><span class="nt">docker_volumes</span><span class="p">:</span>
+</span><span id="__span-28-4"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/home/hermes/.hermes/cache/documents:/output&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>让 Agent 在容器里写 <code>/output/report.md</code>，再在回复里使用宿主机可读的 <code>MEDIA:/home/hermes/.hermes/cache/documents/report.md</code>。</p>
+<h2 id="7-telegram-gateway">7. 配置 Telegram Gateway<a class="headerlink" href="#7-telegram-gateway" title="Permanent link">&para;</a></h2>
+<p>如果你准备用 Telegram 作为入口，先找 BotFather 创建 bot：</p>
+<ol>
+<li>在 Telegram 搜索 <code>@BotFather</code>。</li>
+<li>发送 <code>/newbot</code>。</li>
+<li>设置 bot 显示名称和 username。</li>
+<li>保存 BotFather 返回的 token。</li>
+</ol>
+<p>再获取自己的 Telegram user id，可以用 <code>@userinfobot</code> 或 <code>@get_id_bot</code>。</p>
+<p>推荐用官方向导：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1">hermes<span class="w"> </span>gateway<span class="w"> </span>setup
+</span></code></pre></div></td></tr></table></div>
+<p>选择 Telegram，按提示填入：</p>
+<ul>
+<li><code>TELEGRAM_BOT_TOKEN</code></li>
+<li><code>TELEGRAM_ALLOWED_USERS</code></li>
+</ul>
+<p>手动配置方式是编辑 <code>~/.hermes/.env</code>：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><span class="nv">TELEGRAM_BOT_TOKEN</span><span class="o">=</span><span class="m">123456789</span>:ABCdefGHIjklMNOpqrSTUvwxYZ
+</span><span id="__span-30-2"><span class="nv">TELEGRAM_ALLOWED_USERS</span><span class="o">=</span><span class="m">123456789</span>
+</span></code></pre></div></td></tr></table></div>
+<p>设置权限：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1">chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.hermes/.env
+</span></code></pre></div></td></tr></table></div>
+<p>前台启动测试：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1">hermes<span class="w"> </span>gateway
+</span></code></pre></div></td></tr></table></div>
+<p>然后给 bot 发一条消息。如果能收到回复，说明 gateway 工作正常。</p>
+<p>群聊场景要额外注意：</p>
+<ul>
+<li>Telegram bot 默认 privacy mode 是开启的，群里只能看到命令、回复、服务消息等。</li>
+<li>如果要让 bot 看见普通群消息，需要在 BotFather 里关闭 privacy mode，并把 bot 移出群再加回。</li>
+<li>生产使用建议开启 mention 触发，避免群聊里每句话都触发 Agent。</li>
+<li>始终配置 allowed users，不要把 bot 暴露给所有人。</li>
+</ul>
+<h2 id="8-discord-gateway">8. 配置 Discord Gateway<a class="headerlink" href="#8-discord-gateway" title="Permanent link">&para;</a></h2>
+<p>Discord 的流程大致是：</p>
+<ol>
+<li>去 Discord Developer Portal 创建 Application。</li>
+<li>添加 Bot，复制 bot token。</li>
+<li>邀请 bot 到服务器。</li>
+<li>打开 Discord Developer Mode，复制自己的 Discord User ID。</li>
+<li>执行 <code>hermes gateway setup</code>，选择 Discord，填 token 和 user id。</li>
+</ol>
+<p>手动配置 <code>~/.hermes/.env</code> 的基本形式：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><span class="nv">DISCORD_BOT_TOKEN</span><span class="o">=</span>&lt;your_discord_bot_token&gt;
+</span><span id="__span-33-2"><span class="nv">DISCORD_ALLOWED_USERS</span><span class="o">=</span>&lt;your_discord_user_id&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>测试：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1">hermes<span class="w"> </span>gateway
+</span></code></pre></div></td></tr></table></div>
+<p>Discord 频道里默认通常需要 <code>@mention</code> bot 才会回复，私聊里不需要 mention。这个行为适合大部分团队频道，避免 bot 被普通聊天误触发。</p>
+<h2 id="9-gateway-systemd">9. 安装 gateway 为 systemd 服务<a class="headerlink" href="#9-gateway-systemd" title="Permanent link">&para;</a></h2>
+<p>CLI 和 gateway 都跑通后，再做服务化。</p>
+<h3 id="_4">用户服务<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1">hermes<span class="w"> </span>gateway<span class="w"> </span>install
+</span><span id="__span-35-2">hermes<span class="w"> </span>gateway<span class="w"> </span>start
+</span><span id="__span-35-3">hermes<span class="w"> </span>gateway<span class="w"> </span>status
+</span><span id="__span-35-4">journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>hermes-gateway<span class="w"> </span>-f
+</span></code></pre></div></td></tr></table></div>
+<p>如果希望用户退出 SSH 后服务仍然运行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1">sudo<span class="w"> </span>loginctl<span class="w"> </span>enable-linger<span class="w"> </span><span class="nv">$USER</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_5">系统服务<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>VPS / headless 服务器更推荐 system service：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1">sudo<span class="w"> </span>hermes<span class="w"> </span>gateway<span class="w"> </span>install<span class="w"> </span>--system
+</span><span id="__span-37-2">sudo<span class="w"> </span>hermes<span class="w"> </span>gateway<span class="w"> </span>start<span class="w"> </span>--system
+</span><span id="__span-37-3">sudo<span class="w"> </span>hermes<span class="w"> </span>gateway<span class="w"> </span>status<span class="w"> </span>--system
+</span><span id="__span-37-4">journalctl<span class="w"> </span>-u<span class="w"> </span>hermes-gateway<span class="w"> </span>-f
+</span></code></pre></div></td></tr></table></div>
+<p>不要同时保留 user service 和 system service，除非你非常清楚自己在做什么。否则 start / stop / status 会变得不直观。</p>
+<p>重启服务器验证：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1">sudo<span class="w"> </span>reboot
+</span></code></pre></div></td></tr></table></div>
+<p>重新登录后检查：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1">hermes<span class="w"> </span>gateway<span class="w"> </span>status<span class="w"> </span>--system
+</span><span id="__span-39-2">journalctl<span class="w"> </span>-u<span class="w"> </span>hermes-gateway<span class="w"> </span>-n<span class="w"> </span><span class="m">100</span><span class="w"> </span>--no-pager
+</span></code></pre></div></td></tr></table></div>
+<h2 id="10-cron">10. 配置 cron 定时任务<a class="headerlink" href="#10-cron" title="Permanent link">&para;</a></h2>
+<p>Hermes 的 cron 由 gateway daemon 负责调度，所以必须确保 gateway 在运行。</p>
+<p>创建一个简单提醒：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1">hermes<span class="w"> </span>cron<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;every 1h&quot;</span><span class="w"> </span><span class="s2">&quot;检查这台服务器磁盘空间和内存使用情况，如果异常就总结原因。&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>查看任务：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1">hermes<span class="w"> </span>cron<span class="w"> </span>list
+</span><span id="__span-41-2">hermes<span class="w"> </span>cron<span class="w"> </span>status
+</span></code></pre></div></td></tr></table></div>
+<p>暂停、恢复、手动触发：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1">hermes<span class="w"> </span>cron<span class="w"> </span>pause<span class="w"> </span>&lt;job_id&gt;
+</span><span id="__span-42-2">hermes<span class="w"> </span>cron<span class="w"> </span>resume<span class="w"> </span>&lt;job_id&gt;
+</span><span id="__span-42-3">hermes<span class="w"> </span>cron<span class="w"> </span>run<span class="w"> </span>&lt;job_id&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>如果要让任务在某个项目目录中运行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1">hermes<span class="w"> </span>cron<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;every 1d at 09:00&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-43-2"><span class="w">  </span><span class="s2">&quot;总结这个项目最近一天的 git 变更和待处理问题。&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-43-3"><span class="w">  </span>--workdir<span class="w"> </span>/home/hermes/projects/example
+</span></code></pre></div></td></tr></table></div>
+<p>建议 cron 任务一开始只做只读检查。需要写文件、发请求、部署服务的任务，应该等权限边界和日志都验证好之后再加。</p>
+<h2 id="11">11. 常用运维命令<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<h3 id="_6">查看状态<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-44-1">hermes<span class="w"> </span>status
+</span><span id="__span-44-2">hermes<span class="w"> </span>doctor
+</span><span id="__span-44-3">hermes<span class="w"> </span>gateway<span class="w"> </span>status
+</span><span id="__span-44-4">hermes<span class="w"> </span>cron<span class="w"> </span>status
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_7">查看日志<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1">hermes<span class="w"> </span>logs
+</span><span id="__span-45-2">hermes<span class="w"> </span>logs<span class="w"> </span>--tail
+</span><span id="__span-45-3">journalctl<span class="w"> </span>-u<span class="w"> </span>hermes-gateway<span class="w"> </span>-f
+</span></code></pre></div></td></tr></table></div>
+<p>如果使用 user service：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1">journalctl<span class="w"> </span>--user<span class="w"> </span>-u<span class="w"> </span>hermes-gateway<span class="w"> </span>-f
+</span></code></pre></div></td></tr></table></div>
+<h3 id="hermes">更新 Hermes<a class="headerlink" href="#hermes" title="Permanent link">&para;</a></h3>
+<p>先看更新内容：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1">hermes<span class="w"> </span>update<span class="w"> </span>--check
+</span></code></pre></div></td></tr></table></div>
+<p>更新前备份：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-48-1">hermes<span class="w"> </span>backup
+</span></code></pre></div></td></tr></table></div>
+<p>执行更新：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-49-1">hermes<span class="w"> </span>update<span class="w"> </span>--backup
+</span><span id="__span-49-2">hermes<span class="w"> </span>doctor
+</span><span id="__span-49-3">sudo<span class="w"> </span>hermes<span class="w"> </span>gateway<span class="w"> </span>restart<span class="w"> </span>--system
+</span></code></pre></div></td></tr></table></div>
+<p>如果使用 user service：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-50-1">hermes<span class="w"> </span>gateway<span class="w"> </span>restart
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_8">备份与恢复<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>官方 CLI 提供备份和导入：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-51-1">hermes<span class="w"> </span>backup
+</span><span id="__span-51-2">hermes<span class="w"> </span>import<span class="w"> </span>&lt;backup_zip&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>如果手动备份，至少保留：</p>
+<ul>
+<li><code>~/.hermes/config.yaml</code></li>
+<li><code>~/.hermes/.env</code></li>
+<li><code>~/.hermes/auth.json</code></li>
+<li><code>~/.hermes/memories/</code></li>
+<li><code>~/.hermes/skills/</code></li>
+<li><code>~/.hermes/cron/</code></li>
+<li><code>~/.hermes/sessions/</code></li>
+</ul>
+<p>手动打包示例：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-52-1">tar<span class="w"> </span>--exclude<span class="o">=</span><span class="s1">&#39;logs&#39;</span><span class="w"> </span>--exclude<span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-52-2"><span class="w">  </span>-czf<span class="w"> </span>hermes-home-<span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>.tar.gz<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-52-3"><span class="w">  </span>-C<span class="w"> </span>~<span class="w"> </span>.hermes
+</span></code></pre></div></td></tr></table></div>
+<p><code>.env</code> 和 <code>auth.json</code> 可能包含密钥，备份文件要加密保存。</p>
+<h2 id="12">12. 安全检查清单<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p>上线前逐项检查：</p>
+<ul>
+<li>Hermes 不是用 root 跑的。</li>
+<li>SSH 使用 key 登录，云服务器安全组只开放必要端口。</li>
+<li><code>~/.hermes/.env</code> 权限是 <code>600</code>。</li>
+<li>Telegram / Discord 配了 allowed users。</li>
+<li>gateway 能重启恢复，但不会启动两份。</li>
+<li>terminal backend 如果开启命令执行，优先是 Docker。</li>
+<li>不长期使用 <code>--yolo</code> 或 <code>approvals.mode: off</code>。</li>
+<li>cron 任务默认只读，写操作需要单独审查。</li>
+<li>重要文件有备份，恢复流程至少演练过一次。</li>
+</ul>
+<h2 id="13">13. 故障排查<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>可能原因</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hermes: command not found</code></td>
+<td>shell 没刷新或 PATH 没生效</td>
+<td><code>source ~/.bashrc</code>，重新登录 SSH</td>
+</tr>
+<tr>
+<td><code>hermes doctor</code> 报 API key 缺失</td>
+<td>provider 没配好</td>
+<td>重新执行 <code>hermes model</code></td>
+</tr>
+<tr>
+<td>CLI 能用，Telegram 没反应</td>
+<td>gateway 没运行、token 错、allowlist 错</td>
+<td><code>hermes gateway status</code>，看 <code>journalctl</code></td>
+</tr>
+<tr>
+<td>Telegram 私聊能用，群里没反应</td>
+<td>privacy mode、群权限、mention 策略</td>
+<td>检查 BotFather privacy mode，移出重加 bot</td>
+</tr>
+<tr>
+<td>Discord bot 离线</td>
+<td>gateway 没启动或 token 错</td>
+<td>前台跑 <code>hermes gateway</code> 看报错</td>
+</tr>
+<tr>
+<td>Docker backend 失败</td>
+<td>Docker 未启动或用户没进 docker 组</td>
+<td><code>sudo systemctl status docker</code>，重新登录</td>
+</tr>
+<tr>
+<td>cron 没执行</td>
+<td>gateway 未运行或任务未到时间</td>
+<td><code>hermes cron status</code>，查看 gateway 日志</td>
+</tr>
+<tr>
+<td>账单突然升高</td>
+<td>cron / background 任务太多，模型太贵</td>
+<td>检查 <code>hermes insights</code> 和 provider 后台</td>
+</tr>
+</tbody>
+</table>
+<h2 id="14">14. 最小可复制命令<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<p>下面是一套从空 Ubuntu 服务器开始的最小命令。真实环境里仍然建议逐步执行并观察输出。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-53-1"><span class="c1"># root</span>
+</span><span id="__span-53-2">apt<span class="w"> </span>update
+</span><span id="__span-53-3">apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span><span id="__span-53-4">apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>curl<span class="w"> </span>ca-certificates<span class="w"> </span>ufw<span class="w"> </span>tmux<span class="w"> </span>jq<span class="w"> </span>unzip<span class="w"> </span>docker.io
+</span><span id="__span-53-5">adduser<span class="w"> </span>hermes
+</span><span id="__span-53-6">usermod<span class="w"> </span>-aG<span class="w"> </span>sudo,docker<span class="w"> </span>hermes
+</span><span id="__span-53-7">ufw<span class="w"> </span>allow<span class="w"> </span>OpenSSH
+</span><span id="__span-53-8">ufw<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-53-9">systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-54-1"><span class="c1"># 本地电脑</span>
+</span><span id="__span-54-2">ssh-copy-id<span class="w"> </span>hermes@&lt;server_ip&gt;
+</span><span id="__span-54-3">ssh<span class="w"> </span>hermes@&lt;server_ip&gt;
+</span></code></pre></div></td></tr></table></div>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-55-1"><span class="c1"># hermes 用户</span>
+</span><span id="__span-55-2">curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</span><span id="__span-55-3"><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span><span id="__span-55-4">hermes<span class="w"> </span>doctor
+</span><span id="__span-55-5">hermes<span class="w"> </span>model
+</span><span id="__span-55-6">hermes<span class="w"> </span>chat<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;请确认 Hermes 已经安装成功。&quot;</span>
+</span><span id="__span-55-7">hermes<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>terminal.backend<span class="w"> </span>docker
+</span><span id="__span-55-8">hermes<span class="w"> </span>gateway<span class="w"> </span>setup
+</span><span id="__span-55-9">hermes<span class="w"> </span>gateway
+</span></code></pre></div></td></tr></table></div>
+<p>确认消息平台可用后，再服务化：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-56-1">sudo<span class="w"> </span>hermes<span class="w"> </span>gateway<span class="w"> </span>install<span class="w"> </span>--system
+</span><span id="__span-56-2">sudo<span class="w"> </span>hermes<span class="w"> </span>gateway<span class="w"> </span>start<span class="w"> </span>--system
+</span><span id="__span-56-3">sudo<span class="w"> </span>hermes<span class="w"> </span>gateway<span class="w"> </span>status<span class="w"> </span>--system
+</span><span id="__span-56-4">journalctl<span class="w"> </span>-u<span class="w"> </span>hermes-gateway<span class="w"> </span>-f
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_9">参考资料<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/NousResearch/hermes-agent">Hermes Agent GitHub README</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/installation">Installation</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/quickstart">Quickstart</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/configuration">Configuration</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/messaging">Messaging Gateway</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/messaging/telegram/">Telegram Setup</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/messaging/discord/">Discord Setup</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/security">Security</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron">Cron</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/reference/cli-commands">CLI Commands Reference</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      贾云龙
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/jiayunlong228" target="_blank" rel="noopener" title="GitHub | Jia-Yunlong" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../mkdocs/javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -12,13 +12,13 @@
         <meta name="author" content="贾云龙">
       
       
-        <link rel="canonical" href="https://jiayunlong228.github.io/ai_exploration/agent-common-concepts/">
+        <link rel="canonical" href="https://jiayunlong228.github.io/ai_exploration/hermes-agent-research/">
       
       
-        <link rel="prev" href="../memory/tencentdb-agent-memory/">
+        <link rel="prev" href="../harness-engineering-presentation-script/">
       
       
-        <link rel="next" href="../ai-onchain-monitoring/">
+        <link rel="next" href="../hermes-agent-cloud-server-setup/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Agent 常用概念 - Yunlong's blog</title>
+        <title>Hermes Agent 调研 - Yunlong's blog</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#agent" class="md-skip">
+        <a href="#hermes-agent-agent" class="md-skip">
           跳转至
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Agent 常用概念
+              Hermes Agent 调研
             
           </span>
         </div>
@@ -818,37 +818,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Agent 常用概念
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../agent-common-concepts/" class="md-nav__link">
         
   
   
@@ -864,213 +837,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#agent_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Agent
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#harness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Harness
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prompt
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tools
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Context
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#memory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Memory
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#skill" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Skill
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Plugin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MCP（分享过）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hook" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hook
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Subagent
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#permissions-sandbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Permissions 和 Sandbox
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Command
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        这些概念怎么分层
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        最后
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        参考资料
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1136,10 +902,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../hermes-agent-research/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes Agent 调研
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1155,6 +948,291 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概括
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        它解决的核心问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要能力拆解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="主要能力拆解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 多模型接入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cli-tui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. CLI 和 TUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-messaging-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Messaging Gateway
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-toolstoolsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Tools、Toolsets 和执行后端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Cron 定时任务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构理解
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-code-codex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        和 Claude Code / Codex 类工具的区别
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        适合的使用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        暂时不适合的场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        风险点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="风险点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 权限风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 密钥风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 消息平台入口风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 依赖和安装脚本风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 成本风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        试点评估清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理解
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1597,164 +1675,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#agent_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Agent
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#harness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Harness
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prompt
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tools
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Context
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#memory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Memory
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#skill" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Skill
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#plugin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Plugin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MCP（分享过）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hook" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hook
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subagent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Subagent
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#permissions-sandbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Permissions 和 Sandbox
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Command
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        这些概念怎么分层
+        概括
       
     </span>
   </a>
@@ -1765,7 +1689,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        最后
+        它解决的核心问题
       
     </span>
   </a>
@@ -1774,6 +1698,238 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要能力拆解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="主要能力拆解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 多模型接入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cli-tui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. CLI 和 TUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-messaging-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Messaging Gateway
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-toolstoolsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Tools、Toolsets 和执行后端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Cron 定时任务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构理解
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-code-codex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        和 Claude Code / Codex 类工具的区别
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        适合的使用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        暂时不适合的场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        风险点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="风险点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 权限风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 密钥风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 消息平台入口风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 依赖和安装脚本风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 成本风险
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        试点评估清单
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理解
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考资料
@@ -1800,7 +1956,7 @@
 
 
   
-    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/ai_exploration/agent-common-concepts.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/ai_exploration/hermes-agent-research.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1808,248 +1964,289 @@
   
 
 
-<h1 id="agent">Agent 常用概念：从“会聊天”到“能干活”<a class="headerlink" href="#agent" title="Permanent link">&para;</a></h1>
-<p>理解 Agent 相关概念时，最容易卡住的地方不是名词本身，而是这些名词之间的边界。Agent、Skill、Plugin、MCP、Hook、Memory、Harness，一层又一层，看起来都很重要，但真正开始动手时，反而容易不知道每个东西应该放在哪。</p>
-<p>Agent 也很容易被理解成“更聪明的模型”。这个理解不算错，但不完整。模型当然重要，但 Agent 真正能做事，靠的不是模型自己突然长出了手脚，而是模型外面那一整套环境：它能读什么、能写什么、能调用什么工具、遇到危险操作时谁来拦、做完以后怎么验证。</p>
-<p>所以可以先用一个比较朴素的定义理解它：</p>
-<blockquote>
-<p>Agent 不是一个模型，而是一个能循环感知、决策、行动、验证的工作系统。</p>
-</blockquote>
-<p>Claude Code 这类工具有意思的地方就在这里。它不是单纯提供一个聊天框，而是把模型放进了一个工程环境里。模型负责判断下一步做什么，外层系统负责提供工具、上下文、权限和反馈。Harness 概念的核心也在这个方向：不要只想着“怎么让模型更聪明”，还要设计一套能把模型能力稳定释放出来的外壳。</p>
-<p>下面这张图可以先作为整体关系的入口。它可以按从左到右读：左侧的任务意图和长期背景先汇入 Context，Agent 基于 Context 做判断，再进入观察、行动和验证。Harness 是外层运行环境，Tools、MCP、Hook、Permissions 决定它能怎么行动、怎么被约束。</p>
-<pre class="mermaid"><code>flowchart LR
-    subgraph inputs[输入与长期背景]
-        direction TB
-        prompt[Prompt&lt;br/&gt;当前任务意图]
-        rules[Rules&lt;br/&gt;长期约束]
-        memory[Memory&lt;br/&gt;长期背景]
-        skill[Skill&lt;br/&gt;特定场景流程]
-    end
+<h1 id="hermes-agent-agent">Hermes Agent 调研：一个带学习闭环的云端个人 Agent<a class="headerlink" href="#hermes-agent-agent" title="Permanent link">&para;</a></h1>
+<p>参考对象：<a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a> 及官方文档</p>
+<h2 id="_1">概括<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Hermes Agent 更像一个“可以长期运行在云端的个人 Agent 系统”，而不是单纯的命令行聊天工具。它把模型调用、终端工具、消息平台、长期记忆、技能沉淀、定时任务和多后端执行环境放到同一套框架里，从而让一个 Agent 可以跨会话、跨设备、跨任务持续工作。</p>
+<p>如果只拿它和 Claude Code、Codex CLI 这类 coding agent 比，Hermes Agent 的重点会有些不一样。coding agent 通常围绕当前代码仓库工作；Hermes Agent 更强调“常驻、可被消息平台唤起、能记住经验、能定时执行任务、能把技能沉淀下来”。这使它更适合部署在云服务器上，作为一个随时可用的个人工作助手。</p>
+<p>值得作为个人 AI 工作流的基础设施来试用，但不应该一开始就给它生产服务器的高权限。更稳妥的方式是先放在独立 VPS 或 Docker 隔离环境里，用 Telegram / Discord 这类入口处理低风险任务，再逐步扩展工具权限。</p>
+<h2 id="_2">它解决的核心问题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>传统 AI 助手有三个断点。</p>
+<p>第一个断点是会话断点。今天聊过的项目偏好、踩过的坑、常用命令，明天又要重新讲一遍。</p>
+<p>第二个断点是设备断点。很多 coding agent 依赖本地电脑和当前 IDE，离开这台电脑就很难继续让它工作。</p>
+<p>第三个断点是行动断点。普通聊天工具可以建议你怎么做，但真正读文件、跑命令、调接口、定时巡检、把结果发到群里，还需要外层系统补上。</p>
+<p>Hermes Agent 的设计基本是围绕这三个断点展开：</p>
+<ul>
+<li>用 <code>~/.hermes/memories/</code>、session 存储和技能系统解决跨会话经验沉淀。</li>
+<li>用 gateway 把 Telegram、Discord、Slack 等消息平台接入，让用户不必一直守在本地终端。</li>
+<li>用 terminal backend、tool registry、cron、MCP、subagent 等能力让 Agent 可以实际执行任务。</li>
+</ul>
+<p>所以它的产品定位不是“一个更长上下文的聊天框”，而是“一个可以常驻并被多入口调用的 Agent 工作系统”。</p>
+<h2 id="_3">主要能力拆解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 多模型接入<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>Hermes Agent 支持 Nous Portal、OpenRouter、OpenAI、Anthropic、Hugging Face、Kimi / Moonshot、MiniMax、NVIDIA NIM、DeepSeek、Gemini、DashScope、自定义 OpenAI-compatible endpoint 等多种模型或模型网关。</p>
+<p>配置方式以 <code>hermes model</code> 为主，也可以通过 <code>~/.hermes/.env</code> 和 <code>~/.hermes/config.yaml</code> 手动配置。官方文档特别强调：Hermes 需要至少 64K token 上下文的模型，否则会拒绝启动，因为多步工具调用和长会话需要足够的工作记忆。</p>
+<p>这个设计的好处是模型不被单一厂商锁死。实际部署时可以先选一个稳定的 API 提供商，比如 OpenRouter、OpenAI、Claude、Kimi 或自建 OpenAI-compatible endpoint，后面再考虑 fallback 和路由。</p>
+<h3 id="2-cli-tui">2. CLI 和 TUI<a class="headerlink" href="#2-cli-tui" title="Permanent link">&para;</a></h3>
+<p>Hermes 有两种终端入口：</p>
+<ul>
+<li><code>hermes</code>：经典 CLI。</li>
+<li><code>hermes --tui</code>：更现代的 TUI。</li>
+</ul>
+<p>它们共享 session、slash command 和配置。日常使用时，可以把它当成一个本地或云端终端里的 Agent。它能读写文件、执行命令、调用工具，并把结果继续带回上下文。</p>
+<p>这部分更接近传统 coding agent，但 Hermes 并不只面向代码任务。它也可以做资料整理、定时巡检、脚本执行、文件处理、消息推送等通用任务。</p>
+<h3 id="3-messaging-gateway">3. Messaging Gateway<a class="headerlink" href="#3-messaging-gateway" title="Permanent link">&para;</a></h3>
+<p>Gateway 是 Hermes Agent 很关键的一层。官方文档把它描述为一个单独的后台进程：它连接 Telegram、Discord、Slack、WhatsApp、Signal、Email、Home Assistant、Matrix、DingTalk、Feishu、Teams 等平台，接收消息后路由到 Hermes 的 Agent loop，再把回复发回原平台。</p>
+<p>这让 Hermes 的使用方式从“打开终端后使用”变成“在常用聊天软件里随时喊它”。比如：</p>
+<ul>
+<li>在 Telegram 私聊里让它查服务器状态。</li>
+<li>在 Discord 频道里让它总结一个仓库。</li>
+<li>让 cron 任务每天把结果发回固定 chat。</li>
+<li>用 <code>/stop</code> 中断正在执行的任务。</li>
+<li>用 <code>/model</code> 在消息平台里切换模型。</li>
+</ul>
+<p>这也是我认为它适合云服务器部署的原因。Agent 常驻在云端，用户用手机或电脑通过消息平台触发它，比较接近“私人云端助手”的形态。</p>
+<h3 id="4-memory">4. Memory<a class="headerlink" href="#4-memory" title="Permanent link">&para;</a></h3>
+<p>Hermes 的 memory 不是无限历史，而是两份有边界的文件：</p>
+<ul>
+<li><code>MEMORY.md</code>：Agent 记住的环境事实、项目约定、踩坑经验。</li>
+<li><code>USER.md</code>：用户画像、偏好、沟通风格。</li>
+</ul>
+<p>这两个文件存放在 <code>~/.hermes/memories/</code>。每次新 session 启动时，当前 memory 会以快照形式注入 system prompt。这样做的优点是上下文稳定，缺点是当前 session 中刚写入的 memory 要到下一个 session 才会出现在系统提示里。</p>
+<p>我比较喜欢这个克制的设计。很多“长期记忆”系统容易变成无限堆历史，最后上下文越来越脏。Hermes 选择有字符上限的 curated memory，更像一本薄工作笔记，而不是完整聊天录像。</p>
+<h3 id="5-skills">5. Skills<a class="headerlink" href="#5-skills" title="Permanent link">&para;</a></h3>
+<p>Hermes 的 skill 是一种按需加载的知识文档。它遵循 progressive disclosure：平时只暴露技能名称和描述，真正需要时才加载完整 <code>SKILL.md</code>，必要时再加载 reference 文件。</p>
+<p>这和我之前整理 Agent 概念时的判断是一致的：Skill 适合保存“特定场景下的可复用流程”，不适合把所有内容都塞进常驻规则里。</p>
+<p>例如：</p>
+<ul>
+<li>写 PR review 的流程。</li>
+<li>执行某类数据分析的步骤。</li>
+<li>做 Kubernetes 排障的 checklist。</li>
+<li>定时抓取并总结某个信息源的方法。</li>
+</ul>
+<p>Hermes 的特别之处在于，它不仅能安装和调用 skill，还强调从经验中创建 skill、在使用中改进 skill。这是它“学习闭环”的核心卖点。</p>
+<h3 id="6-toolstoolsets">6. Tools、Toolsets 和执行后端<a class="headerlink" href="#6-toolstoolsets" title="Permanent link">&para;</a></h3>
+<p>从官方架构文档看，Hermes 内部有一个 tool registry，工具按 toolset 组织。终端工具又支持多种后端：</p>
+<ul>
+<li>local：直接在当前机器执行。</li>
+<li>docker：在长期运行的容器里执行。</li>
+<li>ssh：通过 SSH 在远程服务器执行。</li>
+<li>modal：云端 sandbox。</li>
+<li>daytona：托管 workspace。</li>
+<li>vercel_sandbox：Vercel Sandbox。</li>
+<li>singularity：面向 HPC / 共享机器的容器环境。</li>
+</ul>
+<p>这层设计决定了 Hermes 可以跑在很多环境里。个人使用时，最容易理解的是三种模式：</p>
+<ul>
+<li>本机 local：方便，但权限风险最高。</li>
+<li>云服务器 local：适合常驻，但建议单独服务器或低权限用户。</li>
+<li>Docker backend：让 Agent 的命令执行尽量隔离在容器里。</li>
+</ul>
+<p>如果把 Hermes 接到消息平台，终端工具权限就更敏感。因为手机上一句话可能触发远程命令，所以最好从 Docker backend 或低权限用户开始。</p>
+<h3 id="7-cron">7. Cron 定时任务<a class="headerlink" href="#7-cron" title="Permanent link">&para;</a></h3>
+<p>Hermes 的 cron 不是普通 shell cron，而是“定时启动一个 Agent 任务”。它可以：</p>
+<ul>
+<li>一次性或周期性执行自然语言任务。</li>
+<li>把结果发回消息平台。</li>
+<li>给某个定时任务绑定 skill。</li>
+<li>指定工作目录，让任务在某个项目上下文里执行。</li>
+<li>使用 no-agent mode 跑脚本并把 stdout 发送出去。</li>
+</ul>
+<p>这使它适合做一些低风险的自动化：</p>
+<ul>
+<li>每天早上总结某几个 RSS / GitHub issue / 交易数据。</li>
+<li>定时检查服务器状态。</li>
+<li>每周整理一个项目的 open PR。</li>
+<li>给自己发提醒或日报。</li>
+</ul>
+<p>但 cron 也需要谨慎。长期无人值守的 Agent 任务应该尽量只读，或者只在隔离环境里写入临时目录。</p>
+<h2 id="_4">架构理解<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>可以把 Hermes Agent 理解成下面这套结构：</p>
+<pre class="mermaid"><code>flowchart TD
+    user[用户] --&gt; cli[CLI / TUI]
+    user --&gt; gateway[Messaging Gateway]
+    user --&gt; acp[ACP / Editor]
 
-    context[Context&lt;br/&gt;当前可见信息]
-    agent[Agent&lt;br/&gt;理解任务 / 决策 / 推进]
+    cli --&gt; agent[AIAgent]
+    gateway --&gt; agent
+    acp --&gt; agent
+    cron[Cron Scheduler] --&gt; agent
 
-    subgraph workloop[行动循环]
-        direction TB
-        observe[观察&lt;br/&gt;读文件 / 看日志 / 查结果]
-        act[行动&lt;br/&gt;改文件 / 跑命令 / 调 API]
-        verify[验证&lt;br/&gt;测试 / lint / review]
-    end
+    agent --&gt; prompt[Prompt Builder]
+    agent --&gt; provider[Provider Resolution]
+    agent --&gt; tools[Tool Dispatch]
+    agent --&gt; state[Session Storage&lt;br/&gt;SQLite + FTS5]
 
-    subgraph harness[Harness&lt;br/&gt;让 Agent 稳定工作的外壳]
-        direction TB
-        tools[Tools&lt;br/&gt;本地工具]
-        mcp[MCP&lt;br/&gt;外部系统连接]
-        permissions[Permissions / Sandbox&lt;br/&gt;权限和运行边界]
-        hooks[Hooks&lt;br/&gt;固定时机检查]
-    end
+    prompt --&gt; memory[Memory&lt;br/&gt;MEMORY.md / USER.md]
+    prompt --&gt; skills[Skills]
+    prompt --&gt; context[Context Files]
 
-    prompt --&gt; context
-    rules --&gt; context
-    memory --&gt; context
-    skill --&gt; context
-    context --&gt; agent
+    provider --&gt; model[LLM Provider]
 
-    agent --&gt; observe
-    observe -.更新.-&gt; context
-    agent --&gt; act
-    act --&gt; verify
-    verify -.更新.-&gt; context
+    tools --&gt; terminal[Terminal Backends&lt;br/&gt;local / docker / ssh / cloud]
+    tools --&gt; files[File Tools]
+    tools --&gt; web[Web / Browser Tools]
+    tools --&gt; mcp[MCP Servers]
 
-    act --&gt; tools
-    act --&gt; mcp
-    tools --&gt; observe
-    mcp --&gt; observe
-
-    permissions -.限制.-&gt; tools
-    permissions -.限制.-&gt; mcp
-    permissions -.限制.-&gt; act
-    hooks -.检查.-&gt; act
-    hooks -.检查.-&gt; verify
-
-    plugin[Plugin&lt;br/&gt;可安装的能力包] -.打包.-&gt; skill
-    plugin -.打包.-&gt; mcp
-    plugin -.打包.-&gt; hooks
-    agent -.拆分任务.-&gt; subagent[Subagent&lt;br/&gt;专门职责]
-    subagent -.结果.-&gt; context</code></pre>
-<p>描述 Agent 工作时反复发生的闭环。</p>
-<p>可以先从左侧看起。Prompt 是这次任务的意图，比如“修这个 bug”或者“写一段 SQL”。Rules 是长期约束，比如不要改某些目录、确认和授权时用中文。Memory 是过去沉淀下来的背景，Skill 是某类任务会用到的流程。它们会一起汇入 Context，形成 Agent 当前能看到的信息环境。</p>
-<p>Context 右侧的 Agent 是决策点。它不是单纯生成一句回答，而是在当前 Context 里判断下一步该做什么。真正让它从“会聊天”变成“能干活”的，是图里的行动循环：</p>
+    gateway --&gt; platforms[Telegram / Discord / Slack / etc.]
+    cron --&gt; platforms</code></pre>
+<p>这里的核心不是某一个模型，而是 <code>AIAgent</code> 作为中枢，把 prompt 构造、模型选择、工具调度、session 存储、memory、skills 和 gateway 都串起来。</p>
+<p>从这个角度看，Hermes Agent 的价值在外层系统。模型可以换，入口可以换，执行环境可以换，但 Agent loop、记忆、技能和工具边界是连续的。</p>
+<h2 id="claude-code-codex">和 Claude Code / Codex 类工具的区别<a class="headerlink" href="#claude-code-codex" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Hermes Agent</th>
+<th>Claude Code / Codex 类 coding agent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要入口</td>
+<td>CLI、TUI、Telegram、Discord、Slack 等</td>
+<td>CLI、IDE、代码仓库</td>
+</tr>
+<tr>
+<td>核心场景</td>
+<td>常驻个人助手、远程执行、自动化、消息平台交互</td>
+<td>代码理解、修改、测试、PR 工作流</td>
+</tr>
+<tr>
+<td>记忆与技能</td>
+<td>强调跨会话 memory 和 skill 自我沉淀</td>
+<td>通常更依赖项目规则、当前上下文和会话历史</td>
+</tr>
+<tr>
+<td>部署形态</td>
+<td>本机、VPS、Docker、SSH、云 sandbox</td>
+<td>通常在本机或开发环境中使用</td>
+</tr>
+<tr>
+<td>自动化</td>
+<td>内置 cron，可把结果投递到平台</td>
+<td>通常需要外部调度系统配合</td>
+</tr>
+<tr>
+<td>风险重点</td>
+<td>长期常驻、消息入口、远程命令、密钥和权限</td>
+<td>仓库改动、命令执行、代码质量和测试</td>
+</tr>
+</tbody>
+</table>
+<p>这两类工具不是替代关系。更自然的组合可能是：</p>
 <ul>
-<li>需要更多信息时，Agent 进入观察：读文件、看日志、查数据、看测试结果。</li>
-<li>观察结果回到 Context，Agent 再判断下一步。</li>
-<li>需要改变环境时，Agent 进入行动：改文件、跑命令、调用工具或 API。</li>
-<li>行动后进入验证：跑测试、lint、review，确认结果是不是对的。</li>
-<li>验证结果也回到 Context，再影响 Agent 下一轮判断。</li>
+<li>Hermes Agent 负责常驻入口、定时任务、资料整理、远程触发。</li>
+<li>专门的 coding agent 负责高强度代码修改和本地项目工程化验证。</li>
 </ul>
-<p>这里不一定是每一轮都严格走完“观察、行动、验证”三个节点。更准确地说，Agent 每一轮都会基于 Context 做一次判断：信息不够就先观察，需要改环境就行动，行动之后再验证。观察结果和验证结果都会回到 Context，下一轮判断就建立在新的信息上。</p>
-<p>比如让 coding agent 修一个测试失败的问题，它一般不会只说“可能是某个函数有问题”。它会先看失败日志，再搜相关代码；这些观察结果进入 Context 之后，Agent 才决定要改哪里。改完文件后它再跑测试，如果测试还失败，新的错误信息又会回到 Context，进入下一轮判断。这就是图里 <code>Context -&gt; Agent -&gt; 观察 / 行动 / 验证 -&gt; Context</code> 的循环。</p>
-<p>旁边的 Harness 可以理解成 Agent 的工作环境。Tools 和 MCP 决定行动能调用哪些能力，本地文件、命令行、数据库、GitHub、浏览器，都属于这一层。Permissions 和 Sandbox 决定它能不能做某些动作，比如能不能写文件、能不能访问外部系统、危险操作要不要先等人确认。Hooks 则是在固定时机做检查，比如执行命令前拦一下，修改文件后跑格式化，结束前跑测试。</p>
-<p>所以这张图想表达的重点是：Agent 的能力不只来自模型本身，而来自“模型 + 上下文 + 工具 + 权限 + 验证”这一整套系统。Prompt 给目标，Context 给信息，Agent 做判断，Tools 和 MCP 支撑行动，Hooks 和 Permissions 控制风险，观察和验证结果再回到 Context，任务就这样一轮一轮往前推进。</p>
-<p>Plugin 和 Subagent 是这套系统上的扩展。Plugin 更像一个能力包，可以把 Skill、MCP、Hook 打包在一起。Subagent 则是任务拆分，把某个边界清楚的子任务交给专门的执行单元，最后把结果再带回 Context。</p>
-<h2 id="agent_1">Agent<a class="headerlink" href="#agent_1" title="Permanent link">&para;</a></h2>
-<p>Agent 可以先理解成“会自己推进任务的助手”。</p>
-<p>普通聊天更像一次问答：用户问一句，模型答一句。Agent 则会多一个循环：先基于当前 Context 判断下一步，如果信息不够就去观察环境，如果需要改变结果就调用工具行动，拿到新的观察或验证结果后继续判断，直到任务完成。</p>
-<p>比如让一个 coding agent 修一个测试失败的问题，它不会只回答“可能是某某文件有问题”。它会先看测试输出，再搜代码、读文件，把这些信息放回上下文；等它判断出该改哪里之后，再修改代码、重新跑测试。这个过程里，模型一直在做判断，但真正读取环境、改变环境和验证结果的是工具。</p>
-<p>所以 Agent 的关键不是“它像不像人”，而是它有没有完成闭环：</p>
+<p>如果 Hermes 接入了代码仓库和终端工具，它也可以做 coding agent 的工作；但从产品气质看，它的独特点更在“常驻”和“学习闭环”。</p>
+<h2 id="_5">适合的使用场景<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>优先考虑这些场景：</p>
+<ol>
+<li>个人云端助手</li>
+</ol>
+<p>部署在独立 VPS 上，通过 Telegram / Discord 触发，用来做资料查询、脚本运行、轻量文件处理、服务器巡检。</p>
+<ol>
+<li>周期性信息整理</li>
+</ol>
+<p>把 RSS、GitHub、链上数据、日志摘要、交易所公告等信息整理成日报或周报，再投递到指定聊天窗口。</p>
+<ol>
+<li>个人知识和流程沉淀</li>
+</ol>
+<p>把常用工作流程写成 skill，让 Agent 在需要时加载，而不是每次重新解释。</p>
+<ol>
+<li>远程开发辅助</li>
+</ol>
+<p>通过 SSH 或 Docker backend 让 Hermes 在云服务器上执行命令，用于远程项目维护、测试、日志查看。</p>
+<ol>
+<li>多平台消息助理</li>
+</ol>
+<p>团队或个人在 Telegram / Discord / Slack 中统一调用同一个 Agent，并用 allowlist 控制谁可以使用。</p>
+<h2 id="_6">暂时不适合的场景<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ol>
+<li>直接管理生产服务器</li>
+</ol>
+<p>除非已经做好隔离、审批、日志和回滚，否则不要让 Agent 直接在生产机器上拥有高权限。</p>
+<ol>
+<li>高敏感数据环境</li>
+</ol>
+<p>如果任务涉及交易密钥、用户隐私、未公开财务数据，需要先确认模型提供商、日志、memory、消息平台和备份策略都符合要求。</p>
+<ol>
+<li>完全无人值守的高风险自动化</li>
+</ol>
+<p>比如自动改配置、自动部署、自动下单、自动删除文件。即使有 command approval，也不应该把系统安全完全交给模型判断。</p>
+<ol>
+<li>小上下文模型</li>
+</ol>
+<p>Hermes 官方要求模型至少 64K 上下文。小上下文模型即使能接上，也不适合多轮工具调用和长任务。</p>
+<h2 id="_7">风险点<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 权限风险<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>Agent 能执行命令，就一定有误操作风险。尤其是 gateway 接入后，消息平台里的一句话可能触发服务器命令。</p>
+<p>建议：</p>
 <ul>
-<li>能不能看到环境里的信息。</li>
-<li>能不能采取行动。</li>
-<li>能不能根据行动结果继续修正。</li>
-<li>能不能在结束前做验证。</li>
+<li>不用 root 跑 Hermes。</li>
+<li>给 Hermes 单独系统用户。</li>
+<li>优先使用 Docker terminal backend。</li>
+<li><code>approvals.mode</code> 保持默认 manual 或 smart，不要长期使用 off / yolo。</li>
+<li>高风险命令只在人工 SSH 到服务器后执行。</li>
 </ul>
-<p>没有工具和反馈，模型只是会说；有了这套循环，才开始像是在工作。</p>
-<h2 id="harness">Harness<a class="headerlink" href="#harness" title="Permanent link">&para;</a></h2>
-<p>Harness 这个词可以翻译成“驾驭层”或者“运行外壳”。它比“框架”更贴近 Agent 系统的实际状态，因为它强调的不是把模型包起来，而是给模型加上缰绳、仪表盘和护栏。</p>
-<p>在 Agent 系统里，Harness 通常包含这些东西：</p>
+<h3 id="2">2. 密钥风险<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>Hermes 把 API key、bot token 等秘密放在 <code>~/.hermes/.env</code>，普通配置放在 <code>~/.hermes/config.yaml</code>。这个分层是合理的，但运维时要注意：</p>
 <ul>
-<li>工具：文件读写、命令行、浏览器、数据库、API。</li>
-<li>知识：项目说明、代码规范、业务文档、历史决策。</li>
-<li>观察：日志、测试结果、diff、页面截图、报错信息。</li>
-<li>权限：哪些操作可以直接做，哪些必须等人确认。</li>
-<li>反馈：测试、lint、dry run、review、监控。</li>
+<li><code>.env</code> 权限设置为 <code>600</code>。</li>
+<li>备份时加密。</li>
+<li>不把 <code>~/.hermes/</code> 直接提交到公开仓库。</li>
+<li>bot token 泄露后立即吊销。</li>
 </ul>
-<p>这也是为什么构建 Agent 时，不能只盯着 prompt。Prompt 当然重要，但 prompt 更像“交代任务”；Harness 才决定这个助手能不能在真实环境里可靠地干活。</p>
-<p>一个不太严谨但好用的判断是：如果问题是“希望它知道什么”，通常是上下文或规则；如果问题是“希望它能做什么”，通常是工具或 MCP；如果问题是“希望它每次都按这个流程做”，通常是 Skill；如果问题是“不允许它越过某条线”，通常是权限、Hook 或沙箱。</p>
-<h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h2>
-<p>Rules 是常驻规则，适合放那些“每次都应该遵守”的约束。</p>
-<p>比如一个项目里可能会写：</p>
+<h3 id="3">3. 消息平台入口风险<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>Telegram / Discord bot 必须做 allowlist。否则任何能接触到 bot 的人都可能调用 Agent。</p>
+<p>建议：</p>
 <ul>
-<li>不要改某些目录。</li>
-<li>新增功能必须补测试。</li>
-<li>写 SQL 前先 dry run。</li>
-<li>用户确认和授权时必须用中文。</li>
-<li>私人内容只保存在本地，不要进入公开仓库。</li>
+<li>配置 <code>TELEGRAM_ALLOWED_USERS</code> 或 <code>DISCORD_ALLOWED_USERS</code>。</li>
+<li>群聊里默认要求 mention。</li>
+<li>不在公开群里开放完整工具权限。</li>
+<li>为 cron 输出设置固定 home channel，避免误发。</li>
 </ul>
-<p>Rules 的价值在于稳定。它让 Agent 不用每次都靠临时提醒，就能知道这个项目的边界和习惯。</p>
-<p>但 Rules 也有一个问题：它会变成常驻上下文。写得越长，越容易变成背景噪音。真正适合 Rules 的东西，应该是短、硬、长期有效的约束。那些很长的流程、案例、模板，其实不适合一直塞在规则里。</p>
-<p>更适合把 Rules 当成“底线”和“项目习惯”，而不是万能说明书。</p>
-<h2 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h2>
-<p>Prompt 是当前任务中想让 Agent 做什么。</p>
-<p>它可以很短，比如“修这个 bug”；也可以很具体，比如“只改 SQL，不要动文档，输出可直接复制执行的 BigQuery 脚本”。Prompt 的作用是给当前任务定方向。</p>
-<p>Prompt 和 Rules 的区别在于：Prompt 是本次任务的意图，Rules 是长期存在的约束。</p>
-<p>如果一个要求只对这次有效，放在 Prompt 里就好。如果某件事每次都需要重复提醒，那它可能应该沉淀成 Rules 或 Skill。</p>
-<h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h2>
-<p>Tools 是 Agent 的手。</p>
-<p>模型自己不能真的读文件、跑测试、打开网页、查数据库。它只能决定“需要调用什么工具”。真正执行动作的是工具系统。</p>
-<p>常见工具可以分为几类：</p>
+<h3 id="4">4. 依赖和安装脚本风险<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>官方推荐一行 <code>curl | bash</code> 安装，方便但也意味着你信任远程脚本。个人测试可以接受；更严肃的服务器建议先下载脚本审查，或者 clone 固定 commit 后安装。</p>
+<h3 id="5">5. 成本风险<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>Hermes 支持长上下文、多轮工具调用、cron 和 background task。用强模型跑长任务时，token 成本可能不低。建议先限制任务范围，并定期看 <code>/usage</code> 或 provider 后台账单。</p>
+<h2 id="_8">试点评估清单<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>如果要试用 Hermes Agent，建议按这个顺序验证：</p>
+<ol>
+<li>基础安装：<code>hermes doctor</code> 没有关键错误。</li>
+<li>模型可用：<code>hermes model</code> 配好 provider，普通聊天稳定返回。</li>
+<li>工具可用：能读当前目录、执行低风险命令、写临时文件。</li>
+<li>session 可恢复：<code>hermes --continue</code> 能回到上一轮。</li>
+<li>Docker 隔离：terminal backend 切到 docker 后，命令确实在容器中执行。</li>
+<li>Telegram / Discord 接入：allowlist 生效，非授权用户不能调用。</li>
+<li>gateway 服务化：重启服务器后 gateway 自动恢复。</li>
+<li>cron 投递：定时任务能按计划执行，并投递到正确 chat。</li>
+<li>memory 行为：它能记住有价值的长期偏好，但不会乱写敏感信息。</li>
+<li>日志和备份：知道日志在哪里，知道怎么备份和恢复 <code>~/.hermes/</code>。</li>
+</ol>
+<h2 id="_9">理解<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>Hermes Agent 的方向比较有意思。它把很多 Agent 系统里容易分散的东西放到了一起：入口、模型、工具、记忆、技能、调度、消息投递、安全审批。对个人用户来说，这比自己从零搭一个 gateway + cron + bot + memory 系统省很多时间。</p>
+<p>但因为它把这么多能力集中在一起，早期部署时要克制。不要一开始就追求“全自动”。按顺序先让它做三类事：</p>
 <ul>
-<li>读：读取文件、搜索代码、打开网页、查看数据库结构。</li>
-<li>写：修改文件、生成文档、创建 issue、写入表格。</li>
-<li>执行：运行测试、启动服务、调用命令行、跑脚本。</li>
-<li>连接：访问 GitHub、Notion、Slack、BigQuery、浏览器等外部系统。</li>
+<li>低风险信息整理。</li>
+<li>可回滚的文件和脚本任务。</li>
+<li>需要人工确认的远程运维辅助。</li>
 </ul>
-<p>工具设计得好，Agent 的行动就清楚；工具设计得太碎，它会在选择上浪费很多判断；工具设计得太宽，又容易出现误操作。</p>
-<p>比较理想的工具不是越多越好，而是让 Agent 有几种可靠的基础能力，再用规则和权限限制边界。对 coding agent 来说，读文件、搜代码、改文件、跑命令这几类能力就已经很强了。</p>
-<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>Context 是 Agent 当前能看到的信息。</p>
-<p>它不等于“模型知道的一切”。模型可能训练时见过很多知识，但在一次具体任务里，它真正能稳定使用的，是当前上下文里提供给它的东西：当前需求、历史对话、项目文件、工具返回结果、规则、Skill 描述等。</p>
-<p>很多 Agent 问题，本质上不是模型不会，而是上下文没给对。比如让它改一个复杂项目，如果它没有读到项目结构、没有看到相关文件、没有测试反馈，就很容易凭感觉写代码。</p>
-<p>Context 的难点是取舍。给少了，它看不清；给多了，它会被淹没。长日志、大文件、无关文档都会挤占空间。所以好的 Agent 工作流，通常会很重视“先搜，再读关键部分”，而不是一上来把所有东西都塞进去。</p>
-<h2 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h2>
-<p>Memory 是跨会话保留下来的上下文。</p>
-<p>它适合记录长期稳定的信息，比如个人偏好、项目约定、踩过的坑、某个目录的用途。它不适合记录一大段临时聊天，也不适合把所有历史都塞进去。</p>
-<p>Memory 更适合像一本薄薄的工作笔记，而不是完整录像。</p>
-<p>好的 Memory 会让 Agent 少问重复问题。比如它记得“这个博客里的月度日记是本地私有内容，不应该发布到站点”，下一次处理博客时就不容易踩线。</p>
-<p>但 Memory 也需要克制。过时的信息如果一直留着，反而会误导 Agent。所以 Memory 更适合放低频变化的事实，而不是每天都在变的状态。</p>
-<h2 id="skill">Skill<a class="headerlink" href="#skill" title="Permanent link">&para;</a></h2>
-<p>Skill 可以理解成“可复用的工作手册”。</p>
-<p>如果某一套流程经常被重复复制给 Agent，比如“怎么写一篇数据分析文档”“怎么处理一个 PR review”“怎么生成一份 PPT”，那这套流程就很适合沉淀成 Skill。</p>
-<p>一个 Skill 通常会包含：</p>
+<p>等到工具边界、日志、权限、备份都跑顺之后，再考虑更主动的自动化。</p>
+<h2 id="_10">参考资料<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <ul>
-<li>什么时候应该使用它。</li>
-<li>执行这个任务的步骤。</li>
-<li>需要注意的边界。</li>
-<li>示例、模板或脚本。</li>
-</ul>
-<p>Skill 和 Rules 的区别很重要。Rules 是每次都要遵守的底线，Skill 是特定场景下才加载的流程。把长流程写进 Rules，会污染所有任务的上下文；写成 Skill，就只有相关任务触发时才读。</p>
-<p>这也是 Skill 很实用的地方：它让经验可以被沉淀，但不必每次都挤进主上下文。</p>
-<h2 id="plugin">Plugin<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h2>
-<p>Plugin 比 Skill 更像一个完整工具包。</p>
-<p>一个 Plugin 可以打包很多东西：Skill、Agent、命令、Hook、MCP 连接、配置文件。它解决的问题不是“这个流程怎么做”，而是“如何把一整套能力安装到某个环境里”。</p>
-<p>比如一个数据分析 Plugin 可能包含：</p>
-<ul>
-<li>写 SQL 的 Skill。</li>
-<li>查询 BigQuery 的 MCP 工具。</li>
-<li>做 dry run 的 Hook。</li>
-<li>一个专门检查指标口径的子 Agent。</li>
-<li>几个常用命令。</li>
-</ul>
-<p>所以可以简单区分一下：</p>
-<ul>
-<li>Skill 是一份工作手册；</li>
-<li>Plugin 是一整套可安装、可分享的能力包</li>
-</ul>
-<p>单人使用时，Skill 往往已经够了。团队协作时，Plugin 的价值会变大，因为它可以把一组约定和工具一起分发出去，减少“成员本地配置都不一样”的问题。</p>
-<p>以招聘中的Job Description举例，岗位要求的技能就是Skill、岗位就是Plugin。在设置Plugin时，也要注意边界，大而全不一定好，尽量分工明确。</p>
-<h2 id="mcp">MCP（分享过）<a class="headerlink" href="#mcp" title="Permanent link">&para;</a></h2>
-<p>MCP 可以理解成 Agent 连接外部世界的一种标准接口。</p>
-<p>Agent 想查数据库、读 Notion、看 GitHub PR、操作浏览器、调用内部系统，都需要某种连接方式。如果每个工具都写一套私有协议，生态会很难复用。MCP 做的事情，就是把这些外部能力包装成 Agent 可以发现和调用的工具。</p>
-<p>对使用者来说，MCP 的直观价值是：Agent 不只是读本地文件，还能进入真实工作的系统。</p>
-<p>但这也意味着风险变大了。能读数据库，就要考虑权限；能发消息，就要考虑误发；能改 issue，就要考虑审计。所以 MCP 往往要和权限、沙箱、只读模式一起设计。</p>
-<h2 id="hook">Hook<a class="headerlink" href="#hook" title="Permanent link">&para;</a></h2>
-<p>Hook 是固定时机触发的检查或动作。</p>
-<p>如果说 Rules 是告诉 Agent “应该怎么做”，Hook 更像是在关键节点放一个自动闸门。</p>
-<p>比如：</p>
-<ul>
-<li>在执行 shell 命令前，检查是不是危险命令。</li>
-<li>在修改文件后，自动跑 formatter。</li>
-<li>在提交前，自动跑测试。</li>
-<li>在 Agent 结束前，检查是否还有未完成的 todo。</li>
-</ul>
-<p>Hook 的好处是确定性更强。模型可能忘记某条提醒，但 Hook 到点就会执行。凡是“必须发生”的检查，尽量不要只靠自然语言提醒。</p>
-<p>当然 Hook 也不应该滥用。太多 Hook 会让系统变得难调试。适合写 Hook 的，通常是安全、质量、审计这类硬要求。</p>
-<h2 id="subagent">Subagent<a class="headerlink" href="#subagent" title="Permanent link">&para;</a></h2>
-<p>Subagent 是一个带专门职责的子助手。</p>
-<p>它通常有自己的上下文、自己的规则、自己的工具范围。主 Agent 可以把一部分任务交给它，然后只拿回结果摘要。</p>
-<p>这在长任务里很有用。比如主 Agent 正在改代码，可以让一个 Subagent 去读某个模块的历史设计，让另一个 Subagent 去检查测试失败原因。这样主对话不会被大量搜索结果和日志塞满。</p>
-<p>但 Subagent 不是“召唤一个更聪明的模型”。它更像任务拆分和上下文隔离工具。适合交给 Subagent 的任务，应该是边界清楚、可以独立完成、最后能汇总成结论的事情。</p>
-<p>如果任务本身还很模糊，或者主 Agent 下一步马上依赖这个结果，那拆出去反而可能变慢。</p>
-<h2 id="permissions-sandbox">Permissions 和 Sandbox<a class="headerlink" href="#permissions-sandbox" title="Permanent link">&para;</a></h2>
-<p>Permissions 是权限规则，Sandbox 是运行边界。</p>
-<p>Agent 能行动以后，安全问题就出现了。读文件还好，写文件、删文件、跑命令、访问外部服务，都可能产生真实后果。</p>
-<p>所以一个可靠的 Agent 系统，一定要回答几个问题：</p>
-<ul>
-<li>哪些操作可以自动执行？</li>
-<li>哪些操作必须先问人？</li>
-<li>哪些操作永远不允许？</li>
-<li>如果执行错了，影响范围被限制在哪里？</li>
-</ul>
-<p>Sandbox 的意义是把影响范围关起来。比如只允许写当前项目目录，不允许动系统目录；只允许读某些数据源，不允许写回生产表；只允许创建草稿，不允许直接发布。</p>
-<p>这部分看起来不如“智能”酷，但它决定了 Agent 能不能真正投入日常工作。没有边界的自动化，不是效率工具，而是风险源。</p>
-<h2 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h2>
-<p>Command 是用户主动触发的快捷操作。</p>
-<p>比如 <code>/commit</code>、<code>/review</code>、<code>/compact</code> 这类命令，本质上是把一段常用流程做成一个入口。和 Skill 不同，Command 通常更偏“现在明确要执行这个动作”。</p>
-<p>可以这样理解：</p>
-<ul>
-<li>Skill 偏自动触发，Agent 判断什么时候该用。</li>
-<li>Command 偏手动触发，用户明确告诉系统现在要做什么。</li>
-</ul>
-<p>有些场景两者会重叠。比如“生成提交信息”既可以做成 Skill，也可以做成 <code>/commit-message</code> 命令。区别不在能力，而在交互方式。</p>
-<h2 id="_1">这些概念怎么分层<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>从零开始构建一个 Agent 工作环境时，可以按下面的顺序分层：</p>
-<p>第一层，先写 Rules。把长期不变的项目习惯和安全边界写清楚，越短越好。<strong>BI业务知识</strong></p>
-<p>第二层，整理 Tools。让 Agent 至少能读、搜、改、跑验证。没有工具，Agent 只能停留在建议层。</p>
-<p>第三层，把重复流程沉淀成 Skill。不要每次复制同一段操作手册，也不要把长流程塞进 Rules。</p>
-<p>第四层，接入必要的 MCP。只有当任务真的需要外部系统时再接，不要为了“看起来强大”把所有服务都连上。</p>
-<p>第五层，对高风险动作加 Permissions、Sandbox 和 Hook。尤其是写数据库、发消息、删文件、部署发布这些动作，一定要有硬边界。</p>
-<p>第六层，需要团队复用时，再考虑 Plugin。单人使用阶段不一定要过早做插件，先把 Skill 和规则跑顺更重要。</p>
-<p>第七层，长任务再拆 Subagent。能不拆就不拆，拆的时候要给它清楚的职责和交付物。</p>
-<h2 id="_2">最后<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>理解 Agent，其实是在理解一种新的工程分工。</p>
-<p>过去写程序，是人把步骤拆清楚，再交给机器确定性执行。现在 Agent 让模型参与了“下一步做什么”的判断，但这不代表工程消失了。相反，工程的重点往外移了：从写死每一步，变成设计环境、约束、反馈和恢复机制。</p>
-<p>也就是说，Agent 做得好不好，不只取决于模型有多强，还取决于是否给它一个适合工作的世界。</p>
-<p>这也是 Harness 这个词真正有启发的地方。重要的不是让模型自由狂奔，而是让它在合适的范围里跑起来，跑错了能停，跑完了能验，下一次还能跑得更稳。</p>
-<h2 id="_3">参考资料<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/p/2021603278606087058">从 Claude Code 看 Harness Engineer 的设计 - 初级程序员的文章 - 知乎</a></li>
-<li><a href="https://code.claude.com/docs/en/how-claude-code-works">How Claude Code works - Claude Code Docs</a></li>
-<li><a href="https://code.claude.com/docs/en/features-overview">Extend Claude Code - Claude Code Docs</a></li>
-<li><a href="https://code.claude.com/docs/en/skills">Extend Claude with skills - Claude Code Docs</a></li>
-<li><a href="https://code.claude.com/docs/en/mcp">Connect Claude Code to tools via MCP - Claude Code Docs</a></li>
-<li><a href="https://code.claude.com/docs/en/hooks">Hooks reference - Claude Code Docs</a></li>
-<li><a href="https://code.claude.com/docs/en/sub-agents">Create custom subagents - Claude Code Docs</a></li>
-<li><a href="https://code.claude.com/docs/en/plugins">Create plugins - Claude Code Docs</a></li>
+<li><a href="https://github.com/NousResearch/hermes-agent">Hermes Agent GitHub README</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/">Hermes Agent 官方文档</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/quickstart">Quickstart</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/installation">Installation</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/configuration">Configuration</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/messaging">Messaging Gateway</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/security">Security</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/developer-guide/architecture">Architecture</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/skills">Skills System</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/memory">Persistent Memory</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron">Scheduled Tasks</a></li>
 </ul>
 
 
