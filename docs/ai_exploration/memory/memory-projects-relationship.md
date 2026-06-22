@@ -17,7 +17,7 @@
 - mem0 是面向 AI 应用的 memory SDK/API/平台，强调用户、会话、agent 和组织记忆。
 - MemPalace 是本地优先的原文记忆宫殿，强调 verbatim storage、ChromaDB/SQLite 图结构、MCP 和 auto-save hooks。
 
-它们不是同一层的竞争品，更像五个不同控制面、不同真相源、不同运维边界的 memory 基础设施。
+它们不是同一层的竞争品，而是分布在不同控制面、真相源和运维边界上的 memory 基础设施。
 
 ## 对比表
 
@@ -132,7 +132,7 @@ MemPalace 的 Codex plugin manifest 声明了 `mempalace-mcp`、skills 和 hooks
 
 ### mem0 + MemPalace
 
-这组更像“应用 memory 服务 + 本地原文归档”。
+这组可以按“应用 memory 服务 + 本地原文归档”分工。
 
 - mem0 适合产品里可 API 化的 user/session/agent memory。
 - MemPalace 适合个人/团队本地保存项目文件和 agent 对话原文。
@@ -150,7 +150,7 @@ MemPalace 的 Codex plugin manifest 声明了 `mempalace-mcp`、skills 和 hooks
 
 ### mem0 + TencentDB-Agent-Memory
 
-这组更像“应用记忆平台 + runtime context engine”。
+这组可以按“应用记忆平台 + runtime context engine”分工。
 
 - mem0 负责应用层 user/session/agent memory，通过 SDK/API 服务产品功能。
 - Tencent 负责 agent runtime 内的 L0-L3、scene/persona 和 tool log offload。

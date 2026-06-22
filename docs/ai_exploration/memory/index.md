@@ -2,7 +2,7 @@
 
 生成日期：2026-06-19
 
-这组笔记整理了几个 memory 相关项目的定位、架构、适用场景和选型边界。它们看起来都在讲“记忆”，但实际解决的问题并不一样：有的是 Codex 产品内置的上下文层，有的是跨 Agent 的项目 wiki，有的是应用侧 memory API，也有的是本地原文检索或长程 agent runtime 的上下文压缩引擎。
+这组笔记整理了几个 memory 相关项目的定位、架构、适用场景和选型边界。它们都围绕“记忆”展开，但承担的职责并不相同：Codex memory 处理 Codex 内的上下文和偏好；ai-memory 处理跨 Agent 的项目 wiki 和 handoff；mem0 面向 AI 应用提供 memory SDK/API；MemPalace 侧重本地原文保存与检索；TencentDB-Agent-Memory 则把重点放在长程 agent runtime 的上下文压缩和分层记忆上。
 
 建议先读整体关系，再按项目细看：
 
@@ -16,10 +16,10 @@
 ## 核心结论
 
 - Codex memory 是 Codex 产品内置的上下文/偏好层。
-- TencentDB-Agent-Memory 更像 Agent runtime 的分层记忆与上下文压缩引擎。
-- ai-memory 更像跨 Agent 的项目 wiki、handoff 和 MCP memory sidecar。
-- mem0 更像面向 AI 应用的 memory SDK/API/平台，覆盖用户、会话、agent 和组织记忆。
-- MemPalace 更像本地优先的原文记忆宫殿，把项目/对话/文档挖成可搜索的 drawers，并通过 MCP/hooks 接入 coding agents。
+- TencentDB-Agent-Memory 服务 Agent runtime，负责分层记忆和上下文压缩。
+- ai-memory 服务跨 Agent 协作，负责项目 wiki、handoff 和 MCP memory sidecar。
+- mem0 服务 AI 应用，提供覆盖用户、会话、agent 和组织记忆的 SDK/API/平台。
+- MemPalace 服务本地原文检索，把项目、对话和文档整理成可搜索的 drawers，并通过 MCP/hooks 接入 coding agents。
 
 ## 推荐使用边界
 

@@ -2,7 +2,7 @@
 
 调研日期：2026-06-19  
 对象：Codex 自身的 memory / persistent context 相关能力  
-结论摘要：Codex 的 memory 更像“产品内置的上下文持久化与偏好层”，不是一个独立的可编程 memory server。它与 `AGENTS.md`、skills、plugins、MCP/connectors、session resume/archives、Chronicle/Skysight 等能力共同参与上下文构建。
+结论摘要：Codex 的 memory 是产品内置的上下文持久化与偏好层，不是一个独立的可编程 memory server。它与 `AGENTS.md`、skills、plugins、MCP/connectors、session resume/archives、Chronicle/Skysight 等能力共同参与上下文构建。
 
 ## 信息源
 
