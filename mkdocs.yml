@@ -31,12 +31,12 @@ nav:
       - 背景和操作流程: product/ab_testing/background-and-workflow.md
       - 数据处理流程与理论背景: product/ab_testing/data-and-theory.md
       - 如何解读实验结果: product/ab_testing/result-interpretation.md
-  - 生活:
-    - life/index.md
-    - 咖啡记录: life/coffee-records.md
   - 编程思想:
     - programming/index.md
     - 基于 MkDocs 构建博客: code_share/create_new_blog.md
+  - 生活记录:
+    - life/index.md
+    - 咖啡记录: life/coffee-records.md
 
 
 exclude_docs: |
