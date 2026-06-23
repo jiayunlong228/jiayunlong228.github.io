@@ -1,0 +1,3494 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="贾云龙的博客">
+      
+      
+        <meta name="author" content="贾云龙">
+      
+      
+        <link rel="canonical" href="https://jiayunlong228.github.io/product/cuped-introduction/">
+      
+      
+        <link rel="prev" href="../data-plugin-journey/">
+      
+      
+        <link rel="next" href="../ab_testing/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>CUPED 理论与应用介绍 - Yunlong's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ab-cuped" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Yunlong&#39;s blog" class="md-header__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yunlong's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CUPED 理论与应用介绍
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jiayunlong228/jiayunlong228.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jiayunlong228.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../industry/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  行业观察
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai_exploration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  AI 探索
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  产品思考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../programming/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  编程思想
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../life/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  生活记录
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yunlong&#39;s blog" class="md-nav__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Yunlong's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jiayunlong228/jiayunlong228.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jiayunlong228.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../industry/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业观察
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    行业观察
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ai_exploration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 探索
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 探索
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ai_exploration/memory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory 项目调研
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Memory 项目调研
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/memory-projects-relationship/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五者关系与选型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/codex-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex Memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/akitaonrails-ai-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ai-memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/mem0ai-mem0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mem0 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/mempalace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MemPalace 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/tencentdb-agent-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TencentDB-Agent-Memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/agent-common-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 常用概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/ai-onchain-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用 AI 搭建链上监控系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/harness-engineering-presentation-script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering 分享
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/hermes-agent-research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes Agent 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/hermes-agent-cloud-server-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes Agent 云服务器配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    产品思考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    产品思考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-plugin-journey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从 Text2SQL 到取数插件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CUPED 理论与应用介绍
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CUPED 理论与应用介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、CUPED 解决什么问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、CUPED 解决什么问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cuped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. CUPED 思想概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、核心理论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、核心理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 基础设定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 最优调整系数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 方差缩减幅度
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuped_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、CUPED 与回归调整的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、协变量选择原则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、协变量选择原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 必须满足的条件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 常用协变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 预实验窗口长度
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、标准实施流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、标准实施流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 实验前设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 数据准备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 估计调整系数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 计算效果与置信区间
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bigquery-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、BigQuery 风格 SQL 模板
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuped_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、比率指标如何使用 CUPED
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十、缺失协变量处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十一、质量验证与诊断
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十一、质量验证与诊断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A/A 测试验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 协变量平衡检查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 方差缩减报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 与原始结果并排展示
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十二、常见风险和误区
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十二、常见风险和误区">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 使用了实验后的变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cuped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 以为 CUPED 能修复坏随机化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 只看显著性，不看效应大小
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 协变量越多越好
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 对所有指标机械套用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十三、与其他提效方法的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十四、推荐落地方案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十四、推荐落地方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 第一阶段：离线验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 第二阶段：接入实验分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第三阶段：平台化与自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十五、实验报告中的推荐表述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十六、决策建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十七、参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../ab_testing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A/B 实验方法论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    A/B 实验方法论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_testing/background-and-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    背景和操作流程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_testing/data-and-theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据处理流程与理论背景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_testing/result-interpretation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何解读实验结果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../programming/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编程思想
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    编程思想
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_share/create_new_blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 MkDocs 构建博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../life/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生活记录
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生活记录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../life/coffee-records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    咖啡记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、CUPED 解决什么问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、CUPED 解决什么问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cuped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. CUPED 思想概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、核心理论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、核心理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 基础设定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 最优调整系数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 方差缩减幅度
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuped_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、CUPED 与回归调整的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、协变量选择原则
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、协变量选择原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 必须满足的条件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 常用协变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 预实验窗口长度
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、标准实施流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、标准实施流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 实验前设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 数据准备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 估计调整系数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 计算效果与置信区间
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bigquery-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、BigQuery 风格 SQL 模板
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuped_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、比率指标如何使用 CUPED
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十、缺失协变量处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十一、质量验证与诊断
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十一、质量验证与诊断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. A/A 测试验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 协变量平衡检查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 方差缩减报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 与原始结果并排展示
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十二、常见风险和误区
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十二、常见风险和误区">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 使用了实验后的变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cuped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 以为 CUPED 能修复坏随机化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 只看显著性，不看效应大小
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 协变量越多越好
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 对所有指标机械套用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十三、与其他提效方法的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十四、推荐落地方案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十四、推荐落地方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 第一阶段：离线验证
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 第二阶段：接入实验分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第三阶段：平台化与自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十五、实验报告中的推荐表述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十六、决策建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十七、参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/product/cuped-introduction.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="ab-cuped">如何更快验证 A/B 实验效果：CUPED 理论与应用介绍<a class="headerlink" href="#ab-cuped" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>最后更新：2026-06-23</p>
+</blockquote>
+<h2 id="_1">一、概览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>CUPED（Controlled-experiment Using Pre-Experiment Data）是一种用于 A/B 实验的方差缩减方法。它利用用户在实验开始前的历史行为解释一部分天然差异，从而降低实验指标的噪声，让同样的样本量得到更窄的置信区间，或者在相同统计功效下缩短实验时间。</p>
+<p>它不改变实验随机化逻辑，也不改变主指标含义；通过改变指标估计方式：把“实验前就能预测的用户差异”从实验期结果中扣除。</p>
+<p>可以先用一张图理解 CUPED 在做什么：</p>
+<pre class="mermaid"><code>flowchart LR
+    X["实验前历史行为 X&lt;br/&gt;过去 14 天收入、活跃天数、打开次数等"]
+    A["随机分组&lt;br/&gt;Control / Treatment"]
+    Y["实验期结果 Y&lt;br/&gt;收入、留存、点击等主指标"]
+    R["原始比较&lt;br/&gt;直接比较 Yₜ − Y꜀&lt;br/&gt;包含用户原本差异和随机噪声"]
+    P["估计可预测差异&lt;br/&gt;θ × (Xᵢ − X̄)"]
+    C["CUPED 调整后指标&lt;br/&gt;Yᵢᶜᵘᵖᵉᵈ = Yᵢ − θ × (Xᵢ − X̄)"]
+    D["比较调整后指标&lt;br/&gt;噪声更小&lt;br/&gt;置信区间通常更窄"]
+
+    X --&gt; P
+    A --&gt; Y
+    Y --&gt; R
+    Y --&gt; C
+    P --&gt; C
+    C --&gt; D</code></pre>
+<p>图里的关键点是：随机分组仍然决定因果比较的基础；CUPED 只是额外利用实验前的历史行为，估计并扣除用户原本就可能存在的差异。</p>
+<h2 id="cuped">二、CUPED 解决什么问题<a class="headerlink" href="#cuped" title="Permanent link">&para;</a></h2>
+<p>在线实验中，用户天然差异很大。以收入、使用时长、搜索次数、付费金额、活跃天数为例，很多用户即使没有任何实验影响，也会因为历史活跃度、付费习惯、地区、设备、生命周期阶段不同而产生很大波动。</p>
+<p>传统 A/B 分析直接比较实验组和对照组的实验期均值：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">效果 = 实验组实验期指标均值 - 对照组实验期指标均值
+</span></code></pre></div></td></tr></table></div>
+<p>如果指标本身噪声很大，实验需要更长时间才能判断差异是否可信。CUPED 的思路是：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">实验期结果 = 处理效应 + 用户原本差异 + 随机噪声
+</span></code></pre></div></td></tr></table></div>
+<p>其中“用户原本差异”可以用实验前数据部分解释。扣除这部分可预测差异后，剩余噪声变小，实验敏感度提高。</p>
+<h3 id="1-cuped">1. CUPED 思想概述<a class="headerlink" href="#1-cuped" title="Permanent link">&para;</a></h3>
+<p>可以先不讲公式，把 CUPED 概述为：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">比较实验效果时，不要只看用户实验后的表现，还要先考虑这个用户本来就是什么水平。
+</span></code></pre></div></td></tr></table></div>
+<p>举个例子。假设我们要评估一个功能是否提升用户的消费金额。实验结束后看到：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">实验组平均消费 12 元
+</span><span id="__span-3-2">对照组平均消费 10 元
+</span></code></pre></div></td></tr></table></div>
+<p>表面上看，实验组高了 2 元。但这里面可能混着两种东西：</p>
+<ol>
+<li>功能真的带来的提升。</li>
+<li>实验组里本来就有更多高消费用户。</li>
+</ol>
+<p>随机分组理论上会让两组用户差不多，但现实中只要样本有限，两组仍然可能有一些随机差异。比如实验开始前，实验组用户过去 14 天平均消费本来就比对照组高一点。那实验结束后的差距里，就有一部分不是功能造成的，而是用户原本水平不同造成的。</p>
+<p>CUPED 做的事情，就是先问一个问题：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1">如果不看实验影响，只看这个用户过去的行为，我们大概能预测他实验期会表现成什么样？
+</span></code></pre></div></td></tr></table></div>
+<p>如果一个用户实验前就很活跃、很爱付费，那他实验期大概率也会更活跃、更爱付费；如果一个用户实验前几乎不用产品，那他实验期表现低一些也很正常。这些差异不是实验造成的，而是用户自己的历史差异。</p>
+<p>所以 CUPED 会把实验期结果拆成两部分：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1">实验期结果 = 用户本来可能达到的水平 + 实验真正可能带来的变化 + 随机波动
+</span></code></pre></div></td></tr></table></div>
+<p>普通 A/B 分析直接比较“实验期结果”。CUPED 则先扣掉“用户本来可能达到的水平”里能被历史行为解释的部分，再比较两组剩下的差异。</p>
+<p>这就像考试后比较两个班的新教学方法有没有用。如果 A 班学生入学时基础本来就更好，直接比较期末平均分可能不公平。更合理的是看：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">期末成绩是否超过了根据入学成绩预期能达到的水平？
+</span></code></pre></div></td></tr></table></div>
+<p>CUPED 在实验里做的就是类似的事：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1">实验后表现是否超过了根据实验前表现预期能达到的水平？
+</span></code></pre></div></td></tr></table></div>
+<p>这样做的好处不是“人为修正结果”，而是减少噪声。它没有改变我们要衡量的实验效果，只是把那些实验前就存在、而且和实验无关的用户差异先拿掉。剩下的比较会更干净，置信区间通常更窄，也就更容易用较短时间判断实验是否真的有效。</p>
+<p>可以用三个关键词概括 CUPED 的理论思路：</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>含义</th>
+<th>直白解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实验前变量</td>
+<td>实验开始前已经确定的用户信息或行为</td>
+<td>这个人在实验前本来是什么状态</td>
+</tr>
+<tr>
+<td>可预测差异</td>
+<td>历史行为能解释的一部分实验期表现</td>
+<td>有些人本来就更活跃或更容易付费</td>
+</tr>
+<tr>
+<td>方差缩减</td>
+<td>扣掉可预测差异后，指标波动变小</td>
+<td>背景噪声小了，实验信号更容易看清</td>
+</tr>
+</tbody>
+</table>
+<p>需要特别强调的是，CUPED 只能使用实验发生前的数据。它不能用实验曝光后、功能触达后、用户已经受影响后的行为来调整，否则就可能把真实实验效果也一起扣掉。</p>
+<h2 id="_2">三、核心理论<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 基础设定<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>假设每个实验单位是用户。定义：</p>
+<ul>
+<li><span class="arithmatex">\(Y_i\)</span>：用户 <span class="arithmatex">\(i\)</span> 在实验期的目标指标，例如实验期收入、D7 留存、点击次数。</li>
+<li><span class="arithmatex">\(X_i\)</span>：用户 <span class="arithmatex">\(i\)</span> 在实验前的协变量，例如实验前 14 天收入、活跃天数、同口径历史指标。</li>
+<li><span class="arithmatex">\(T_i\)</span>：实验分组，<span class="arithmatex">\(T_i = 1\)</span> 表示实验组，<span class="arithmatex">\(T_i = 0\)</span> 表示对照组。</li>
+</ul>
+<p>传统估计量是：</p>
+<div class="arithmatex">\[
+\hat{\Delta}_{raw} = \bar{Y}_T - \bar{Y}_C
+\]</div>
+<p>CUPED 构造一个调整后的指标：</p>
+<div class="arithmatex">\[
+Y_i^{cuped} = Y_i - \theta (X_i - \bar{X})
+\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="arithmatex">\(\bar{X}\)</span> 是协变量在实验样本中的总体均值。</li>
+<li><span class="arithmatex">\(\theta\)</span> 是调整系数，用来控制扣除多少历史行为影响。</li>
+</ul>
+<p>然后比较调整后指标的组间差异：</p>
+<div class="arithmatex">\[
+\hat{\Delta}_{cuped} = \bar{Y}^{cuped}_T - \bar{Y}^{cuped}_C
+\]</div>
+<p>展开后：</p>
+<div class="arithmatex">\[
+\hat{\Delta}_{cuped}
+= (\bar{Y}_T - \bar{Y}_C) - \theta(\bar{X}_T - \bar{X}_C)
+\]</div>
+<p>由于实验是随机分组，实验组与对照组在实验前协变量上的期望差异为 0：</p>
+<div class="arithmatex">\[
+E[\bar{X}_T - \bar{X}_C] = 0
+\]</div>
+<p>所以 CUPED 在随机实验下仍然是无偏估计：</p>
+<div class="arithmatex">\[
+E[\hat{\Delta}_{cuped}] = E[\hat{\Delta}_{raw}]
+\]</div>
+<h3 id="2">2. 最优调整系数<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>CUPED 的目标是让调整后指标 <span class="arithmatex">\(Y_i^{cuped}\)</span> 的方差最小。</p>
+<div class="arithmatex">\[
+Var(Y - \theta X)
+= Var(Y) + \theta^2 Var(X) - 2\theta Cov(Y, X)
+\]</div>
+<p>对 <span class="arithmatex">\(\theta\)</span> 求最小值，得到：</p>
+<div class="arithmatex">\[
+\theta^* = \frac{Cov(Y, X)}{Var(X)}
+\]</div>
+<p>这与一元线性回归中 <span class="arithmatex">\(Y\)</span> 对 <span class="arithmatex">\(X\)</span> 的斜率一致。直观理解是：如果历史行为 <span class="arithmatex">\(X\)</span> 和实验期结果 <span class="arithmatex">\(Y\)</span> 高度相关，就应该扣除更多由 <span class="arithmatex">\(X\)</span> 解释的部分；如果相关性很低，CUPED 的收益就很有限。</p>
+<h3 id="3">3. 方差缩减幅度<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>当使用最优 <span class="arithmatex">\(\theta^*\)</span> 时，调整后方差为：</p>
+<div class="arithmatex">\[
+Var(Y^{cuped}) = Var(Y)(1 - \rho^2)
+\]</div>
+<p>其中 <span class="arithmatex">\(\rho\)</span> 是 <span class="arithmatex">\(X\)</span> 与 <span class="arithmatex">\(Y\)</span> 的相关系数。</p>
+<p>这意味着方差缩减比例约为：</p>
+<div class="arithmatex">\[
+\rho^2
+\]</div>
+<p>示例：</p>
+<table>
+<thead>
+<tr>
+<th>历史协变量与实验期指标相关系数</th>
+<th style="text-align: right;">理论方差缩减</th>
+<th style="text-align: right;">样本量/实验时长需求约为原来的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.2</td>
+<td style="text-align: right;">4%</td>
+<td style="text-align: right;">96%</td>
+</tr>
+<tr>
+<td>0.4</td>
+<td style="text-align: right;">16%</td>
+<td style="text-align: right;">84%</td>
+</tr>
+<tr>
+<td>0.6</td>
+<td style="text-align: right;">36%</td>
+<td style="text-align: right;">64%</td>
+</tr>
+<tr>
+<td>0.7</td>
+<td style="text-align: right;">49%</td>
+<td style="text-align: right;">51%</td>
+</tr>
+</tbody>
+</table>
+<p>所以 CUPED 是否有效，关键取决于能否找到与实验期指标强相关、且不受实验影响的实验前协变量。</p>
+<h2 id="cuped_1">四、CUPED 与回归调整的关系<a class="headerlink" href="#cuped_1" title="Permanent link">&para;</a></h2>
+<p>CUPED 可以理解为一种控制变量法，也可以看作 ANCOVA / regression adjustment 在在线实验中的轻量实现。</p>
+<p>单协变量版本：</p>
+<div class="arithmatex">\[
+Y_i^{cuped} = Y_i - \theta (X_i - \bar{X})
+\]</div>
+<p>多协变量版本：</p>
+<div class="arithmatex">\[
+Y_i^{cuped} = Y_i - \boldsymbol{\theta}^\top(\boldsymbol{X_i} - \bar{\boldsymbol{X}})
+\]</div>
+<p>其中：</p>
+<div class="arithmatex">\[
+\boldsymbol{\theta}^* = \Sigma_X^{-1} Cov(\boldsymbol{X}, Y)
+\]</div>
+<p>工程上可以直接通过 OLS 回归估计：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1">Y ~ treatment + pre_period_metric + other_covariates
+</span></code></pre></div></td></tr></table></div>
+<p>如果只关心 treatment 的系数，它与 CUPED 调整后再做组间比较在很多常见设定下是等价或近似等价的。</p>
+<p>不过在实验平台中，CUPED 通常更容易产品化：先生成一个调整后指标，再复用已有的均值差、置信区间、p 值、序贯检验等分析流程。</p>
+<h2 id="_3">五、适用场景<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>CUPED 特别适合以下实验：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>成熟产品、老用户占比较高</td>
+<td>用户有足够历史行为可用</td>
+</tr>
+<tr>
+<td>指标跨周期稳定</td>
+<td>历史行为能预测实验期行为</td>
+</tr>
+<tr>
+<td>收入、使用时长、搜索次数、活跃天数等高方差指标</td>
+<td>方差越大，潜在收益越明显</td>
+</tr>
+<tr>
+<td>实验流量有限、希望缩短周期</td>
+<td>方差缩减能提高统计功效</td>
+</tr>
+<tr>
+<td>平台级实验分析体系</td>
+<td>可作为默认方差缩减模块产品化</td>
+</tr>
+</tbody>
+</table>
+<p>不太适合或收益有限的场景：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全新用户为主</td>
+<td>缺少实验前数据</td>
+</tr>
+<tr>
+<td>一次性行为指标</td>
+<td>历史行为预测力弱</td>
+</tr>
+<tr>
+<td>协变量与主指标相关性很低</td>
+<td>方差缩减有限</td>
+</tr>
+<tr>
+<td>实验改变了触达或进入样本的机制</td>
+<td>需要特别处理触发样本与选择偏差</td>
+</tr>
+<tr>
+<td>协变量可能被实验影响</td>
+<td>会引入偏差，不能使用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">六、协变量选择原则<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 必须满足的条件<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>好的 CUPED 协变量需要满足：</p>
+<ol>
+<li>发生在实验处理之前。</li>
+<li>不会被实验策略、曝光、触发、推荐逻辑影响。</li>
+<li>与实验期目标指标有较高相关性。</li>
+<li>对实验组和对照组定义完全一致。</li>
+<li>覆盖率足够高，缺失机制可解释。</li>
+</ol>
+<h3 id="2_1">2. 常用协变量<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>优先级通常如下：</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>协变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高</td>
+<td>同指标的历史值</td>
+<td>例如实验期收入用实验前收入做协变量</td>
+</tr>
+<tr>
+<td>高</td>
+<td>同指标的历史频次/强度</td>
+<td>例如历史活跃天数、历史打开次数</td>
+</tr>
+<tr>
+<td>中</td>
+<td>相关漏斗前置行为</td>
+<td>例如实验期付费用历史加购、访问、搜索行为预测</td>
+</tr>
+<tr>
+<td>中</td>
+<td>用户生命周期特征</td>
+<td>新老用户、注册天数、历史活跃层级</td>
+</tr>
+<tr>
+<td>中</td>
+<td>稳定用户属性</td>
+<td>国家、平台、设备、渠道等</td>
+</tr>
+<tr>
+<td>低</td>
+<td>与目标弱相关的宽泛属性</td>
+<td>收益有限，且可能增加复杂度</td>
+</tr>
+</tbody>
+</table>
+<p>经验上，“目标指标在实验前同口径历史值”往往是最强协变量。</p>
+<h3 id="3_1">3. 预实验窗口长度<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>预实验窗口不是越长越好。常见选择：</p>
+<ul>
+<li>实验前 7 天：更贴近近期状态，适合高频指标。</li>
+<li>实验前 14 天：覆盖更多用户，波动相对平滑。</li>
+<li>实验前 28 天：适合低频指标或付费指标。</li>
+</ul>
+<p>选择窗口时要平衡：</p>
+<ul>
+<li>与实验期指标的相关性。</li>
+<li>协变量覆盖率。</li>
+<li>数据新鲜度。</li>
+<li>业务周期性，例如周末效应、发薪日、活动日。</li>
+</ul>
+<p>建议在历史 A/A 或历史实验上比较不同窗口的方差缩减效果，再确定默认窗口。</p>
+<h2 id="_5">七、标准实施流程<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1_2">1. 实验前设计<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<p>实验开始前应确定：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>随机化单位</td>
+<td>用户、设备、账号或店铺，必须与分析单位一致或可正确聚合</td>
+</tr>
+<tr>
+<td>主指标</td>
+<td>CUPED 作用的目标指标</td>
+</tr>
+<tr>
+<td>Guardrail 指标</td>
+<td>性能、留存、投诉、崩溃率、负反馈等</td>
+</tr>
+<tr>
+<td>预实验窗口</td>
+<td>例如实验开始前 14 天</td>
+</tr>
+<tr>
+<td>协变量定义</td>
+<td>字段、时间窗、过滤条件、缺失处理</td>
+</tr>
+<tr>
+<td>是否对所有主指标默认启用 CUPED</td>
+<td>建议主指标默认启用，guardrail 根据指标性质决定</td>
+</tr>
+<tr>
+<td>报告方式</td>
+<td>同时报告 raw 与 CUPED 后结果</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_2">2. 数据准备<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<p>以用户级实验为例，需要构建用户粒度宽表：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td>用户 ID</td>
+</tr>
+<tr>
+<td>variant</td>
+<td>control / treatment</td>
+</tr>
+<tr>
+<td>y</td>
+<td>实验期目标指标</td>
+</tr>
+<tr>
+<td>x</td>
+<td>实验前协变量</td>
+</tr>
+<tr>
+<td>triggered</td>
+<td>是否进入实验触发样本</td>
+</tr>
+<tr>
+<td>exposure_time</td>
+<td>首次曝光时间</td>
+</tr>
+<tr>
+<td>segment fields</td>
+<td>国家、平台、版本、渠道等</td>
+</tr>
+</tbody>
+</table>
+<p>注意：如果实验采用触发分析，只分析真正触发实验逻辑的用户，那么协变量也必须发生在触发之前，避免把触发后的行为放进协变量。</p>
+<h3 id="3_2">3. 估计调整系数<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<p>一般使用实验样本中实验组和对照组的 pooled data 估计：</p>
+<div class="arithmatex">\[
+\hat{\theta} = \frac{\widehat{Cov}(Y, X)}{\widehat{Var}(X)}
+\]</div>
+<p>然后计算：</p>
+<div class="arithmatex">\[
+Y_i^{cuped} = Y_i - \hat{\theta}(X_i - \bar{X})
+\]</div>
+<p>实践中也可以用历史 A/A 数据或前期数据估计 <span class="arithmatex">\(\theta\)</span>。如果担心过拟合，可以使用 cross-fitting：用一部分样本估计 <span class="arithmatex">\(\theta\)</span>，另一部分样本计算调整后指标。</p>
+<h3 id="4">4. 计算效果与置信区间<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>计算调整后指标的均值：</p>
+<div class="arithmatex">\[
+\bar{Y}^{cuped}_T,\quad \bar{Y}^{cuped}_C
+\]</div>
+<p>估计实验效果：</p>
+<div class="arithmatex">\[
+\hat{\Delta}_{cuped} = \bar{Y}^{cuped}_T - \bar{Y}^{cuped}_C
+\]</div>
+<p>相对提升：</p>
+<div class="arithmatex">\[
+Lift = \frac{\hat{\Delta}_{cuped}}{\bar{Y}^{cuped}_C}
+\]</div>
+<p>置信区间和 p 值可以沿用两样本 t-test、Welch t-test、bootstrap、cluster robust standard error 等方法，前提是与原实验分析的独立性、聚类和抽样假设一致。</p>
+<h2 id="bigquery-sql">八、BigQuery 风格 SQL 模板<a class="headerlink" href="#bigquery-sql" title="Permanent link">&para;</a></h2>
+<p>下面是单协变量 CUPED 的简化模板。实际使用时需要替换表名、日期、实验 ID、指标口径和分区字段。</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="k">WITH</span><span class="w"> </span><span class="k">assignment</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-9-3"><span class="w">    </span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-9-4"><span class="w">    </span><span class="n">variant</span><span class="p">,</span>
+</span><span id="__span-9-5"><span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">exposure_time</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">first_exposure_time</span>
+</span><span id="__span-9-6"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">experiment_assignment</span>
+</span><span id="__span-9-7"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">experiment_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;exp_xxx&#39;</span>
+</span><span id="__span-9-8"><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">assignment_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2026-06-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2026-06-14&#39;</span>
+</span><span id="__span-9-9"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span>
+</span><span id="__span-9-10"><span class="p">),</span>
+</span><span id="__span-9-11">
+</span><span id="__span-9-12"><span class="n">pre_period</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-13"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-9-14"><span class="w">    </span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-9-15"><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">metric_value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">x_pre_metric</span>
+</span><span id="__span-9-16"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">user_daily_metric</span>
+</span><span id="__span-9-17"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2026-05-18&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2026-05-31&#39;</span>
+</span><span id="__span-9-18"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">user_id</span>
+</span><span id="__span-9-19"><span class="p">),</span>
+</span><span id="__span-9-20">
+</span><span id="__span-9-21"><span class="n">experiment_period</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-22"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-9-23"><span class="w">    </span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-9-24"><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">metric_value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">y_exp_metric</span>
+</span><span id="__span-9-25"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">user_daily_metric</span>
+</span><span id="__span-9-26"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2026-06-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2026-06-14&#39;</span>
+</span><span id="__span-9-27"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">user_id</span>
+</span><span id="__span-9-28"><span class="p">),</span>
+</span><span id="__span-9-29">
+</span><span id="__span-9-30"><span class="n">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-31"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-9-32"><span class="w">    </span><span class="n">a</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-9-33"><span class="w">    </span><span class="n">a</span><span class="p">.</span><span class="n">variant</span><span class="p">,</span>
+</span><span id="__span-9-34"><span class="w">    </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x_pre_metric</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-9-35"><span class="w">    </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">y_exp_metric</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">y</span>
+</span><span id="__span-9-36"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">assignment</span><span class="w"> </span><span class="n">a</span>
+</span><span id="__span-9-37"><span class="w">  </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">pre_period</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+</span><span id="__span-9-38"><span class="w">  </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">experiment_period</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+</span><span id="__span-9-39"><span class="p">),</span>
+</span><span id="__span-9-40">
+</span><span id="__span-9-41"><span class="n">cuped_params</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-42"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-9-43"><span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">x_bar</span><span class="p">,</span>
+</span><span id="__span-9-44"><span class="w">    </span><span class="n">SAFE_DIVIDE</span><span class="p">(</span><span class="n">COVAR_SAMP</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">VAR_SAMP</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">theta</span>
+</span><span id="__span-9-45"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">base</span>
+</span><span id="__span-9-46"><span class="p">),</span>
+</span><span id="__span-9-47">
+</span><span id="__span-9-48"><span class="n">adjusted</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-49"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-9-50"><span class="w">    </span><span class="n">b</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-9-51"><span class="w">    </span><span class="n">b</span><span class="p">.</span><span class="n">variant</span><span class="p">,</span>
+</span><span id="__span-9-52"><span class="w">    </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">,</span>
+</span><span id="__span-9-53"><span class="w">    </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-9-54"><span class="w">    </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">theta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x_bar</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">y_cuped</span>
+</span><span id="__span-9-55"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">b</span>
+</span><span id="__span-9-56"><span class="w">  </span><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">cuped_params</span><span class="w"> </span><span class="n">p</span>
+</span><span id="__span-9-57"><span class="p">)</span>
+</span><span id="__span-9-58">
+</span><span id="__span-9-59"><span class="k">SELECT</span>
+</span><span id="__span-9-60"><span class="w">  </span><span class="n">variant</span><span class="p">,</span>
+</span><span id="__span-9-61"><span class="w">  </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">users</span><span class="p">,</span>
+</span><span id="__span-9-62"><span class="w">  </span><span class="k">AVG</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">raw_mean</span><span class="p">,</span>
+</span><span id="__span-9-63"><span class="w">  </span><span class="n">STDDEV_SAMP</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">raw_sd</span><span class="p">,</span>
+</span><span id="__span-9-64"><span class="w">  </span><span class="k">AVG</span><span class="p">(</span><span class="n">y_cuped</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cuped_mean</span><span class="p">,</span>
+</span><span id="__span-9-65"><span class="w">  </span><span class="n">STDDEV_SAMP</span><span class="p">(</span><span class="n">y_cuped</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cuped_sd</span>
+</span><span id="__span-9-66"><span class="k">FROM</span><span class="w"> </span><span class="n">adjusted</span>
+</span><span id="__span-9-67"><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">variant</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>差异、标准误、置信区间和 p 值可以在 SQL 中继续计算，也可以把用户级调整后数据导出到 Python/R 中完成。</p>
+<h2 id="cuped_2">九、比率指标如何使用 CUPED<a class="headerlink" href="#cuped_2" title="Permanent link">&para;</a></h2>
+<p>比率指标包括：</p>
+<ul>
+<li>ARPU = revenue / users</li>
+<li>CTR = clicks / impressions</li>
+<li>CVR = conversions / visitors</li>
+<li>Revenue per session = revenue / sessions</li>
+</ul>
+<p>比率指标不能简单地对整体比率直接做 CUPED。推荐做法是先线性化，再对线性化后的用户级指标应用 CUPED。</p>
+<p>假设指标为：</p>
+<div class="arithmatex">\[
+R = \frac{\sum N_i}{\sum D_i}
+\]</div>
+<p>使用对照组或全局基线比率 <span class="arithmatex">\(r_0\)</span> 线性化：</p>
+<div class="arithmatex">\[
+L_i = N_i - r_0 D_i
+\]</div>
+<p>然后对 <span class="arithmatex">\(L_i\)</span> 做 CUPED：</p>
+<div class="arithmatex">\[
+L_i^{cuped} = L_i - \theta(X_i - \bar{X})
+\]</div>
+<p>最后比较实验组和对照组的 <span class="arithmatex">\(L_i^{cuped}\)</span> 均值差异。这个差异可以近似解释为原比率指标的变化方向与显著性。</p>
+<p>如果实验平台已有 delta method、bootstrap 或 cluster robust 的比率指标标准误实现，应在同一统计框架下接入 CUPED，避免前后口径不一致。</p>
+<h2 id="_6">十、缺失协变量处理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>新用户或低活跃用户可能没有实验前数据。常见处理方式：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>做法</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>缺失填 0</td>
+<td>没有历史行为视为 0</td>
+<td>指标天然非负，0 有业务含义</td>
+</tr>
+<tr>
+<td>缺失填均值 + missing indicator</td>
+<td><span class="arithmatex">\(X\)</span> 缺失填均值，再加是否缺失特征</td>
+<td>缺失本身有预测意义</td>
+</tr>
+<tr>
+<td>新老用户分层</td>
+<td>老用户用 CUPED，新用户不用或单独估计</td>
+<td>新老用户行为差异大</td>
+</tr>
+<tr>
+<td>多协变量模型</td>
+<td>同时使用历史行为、用户年龄、平台等</td>
+<td>数据量充足，模型稳定</td>
+</tr>
+</tbody>
+</table>
+<p>不要直接删除缺失协变量用户，除非实验分析目标本来就只覆盖有历史行为的老用户。否则会改变实验人群。</p>
+<h2 id="_7">十一、质量验证与诊断<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>上线 CUPED 前，建议做以下验证。</p>
+<h3 id="1-aa">1. A/A 测试验证<a class="headerlink" href="#1-aa" title="Permanent link">&para;</a></h3>
+<p>在没有真实处理效应的 A/A 实验中检查：</p>
+<ul>
+<li>CUPED 后 p 值是否仍然服从合理分布。</li>
+<li>false positive rate 是否接近设定的显著性水平。</li>
+<li>CUPED 是否改变了组间估计的无偏性。</li>
+<li>方差缩减是否稳定。</li>
+</ul>
+<h3 id="2_3">2. 协变量平衡检查<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
+<p>检查实验组与对照组的实验前协变量是否平衡：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1">mean_x_treatment - mean_x_control
+</span></code></pre></div></td></tr></table></div>
+<p>随机实验中该差异期望为 0。小幅不平衡是随机波动；大幅不平衡可能意味着分流、埋点或样本构建有问题。</p>
+<h3 id="3_3">3. 方差缩减报告<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
+<p>每次实验报告中建议输出：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>raw_sd</td>
+<td>原始用户级指标标准差</td>
+</tr>
+<tr>
+<td>cuped_sd</td>
+<td>CUPED 后用户级指标标准差</td>
+</tr>
+<tr>
+<td>variance_reduction</td>
+<td><span class="arithmatex">\(1 - Var(Y^{cuped}) / Var(Y)\)</span></td>
+</tr>
+<tr>
+<td>corr_x_y</td>
+<td>协变量与实验期指标相关系数</td>
+</tr>
+<tr>
+<td>theta</td>
+<td>CUPED 调整系数</td>
+</tr>
+<tr>
+<td>covariate_coverage</td>
+<td>协变量覆盖率</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4_1">4. 与原始结果并排展示<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>建议同时展示 raw 和 CUPED：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th style="text-align: right;">对照组均值</th>
+<th style="text-align: right;">实验组均值</th>
+<th style="text-align: right;">绝对差异</th>
+<th style="text-align: right;">相对提升</th>
+<th style="text-align: right;">p 值</th>
+<th>置信区间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>CUPED</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td style="text-align: right;">...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>如果 raw 与 CUPED 方向相反，需要重点排查：</p>
+<ul>
+<li>协变量是否被实验影响。</li>
+<li>样本是否触发后才纳入。</li>
+<li>是否存在极端值。</li>
+<li>随机化是否异常。</li>
+<li><span class="arithmatex">\(\theta\)</span> 是否估计不稳定。</li>
+</ul>
+<h2 id="_8">十二、常见风险和误区<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="1_3">1. 使用了实验后的变量<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
+<p>这是最严重的问题。CUPED 只能使用实验处理前的变量。如果用实验期行为、曝光后行为、触发后行为作为协变量，就可能把真实处理效应扣掉，甚至引入反向偏差。</p>
+<h3 id="2-cuped">2. 以为 CUPED 能修复坏随机化<a class="headerlink" href="#2-cuped" title="Permanent link">&para;</a></h3>
+<p>CUPED 不能替代正确的随机分流、样本构建和埋点校验。如果随机化本身有问题，CUPED 最多降低噪声，不能让因果结论自动成立。</p>
+<h3 id="3_4">3. 只看显著性，不看效应大小<a class="headerlink" href="#3_4" title="Permanent link">&para;</a></h3>
+<p>CUPED 会提高敏感度，可能让更小的差异显著。但业务决策仍然应基于效应大小、置信区间、成本、风险和 guardrail 指标。</p>
+<h3 id="4_2">4. 协变量越多越好<a class="headerlink" href="#4_2" title="Permanent link">&para;</a></h3>
+<p>过多弱相关协变量可能让模型复杂、解释困难，并引入稳定性问题。建议从少量高质量协变量开始，优先使用同口径历史指标。</p>
+<h3 id="5">5. 对所有指标机械套用<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>不是每个指标都适合 CUPED。对低相关、低覆盖、强非稳定或极端稀疏指标，CUPED 收益可能很小，甚至让解释成本高于收益。</p>
+<h2 id="_9">十三、与其他提效方法的关系<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>与 CUPED 的关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分层随机</td>
+<td>在分流阶段提高组间平衡</td>
+<td>可与 CUPED 叠加</td>
+</tr>
+<tr>
+<td>触发分析</td>
+<td>只分析真正受实验影响的人群</td>
+<td>可叠加，但协变量必须在触发前</td>
+</tr>
+<tr>
+<td>序贯检验</td>
+<td>允许合法提前停止</td>
+<td>可对 CUPED 后指标做序贯检验</td>
+</tr>
+<tr>
+<td>Bayesian 实验</td>
+<td>用后验概率做决策</td>
+<td>可使用 CUPED 后指标或协变量模型</td>
+</tr>
+<tr>
+<td>指标线性化</td>
+<td>处理比率指标</td>
+<td>常作为 CUPED 前置步骤</td>
+</tr>
+<tr>
+<td>outlier trimming / winsorization</td>
+<td>降低极端值影响</td>
+<td>可叠加，但规则应实验前固定</td>
+</tr>
+</tbody>
+</table>
+<p>我们的目标是“更短时间评估实验效果”，可使用组合可以为：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1">CUPED 降低方差
+</span><span id="__span-11-2">+ 序贯检验合法早停
+</span><span id="__span-11-3">+ 触发分析聚焦受影响人群
+</span><span id="__span-11-4">+ guardrail 指标防止局部优化
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_10">十四、推荐落地方案<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="1_4">1. 第一阶段：离线验证<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
+<p>目标：证明 CUPED 在历史数据上有效。</p>
+<p>工作项：</p>
+<ol>
+<li>选 3-5 个高频主指标，例如活跃、收入、留存、核心行为次数。</li>
+<li>用历史 A/A 或历史实验重放。</li>
+<li>比较不同预实验窗口：7 天、14 天、28 天。</li>
+<li>输出每个指标的相关系数、方差缩减、覆盖率和 false positive 校验。</li>
+<li>确定默认协变量和窗口。</li>
+</ol>
+<p>验收标准：</p>
+<ul>
+<li>主指标有稳定正向方差缩减。</li>
+<li>A/A false positive rate 正常。</li>
+<li>raw 与 CUPED 估计无系统偏移。</li>
+</ul>
+<h3 id="2_4">2. 第二阶段：接入实验分析<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h3>
+<p>目标：让 CUPED 成为实验报告默认能力。</p>
+<p>工作项：</p>
+<ol>
+<li>在用户级指标宽表中加入 pre-period covariates。</li>
+<li>在实验分析任务中计算 <span class="arithmatex">\(\theta\)</span>、调整后指标和方差缩减。</li>
+<li>报告中同时展示 raw 与 CUPED。</li>
+<li>对不适用指标标注“未启用 CUPED”及原因。</li>
+<li>增加异常报警：协变量覆盖率低、<span class="arithmatex">\(\theta\)</span> 异常、相关性过低、方向冲突。</li>
+</ol>
+<h3 id="3_5">3. 第三阶段：平台化与自动化<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h3>
+<p>目标：减少每个实验的人工作业。</p>
+<p>能力清单：</p>
+<ul>
+<li>指标级 CUPED 配置。</li>
+<li>预实验窗口自动选择。</li>
+<li>协变量覆盖率与相关性监控。</li>
+<li>A/A 校准看板。</li>
+<li>与序贯检验、触发分析、分层报告集成。</li>
+<li>实验报告自动解释方差缩减收益。</li>
+</ul>
+<h2 id="_11">十五、实验报告中的推荐表述<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>可以使用如下模板：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1">本实验主指标使用 CUPED 方差缩减方法进行分析。协变量为实验开始前 14 天同口径用户级指标。
+</span><span id="__span-12-2">
+</span><span id="__span-12-3">CUPED 调整后，主指标用户级方差降低 32%，相当于在相同统计功效下约减少 32% 样本量需求。
+</span><span id="__span-12-4">
+</span><span id="__span-12-5">Raw 结果与 CUPED 结果方向一致。CUPED 后实验组相对对照组提升 1.8%，95% CI 为 [0.6%, 3.0%]，p = 0.004。
+</span><span id="__span-12-6">
+</span><span id="__span-12-7">协变量发生在实验曝光前，不受实验处理影响；协变量覆盖率为 91%。Guardrail 指标未观察到显著负向变化。
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_12">十六、决策建议<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>如果团队当前还没有 CUPED，建议按以下优先级推进：</p>
+<ol>
+<li>先在历史 A/A 和历史实验上验证 7/14/28 天同指标历史值的方差缩减效果。</li>
+<li>对收入、活跃、核心行为次数、留存等高价值指标优先接入。</li>
+<li>默认同时展示 raw 和 CUPED，建立信任。</li>
+<li>对触发实验、比率指标、新用户实验分别制定专门口径。</li>
+<li>与序贯检验结合，形成“更快但不提高误判率”的实验评估体系。</li>
+</ol>
+<p>最重要的治理原则是：CUPED 应该是预先定义的分析方法，而不是实验后为了得到显著结果临时选择的分析方式。</p>
+<h2 id="_13">十七、参考资料<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Alex Deng, Ya Xu, Ron Kohavi, Toby Walker. “Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data.” WSDM 2013. https://exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf</li>
+<li>Microsoft Research ExP. “Deep Dive Into Variance Reduction.” https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/articles/deep-dive-into-variance-reduction/</li>
+<li>ACM Digital Library entry for the WSDM 2013 paper. https://dl.acm.org/doi/10.1145/2433396.2433413</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      贾云龙
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/jiayunlong228" target="_blank" rel="noopener" title="GitHub | Jia-Yunlong" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+      
+        <script src="../../mkdocs/javascripts/mermaid.js"></script>
+      
+        <script src="../../mkdocs/javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
