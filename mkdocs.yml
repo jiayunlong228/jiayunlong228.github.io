@@ -78,9 +78,6 @@ theme:
     # 给每个 Tab 添加一个 index.md，且在点击 Tab 时打开
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages-with-section-index-pages
     - navigation.indexes
-    # 打开 Tab 时左侧目录全部展开
-    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion
-    - navigation.expand
     # 搜索输入一些字母时推荐补全整个单词
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-suggestions
     - search.suggest
