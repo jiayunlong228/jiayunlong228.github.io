@@ -1,18 +1,18 @@
 # AI 探索
 
-记录我使用 AI 工具、理解 Agent 系统，以及把 AI 放进具体工作流里的过程。
+记录我折腾 AI 工具、Agent、Memory、MCP 这些东西的过程。很多内容来自实际使用和搭建，不一定是完整教程。
 
 ## 文章
 
-- [Agent 常用概念](agent-common-concepts.md)：整理 Agent、Context、Tool、Skill、MCP、Hook、Subagent。
-- [Memory 项目调研](memory/index.md)：整理 Codex memory、ai-memory、mem0、MemPalace 和 TencentDB-Agent-Memory 的定位、架构差异与选型边界。
-- [让 AI 帮我盯链上数据：从想法到自动提醒](ai-onchain-monitoring.md)：从一个加密市场监控小工具出发，记录怎么和 AI 拆需求、定结构，再一点点补上采集、降噪、推送和运维细节。
-- [Harness Engineering 分享](harness-engineering-presentation-script.md)：从 Claude Code 这类 coding agent 出发，理解为什么 Agent 需要工具边界、知识注入、权限和验证。
-- [Hermes Agent 调研](hermes-agent-research.md)：调研 Hermes Agent 的产品定位、核心能力、架构、适用场景和风险边界。
-- [Hermes Agent 云服务器配置操作文档](hermes-agent-cloud-server-setup.md)：整理在 Ubuntu 云服务器上安装、配置模型、接入消息平台、服务化运行、备份和排障的操作流程。
+- [Agent 常用概念](agent-common-concepts.md)：把常见名词放到一起解释一下。
+- [Memory 项目调研](memory/index.md)：对比几个 Memory 项目的定位和适用场景。
+- [让 AI 帮我盯链上数据：从想法到自动提醒](ai-onchain-monitoring.md)：用 AI 做一个链上监控小工具的记录。
+- [Harness Engineering 分享](harness-engineering-presentation-script.md)：关于 coding agent 外壳和工具边界的一次分享稿。
+- [Hermes Agent 调研](hermes-agent-research.md)：了解 Hermes Agent 的能力和适用场景。
+- [Hermes Agent 云服务器配置操作文档](hermes-agent-cloud-server-setup.md)：在云服务器上部署 Hermes Agent 的操作记录。
 
-## 我现在更关注的问题
+## 待探索内容
 
-- 怎么把模糊需求变成 AI 能稳定执行的任务。
-- 怎么先设计框架和边界，再让 AI 补实现细节。
-- 怎么让 AI 不只是写代码，而是参与测试、文档、排查和复盘。
+- AI 工具怎么更稳定地完成长任务。
+- Agent 需要哪些上下文、工具和权限边界。
+- 哪些经验适合沉淀成 Skill 或自动化流程。
