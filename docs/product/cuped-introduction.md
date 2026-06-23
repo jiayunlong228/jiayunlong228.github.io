@@ -664,6 +664,6 @@ Raw 结果与 CUPED 结果方向一致。CUPED 后实验组相对对照组提升
 
 ## 十七、参考资料
 
-- Alex Deng, Ya Xu, Ron Kohavi, Toby Walker. “Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data.” WSDM 2013. https://exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf
-- Microsoft Research ExP. “Deep Dive Into Variance Reduction.” https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/articles/deep-dive-into-variance-reduction/
-- ACM Digital Library entry for the WSDM 2013 paper. https://dl.acm.org/doi/10.1145/2433396.2433413
+- Alex Deng, Ya Xu, Ron Kohavi, Toby Walker. [“Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data.” WSDM 2013.](https://exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf)
+- Microsoft Research ExP. [“Deep Dive Into Variance Reduction.”](https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/articles/deep-dive-into-variance-reduction/)
+- ACM Digital Library. [WSDM 2013 paper entry.](https://dl.acm.org/doi/10.1145/2433396.2433413)
