@@ -5,7 +5,8 @@
 ## 文章目录
 
 - [A/B 实验方法论总览](ab_testing/index.md)
-- [如何更快验证 A/B 实验效果：CUPED 理论与应用介绍](cuped-introduction.md)
+- [如何更快验证 A/B 实验效果（一）：CUPED 理论与应用介绍](cuped-introduction.md)
+- [如何更快验证 A/B 实验效果（二）：序贯检验理论与应用介绍](sequential-testing-introduction.md)
 - [从 Text2SQL 到取数插件：一次和 AI 能力共同演进的产品实践](data-plugin-journey.md)
 
 ## 会写什么
