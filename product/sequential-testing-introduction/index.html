@@ -1,0 +1,3307 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="贾云龙的博客">
+      
+      
+        <meta name="author" content="贾云龙">
+      
+      
+        <link rel="canonical" href="https://jiayunlong228.github.io/product/sequential-testing-introduction/">
+      
+      
+        <link rel="prev" href="../cuped-introduction/">
+      
+      
+        <link rel="next" href="../ab_testing/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>AB实验进阶（二）: 序贯检验 - Yunlong's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ab" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Yunlong&#39;s blog" class="md-header__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yunlong's blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AB实验进阶（二）: 序贯检验
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jiayunlong228/jiayunlong228.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jiayunlong228.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../industry/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  行业观察
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai_exploration/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  AI 探索
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  产品思考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../programming/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  编程思想
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../life/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  生活记录
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yunlong&#39;s blog" class="md-nav__button md-logo" aria-label="Yunlong's blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Yunlong's blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jiayunlong228/jiayunlong228.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jiayunlong228.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../industry/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业观察
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    行业观察
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ai_exploration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 探索
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 探索
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ai_exploration/memory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory 项目调研
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Memory 项目调研
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/memory-projects-relationship/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五者关系与选型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/codex-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex Memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/akitaonrails-ai-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ai-memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/mem0ai-mem0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mem0 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/mempalace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MemPalace 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/memory/tencentdb-agent-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TencentDB-Agent-Memory 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/agent-common-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 常用概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/ai-onchain-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    用 AI 搭建链上监控系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/harness-engineering-presentation-script/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harness Engineering 分享
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/hermes-agent-research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes Agent 调研
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai_exploration/hermes-agent-cloud-server-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hermes Agent 云服务器配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    产品思考
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    产品思考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-plugin-journey/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    从 Text2SQL 到取数插件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cuped-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AB实验进阶（一）: CUPED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AB实验进阶（二）: 序贯检验
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AB实验进阶（二）: 序贯检验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、序贯检验解决什么问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、序贯检验解决什么问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 普通 p 值为什么不能每天看
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. “偷看问题”到底错在哪里
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 序贯检验的核心目标
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、序贯检验思想
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、核心理论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、核心理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 固定样本检验与序贯检验的区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 信息量与检查点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-alpha-spending" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Alpha spending：把错误率分批花掉
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 常见边界类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#always-valid-inference-msprt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、Always-valid inference 与 mSPRT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、序贯检验与 CUPED 的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、标准实施流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="八、标准实施流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 实验前设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 运行中监控
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 早停决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 实验报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bigquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、BigQuery 风格数据准备模板
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十、常见风险和误区
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十、常见风险和误区">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-p_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 把每天看普通 p 值当成序贯检验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 实验后才决定检查点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 只设置胜出早停，不设置无效和止损
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 忽略指标成熟期
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 多指标、多分层没有控制错误率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-bayesian-sequential-frequentist-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 把 Bayesian sequential 和 frequentist alpha 混在一起解释
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十一、与其他提效方法的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十二、推荐落地方案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十二、推荐落地方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 第一阶段：离线模拟
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 第二阶段：实验报告接入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第三阶段：平台化治理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十三、实验报告中的推荐表述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十四、决策建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十五、参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../ab_testing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A/B 实验方法论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    A/B 实验方法论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_testing/background-and-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    背景和操作流程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_testing/data-and-theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据处理流程与理论背景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ab_testing/result-interpretation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    如何解读实验结果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../programming/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编程思想
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    编程思想
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code_share/create_new_blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基于 MkDocs 构建博客
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../life/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生活记录
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生活记录
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../life/coffee-records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    咖啡记录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、概览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、序贯检验解决什么问题
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、序贯检验解决什么问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 普通 p 值为什么不能每天看
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. “偷看问题”到底错在哪里
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 序贯检验的核心目标
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、序贯检验思想
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、核心理论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、核心理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 固定样本检验与序贯检验的区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 信息量与检查点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-alpha-spending" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Alpha spending：把错误率分批花掉
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 常见边界类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#always-valid-inference-msprt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、Always-valid inference 与 mSPRT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、序贯检验与 CUPED 的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、适用场景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、标准实施流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="八、标准实施流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 实验前设计
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 运行中监控
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 早停决策
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 实验报告
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bigquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、BigQuery 风格数据准备模板
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十、常见风险和误区
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十、常见风险和误区">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-p_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 把每天看普通 p 值当成序贯检验
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 实验后才决定检查点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 只设置胜出早停，不设置无效和止损
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 忽略指标成熟期
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 多指标、多分层没有控制错误率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-bayesian-sequential-frequentist-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 把 Bayesian sequential 和 frequentist alpha 混在一起解释
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十一、与其他提效方法的关系
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十二、推荐落地方案
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十二、推荐落地方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 第一阶段：离线模拟
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 第二阶段：实验报告接入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第三阶段：平台化治理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十三、实验报告中的推荐表述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十四、决策建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十五、参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/jiayunlong228/jiayunlong228.github.io/edit/main/docs/product/sequential-testing-introduction.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="ab">如何更快验证 A/B 实验效果（二）：序贯检验理论与应用介绍<a class="headerlink" href="#ab" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>最后更新：2026-06-24</p>
+</blockquote>
+<h2 id="_1">一、概览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>序贯检验（Sequential Testing）是一类允许实验在运行过程中多次查看结果，并在证据足够时提前停止的统计方法。</p>
+<p>在传统 A/B 实验里，通常要求：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1">实验前确定样本量或实验周期
+</span><span id="__span-0-2">实验跑满后只看一次结果
+</span><span id="__span-0-3">根据这一次结果判断是否显著
+</span></code></pre></div></td></tr></table></div>
+<p>但真实业务中，团队经常会每天看实验面板：如果 p 值已经显著，就想提前上线；如果明显没效果，就想提前停止；如果 guardrail 指标恶化，也希望及时止损。</p>
+<p>问题在于，普通固定样本检验不支持这种“边跑边看、看到显著就停”的用法。序贯检验解决的就是这个问题：它把“中途查看”和“提前停止”纳入实验设计，让我们可以在控制误判率的前提下更灵活地做决策。</p>
+<p>可以先用一张图理解序贯检验在做什么：</p>
+<pre class="mermaid"><code>flowchart LR
+    A["实验开始前&lt;br/&gt;定义主指标、MDE、最大样本量"]
+    B["设置查看节点&lt;br/&gt;例如 25%、50%、75%、100% 信息量"]
+    C["设置早停边界&lt;br/&gt;胜出 / 无效 / 风险 / 跑满"]
+    D["实验运行中&lt;br/&gt;按节点累积数据"]
+    E{"是否触发边界？"}
+    F["提前胜出&lt;br/&gt;效果足够强"]
+    G["提前无效&lt;br/&gt;继续跑也难以翻盘"]
+    H["提前止损&lt;br/&gt;guardrail 恶化"]
+    I["继续运行&lt;br/&gt;到下一检查点"]
+    J["到最大样本&lt;br/&gt;做最终判断"]
+
+    A --&gt; B --&gt; C --&gt; D --&gt; E
+    E --&gt; F
+    E --&gt; G
+    E --&gt; H
+    E --&gt; I --&gt; D
+    E --&gt; J</code></pre>
+<p>一句话概括：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1">序贯检验不是让你随便偷看数据，而是提前规定怎么合法地看、什么时候可以停、停下来后结论是否仍然可信。
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_2">二、序贯检验解决什么问题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1-p">1. 普通 p 值为什么不能每天看<a class="headerlink" href="#1-p" title="Permanent link">&para;</a></h3>
+<p>传统固定样本检验控制的是：</p>
+<div class="arithmatex">\[
+\Pr_{H_0}(p_N \le \alpha) \le \alpha
+\]</div>
+<p>这里的 <span class="arithmatex">\(N\)</span> 是实验前确定好的最终样本量。含义是：如果真实没有效果，在跑满 <span class="arithmatex">\(N\)</span> 后只看一次结果，错误地判断“显著”的概率不超过 <span class="arithmatex">\(\alpha\)</span>，例如 5%。</p>
+<p>但如果我们每天都看一次普通 p 值，并且采用：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1">只要某一天 p &lt; 0.05，就宣布实验显著并停止
+</span></code></pre></div></td></tr></table></div>
+<p>实际控制的就不再是 <span class="arithmatex">\(p_N\)</span>，而是：</p>
+<div class="arithmatex">\[
+\Pr_{H_0}(\exists t \le T: p_t \le \alpha)
+\]</div>
+<p>这个概率通常会大于 <span class="arithmatex">\(\alpha\)</span>。直观上，每多看一次，就多了一次被随机波动骗到的机会。</p>
+<p>如果粗略把多次查看近似成相互独立，那么看 <span class="arithmatex">\(K\)</span> 次时，至少一次误判的概率约为：</p>
+<div class="arithmatex">\[
+1 - (1-\alpha)^K
+\]</div>
+<p>例如 <span class="arithmatex">\(\alpha = 0.05\)</span>，看 10 次时：</p>
+<div class="arithmatex">\[
+1 - 0.95^{10} \approx 40.1\%
+\]</div>
+<p>真实实验中的多次查看结果并不独立，所以这个数不是精确结论，但它能说明方向：反复看普通 p 值，会显著增加假阳性风险。</p>
+<h3 id="2">2. “偷看问题”到底错在哪里<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>偷看问题（peeking problem）不是“看数据”本身有错，而是：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1">用固定样本检验的方法，却按动态样本量的方式做决策。
+</span></code></pre></div></td></tr></table></div>
+<p>也就是说，原本的统计保证建立在“只看一次”的条件上；一旦实验者根据中途结果决定提前停止，样本量就变成了数据驱动的，原来的 p 值和置信区间不再有原本宣称的错误率保证。</p>
+<p>对业务团队来说，这会带来两个风险：</p>
+<ol>
+<li>把随机波动误判为真实收益，提前上线无效甚至有害的方案。</li>
+<li>在实验平台里形成“显著就停、不显著就继续跑”的偏差，长期积累会高估实验收益。</li>
+</ol>
+<h3 id="3">3. 序贯检验的核心目标<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>序贯检验不是反对中途查看，而是把中途查看变成实验设计的一部分。</p>
+<p>它通常要同时回答四个问题：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>什么时候看</td>
+<td>每天看、每 2 天看，还是在 25% / 50% / 75% / 100% 信息量时看</td>
+</tr>
+<tr>
+<td>看什么指标</td>
+<td>主指标、guardrail 指标、分层指标是否都参与早停</td>
+</tr>
+<tr>
+<td>看到什么程度可以停</td>
+<td>需要跨过怎样的统计边界</td>
+</tr>
+<tr>
+<td>停下来后如何解释</td>
+<td>提前胜出、提前无效、风险止损还是跑满后无显著</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">三、序贯检验思想<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>可以把序贯检验讲成一句话：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1">传统实验像期末考试，只能最后判卷；序贯检验像阶段测验，允许中途判断，但每次判断标准都要提前设计好。
+</span></code></pre></div></td></tr></table></div>
+<p>举个例子。假设我们测试一个新功能是否能提升付费率。原计划跑 14 天。</p>
+<p>普通固定样本检验的规则是：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1">14 天后统一看结果。
+</span></code></pre></div></td></tr></table></div>
+<p>但产品同学第 3 天、第 5 天、第 7 天都想看。如果第 5 天正好显著，就想上线；如果第 7 天不显著，又想继续跑。这样做的问题是，实验结论会被短期随机波动影响。</p>
+<p>序贯检验会说：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">可以中途看，但第 5 天不能按普通 p &lt; 0.05 就停。
+</span><span id="__span-6-2">早期想停，需要更强的证据。
+</span><span id="__span-6-3">越接近实验末尾，停止门槛可以逐渐接近普通检验。
+</span></code></pre></div></td></tr></table></div>
+<p>这就像比赛中提前判定胜负。如果刚开局就想宣布胜利，需要领先非常多；如果比赛快结束了，领先一点也更有说服力。</p>
+<p>所以序贯检验的思想可以用三个关键词概括：</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>含义</th>
+<th>直白解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中途查看</td>
+<td>实验还没跑满时查看累计数据</td>
+<td>可以看，但要按规则看</td>
+</tr>
+<tr>
+<td>早停边界</td>
+<td>判断是否提前停止的统计阈值</td>
+<td>早期停需要更强证据</td>
+</tr>
+<tr>
+<td>错误率控制</td>
+<td>多次查看后仍控制误判概率</td>
+<td>不因为看很多次就更容易误判</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">四、核心理论<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 固定样本检验与序贯检验的区别<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>固定样本检验的决策规则是：</p>
+<div class="arithmatex">\[
+\text{在固定样本量 } N \text{ 时，如果 } Z_N &gt; z_{\alpha} \text{，则拒绝 } H_0
+\]</div>
+<p>其中 <span class="arithmatex">\(Z_N\)</span> 是最终样本量下的标准化检验统计量。</p>
+<p>序贯检验的决策规则是：</p>
+<div class="arithmatex">\[
+\text{如果存在某个检查点 } k \text{，使得 } Z_k &gt; b_k \text{，则提前拒绝 } H_0
+\]</div>
+<p>其中 <span class="arithmatex">\(b_k\)</span> 是第 <span class="arithmatex">\(k\)</span> 次查看时的边界。序贯检验的重点就在于如何设置这些 <span class="arithmatex">\(b_k\)</span>，使得整体假阳性率仍然不超过 <span class="arithmatex">\(\alpha\)</span>：</p>
+<div class="arithmatex">\[
+\Pr_{H_0}(\exists k: Z_k &gt; b_k) \le \alpha
+\]</div>
+<h3 id="2_1">2. 信息量与检查点<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>序贯检验通常不用“第几天”作为理论单位，而是用信息量（information）来描述实验进度。</p>
+<p>如果最终计划信息量是 <span class="arithmatex">\(I_K\)</span>，第 <span class="arithmatex">\(k\)</span> 次查看时的信息量是 <span class="arithmatex">\(I_k\)</span>，则信息比例为：</p>
+<div class="arithmatex">\[
+t_k = \frac{I_k}{I_K}
+\]</div>
+<p>在用户级均值差实验中，信息量可以近似理解为有效样本量；在转化率、收入、留存等指标中，也可以根据标准误或方差估计来计算。</p>
+<p>常见检查点可以设为：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1">25% 信息量
+</span><span id="__span-7-2">50% 信息量
+</span><span id="__span-7-3">75% 信息量
+</span><span id="__span-7-4">100% 信息量
+</span></code></pre></div></td></tr></table></div>
+<p>也可以按业务节奏设置，例如每天、每两天或每周。但查看越频繁，边界设计越重要。</p>
+<h3 id="3-alpha-spending">3. Alpha spending：把错误率分批花掉<a class="headerlink" href="#3-alpha-spending" title="Permanent link">&para;</a></h3>
+<p>一个直观理解是：整个实验只有 <span class="arithmatex">\(\alpha = 0.05\)</span> 的一类错误预算。固定样本检验是在最后一次性花掉这 5%；序贯检验则是在多个检查点分批花掉。</p>
+<p>设 <span class="arithmatex">\(\alpha(t)\)</span> 是到信息比例 <span class="arithmatex">\(t\)</span> 时累计花掉的一类错误预算，则：</p>
+<div class="arithmatex">\[
+\alpha(0) = 0,\quad \alpha(1)=\alpha
+\]</div>
+<p>第 <span class="arithmatex">\(k\)</span> 次检查时，边界 <span class="arithmatex">\(b_k\)</span> 的选择要满足：</p>
+<div class="arithmatex">\[
+\Pr_{H_0}(\exists j \le k: Z_j &gt; b_j) = \alpha(t_k)
+\]</div>
+<p>这类方法被称为 alpha spending。它的好处是检查点不一定必须完全固定；只要能计算当前信息量，就可以根据累计信息量分配错误率预算。</p>
+<h3 id="4">4. 常见边界类型<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>特点</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pocock 边界</td>
+<td>每次检查的阈值相对接近，早期也有一定机会停止</td>
+<td>希望较均衡地在各阶段发现效果</td>
+</tr>
+<tr>
+<td>O’Brien-Fleming 边界</td>
+<td>早期阈值很高，后期接近固定样本检验</td>
+<td>不希望实验太早因偶然波动停止</td>
+</tr>
+<tr>
+<td>Lan-DeMets alpha spending</td>
+<td>用函数动态分配 alpha，可近似 Pocock 或 O’Brien-Fleming</td>
+<td>检查点不完全固定、平台化实现</td>
+</tr>
+<tr>
+<td>mSPRT / always-valid p-value</td>
+<td>支持更连续地查看结果</td>
+<td>在线 A/B 平台、频繁监控实验</td>
+</tr>
+<tr>
+<td>Bayesian sequential</td>
+<td>用后验概率和决策损失早停</td>
+<td>决策偏业务风险而非严格频率学 alpha</td>
+</tr>
+</tbody>
+</table>
+<p>产品 A/B 实验中，如果团队刚开始落地，推荐先使用 group sequential + alpha spending。它更容易解释，也更接近传统实验报告体系。</p>
+<h2 id="always-valid-inference-msprt">五、Always-valid inference 与 mSPRT<a class="headerlink" href="#always-valid-inference-msprt" title="Permanent link">&para;</a></h2>
+<p>在互联网 A/B 实验里，很多实验平台希望结果面板随时可看，而不是只允许固定几个检查点。这时常见方案是 always-valid inference。</p>
+<p>always-valid p-value 的目标是：</p>
+<div class="arithmatex">\[
+\Pr_{H_0}(p_{\tau} \le \alpha) \le \alpha
+\]</div>
+<p>这里的 <span class="arithmatex">\(\tau\)</span> 可以是任意由数据决定的停止时间。也就是说，只要使用的是 always-valid p-value，用户在任意时间停止实验，都仍然能控制一类错误率。</p>
+<p>mSPRT（mixture Sequential Probability Ratio Test）是一种常用于 A/B 测试场景的 always-valid 方法。它的核心思路是比较：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1">数据在“没有效果”假设下有多可能
+</span><span id="__span-8-2">vs.
+</span><span id="__span-8-3">数据在“一系列可能效果大小”下有多可能
+</span></code></pre></div></td></tr></table></div>
+<p>可以写成混合似然比：</p>
+<div class="arithmatex">\[
+\Lambda_t = \int \frac{L_t(\delta)}{L_t(0)} \pi(\delta)d\delta
+\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="arithmatex">\(L_t(0)\)</span> 表示到时间 <span class="arithmatex">\(t\)</span> 为止，在零效果假设下的数据似然。</li>
+<li><span class="arithmatex">\(L_t(\delta)\)</span> 表示在效果大小为 <span class="arithmatex">\(\delta\)</span> 时的数据似然。</li>
+<li><span class="arithmatex">\(\pi(\delta)\)</span> 是对可能效果大小的混合分布。</li>
+</ul>
+<p>当证据足够强时，似然比会跨过边界：</p>
+<div class="arithmatex">\[
+\Lambda_t \ge \frac{1}{\alpha}
+\]</div>
+<p>此时可以拒绝零假设。它的优点是支持更频繁的查看，并且能保留类似 p 值的产品界面；缺点是理论和实现比固定检查点的 group sequential 更复杂，需要平台封装好。</p>
+<h2 id="cuped">六、序贯检验与 CUPED 的关系<a class="headerlink" href="#cuped" title="Permanent link">&para;</a></h2>
+<p>两者解决的问题不同，但非常适合组合使用。</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1">CUPED 解决“指标噪声太大”的问题。
+</span><span id="__span-9-2">序贯检验解决“能不能中途看结果并提前停”的问题。
+</span></code></pre></div></td></tr></table></div>
+<p>CUPED 用实验前数据降低指标方差，让实验效果估计更稳定。序贯检验则控制多次查看和提前停止带来的误判风险。</p>
+<p>可以这样串起来：</p>
+<pre class="mermaid"><code>flowchart LR
+    A["实验前数据 X"]
+    B["实验期主指标 Y"]
+    C["CUPED 调整&lt;br/&gt;得到 Y_cuped"]
+    D["序贯检验&lt;br/&gt;按检查点计算统计量"]
+    E{"是否跨过早停边界？"}
+    F["提前胜出 / 无效 / 止损"]
+    G["继续实验"]
+
+    A --&gt; C
+    B --&gt; C
+    C --&gt; D --&gt; E
+    E --&gt; F
+    E --&gt; G</code></pre>
+<p>推荐做法是：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1">先预先定义 CUPED 指标
+</span><span id="__span-10-2">再对 CUPED 后的主指标应用序贯检验
+</span></code></pre></div></td></tr></table></div>
+<p>这样做的效果是：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>对实验周期的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CUPED</td>
+<td>降低方差，让每次查看时信号更清楚</td>
+<td>更少样本也可能达到同样精度</td>
+</tr>
+<tr>
+<td>序贯检验</td>
+<td>允许在证据足够时提前停止</td>
+<td>不必机械等到最大样本</td>
+</tr>
+<tr>
+<td>CUPED + 序贯检验</td>
+<td>指标更稳定，且决策规则允许早停</td>
+<td>更适合“更短时间评估实验效果”</td>
+</tr>
+</tbody>
+</table>
+<p>但要注意：CUPED 不能替代序贯检验。即使用了 CUPED，也不能每天查看普通 p 值并在显著时停止。CUPED 只降低方差，不会自动修正多次查看带来的假阳性膨胀。</p>
+<h2 id="_5">七、适用场景<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>序贯检验特别适合以下实验：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>流量成本高</td>
+<td>无效实验可以提前停，释放流量</td>
+</tr>
+<tr>
+<td>机会成本高</td>
+<td>强正向实验可以更早上线</td>
+</tr>
+<tr>
+<td>风险较高</td>
+<td>guardrail 变差时可以提前止损</td>
+</tr>
+<tr>
+<td>实验周期长</td>
+<td>不必等完整周期才做判断</td>
+</tr>
+<tr>
+<td>实验平台化</td>
+<td>可统一规范“中途看结果”的行为</td>
+</tr>
+</tbody>
+</table>
+<p>不太适合或需要谨慎的场景：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指标成熟很慢</td>
+<td>早期数据可能不能代表最终效果</td>
+</tr>
+<tr>
+<td>强周期性业务</td>
+<td>早停可能错过周末、节假日或活动周期</td>
+</tr>
+<tr>
+<td>多指标、多分层很多</td>
+<td>需要额外做多重检验控制</td>
+</tr>
+<tr>
+<td>样本进入延迟或回传延迟大</td>
+<td>当前统计量可能基于不完整数据</td>
+</tr>
+<tr>
+<td>团队无法遵守预设规则</td>
+<td>序贯设计会被人为选择性解释破坏</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">八、标准实施流程<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 实验前设计<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>实验开始前应明确：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主指标</td>
+<td>参与序贯检验的核心决策指标</td>
+</tr>
+<tr>
+<td>Guardrail 指标</td>
+<td>触发风险止损的指标，例如崩溃率、投诉率、留存下降</td>
+</tr>
+<tr>
+<td>最大样本量 / 最大周期</td>
+<td>即使没有早停，也必须结束的上限</td>
+</tr>
+<tr>
+<td>检查点</td>
+<td>例如 25% / 50% / 75% / 100% 信息量</td>
+</tr>
+<tr>
+<td>早停边界</td>
+<td>胜出、无效、风险止损的判断规则</td>
+</tr>
+<tr>
+<td>统计方法</td>
+<td>Pocock、O’Brien-Fleming、Lan-DeMets、mSPRT 或 Bayesian</td>
+</tr>
+<tr>
+<td>是否叠加 CUPED</td>
+<td>如果使用 CUPED，需预先固定协变量和窗口</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_2">2. 运行中监控<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<p>每个检查点需要输出：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>information_fraction</td>
+<td>当前信息比例</td>
+</tr>
+<tr>
+<td>n_control / n_treatment</td>
+<td>当前两组样本量</td>
+</tr>
+<tr>
+<td>effect</td>
+<td>当前效果估计</td>
+</tr>
+<tr>
+<td>standard_error</td>
+<td>标准误</td>
+</tr>
+<tr>
+<td>z_stat</td>
+<td>标准化统计量</td>
+</tr>
+<tr>
+<td>boundary_efficacy</td>
+<td>胜出边界</td>
+</tr>
+<tr>
+<td>boundary_futility</td>
+<td>无效边界</td>
+</tr>
+<tr>
+<td>decision</td>
+<td>continue / stop_win / stop_futility / stop_guardrail / max_sample</td>
+</tr>
+</tbody>
+</table>
+<p>建议每次检查都记录快照，避免事后只保留最后一次结果，无法审计中间决策。</p>
+<h3 id="3_1">3. 早停决策<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>常见决策规则：</p>
+<table>
+<thead>
+<tr>
+<th>决策</th>
+<th>触发条件</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提前胜出</td>
+<td>主指标跨过正向边界，guardrail 无明显风险</td>
+<td>效果证据足够强</td>
+</tr>
+<tr>
+<td>提前无效</td>
+<td>达到 futility 边界，继续跑也很难达成目标</td>
+<td>节省流量和时间</td>
+</tr>
+<tr>
+<td>提前止损</td>
+<td>guardrail 明显恶化</td>
+<td>即使主指标变好也不继续</td>
+</tr>
+<tr>
+<td>继续运行</td>
+<td>未跨过任何边界</td>
+<td>等待下一检查点</td>
+</tr>
+<tr>
+<td>跑满结束</td>
+<td>到达最大样本量或最大周期</td>
+<td>按最终边界判断</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4_1">4. 实验报告<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>最终报告建议同时说明：</p>
+<ol>
+<li>使用的序贯检验方法。</li>
+<li>预设检查点和实际检查点。</li>
+<li>每次检查的信息比例、效果估计和边界。</li>
+<li>是否提前停止，以及触发了哪个边界。</li>
+<li>如果叠加 CUPED，说明 CUPED 协变量、窗口和方差缩减。</li>
+<li>主指标结论和 guardrail 结论。</li>
+<li>仍需观察的长期指标。</li>
+</ol>
+<h2 id="bigquery">九、BigQuery 风格数据准备模板<a class="headerlink" href="#bigquery" title="Permanent link">&para;</a></h2>
+<p>序贯检验的 SQL 通常分成两层：</p>
+<ol>
+<li>构建用户级或实验单位级指标表。</li>
+<li>按检查点聚合，输出每个检查点的效果估计和标准误。</li>
+</ol>
+<p>下面是一个简化模板，用于表达数据结构。实际边界计算通常放在 Python/R/实验平台中完成。</p>
+<div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="k">WITH</span><span class="w"> </span><span class="k">assignment</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-2"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-11-3"><span class="w">    </span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-11-4"><span class="w">    </span><span class="n">variant</span><span class="p">,</span>
+</span><span id="__span-11-5"><span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">exposure_time</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">first_exposure_time</span>
+</span><span id="__span-11-6"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">experiment_assignment</span>
+</span><span id="__span-11-7"><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">experiment_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;exp_xxx&#39;</span>
+</span><span id="__span-11-8"><span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">assignment_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2026-06-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2026-06-14&#39;</span>
+</span><span id="__span-11-9"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span>
+</span><span id="__span-11-10"><span class="p">),</span>
+</span><span id="__span-11-11">
+</span><span id="__span-11-12"><span class="n">user_metric_by_day</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-13"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-11-14"><span class="w">    </span><span class="n">a</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-11-15"><span class="w">    </span><span class="n">a</span><span class="p">.</span><span class="n">variant</span><span class="p">,</span>
+</span><span id="__span-11-16"><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">dt</span><span class="p">,</span>
+</span><span id="__span-11-17"><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">metric_value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">metric_value</span>
+</span><span id="__span-11-18"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="k">assignment</span><span class="w"> </span><span class="n">a</span>
+</span><span id="__span-11-19"><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">user_daily_metric</span><span class="w"> </span><span class="n">m</span>
+</span><span id="__span-11-20"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">user_id</span>
+</span><span id="__span-11-21"><span class="w">   </span><span class="k">AND</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">first_exposure_time</span><span class="p">)</span>
+</span><span id="__span-11-22"><span class="w">   </span><span class="k">AND</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">dt</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2026-06-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2026-06-14&#39;</span>
+</span><span id="__span-11-23"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">variant</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">dt</span>
+</span><span id="__span-11-24"><span class="p">),</span>
+</span><span id="__span-11-25">
+</span><span id="__span-11-26"><span class="n">checkpoints</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-27"><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2026-06-04&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">checkpoint_date</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">25</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">information_fraction</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+</span><span id="__span-11-28"><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2026-06-07&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">checkpoint_date</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">50</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">information_fraction</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+</span><span id="__span-11-29"><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2026-06-10&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">checkpoint_date</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">75</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">information_fraction</span><span class="w"> </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+</span><span id="__span-11-30"><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="s1">&#39;2026-06-14&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">checkpoint_date</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">information_fraction</span>
+</span><span id="__span-11-31"><span class="p">),</span>
+</span><span id="__span-11-32">
+</span><span id="__span-11-33"><span class="n">unit_metric_at_checkpoint</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-34"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-11-35"><span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">checkpoint_date</span><span class="p">,</span>
+</span><span id="__span-11-36"><span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">information_fraction</span><span class="p">,</span>
+</span><span id="__span-11-37"><span class="w">    </span><span class="n">u</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span>
+</span><span id="__span-11-38"><span class="w">    </span><span class="n">u</span><span class="p">.</span><span class="n">variant</span><span class="p">,</span>
+</span><span id="__span-11-39"><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">u</span><span class="p">.</span><span class="n">metric_value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">y</span>
+</span><span id="__span-11-40"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">checkpoints</span><span class="w"> </span><span class="k">c</span>
+</span><span id="__span-11-41"><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">user_metric_by_day</span><span class="w"> </span><span class="n">u</span>
+</span><span id="__span-11-42"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">dt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">checkpoint_date</span>
+</span><span id="__span-11-43"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">checkpoint_date</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">information_fraction</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">variant</span>
+</span><span id="__span-11-44"><span class="p">),</span>
+</span><span id="__span-11-45">
+</span><span id="__span-11-46"><span class="n">checkpoint_summary</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-47"><span class="w">  </span><span class="k">SELECT</span>
+</span><span id="__span-11-48"><span class="w">    </span><span class="n">checkpoint_date</span><span class="p">,</span>
+</span><span id="__span-11-49"><span class="w">    </span><span class="n">information_fraction</span><span class="p">,</span>
+</span><span id="__span-11-50"><span class="w">    </span><span class="n">variant</span><span class="p">,</span>
+</span><span id="__span-11-51"><span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">users</span><span class="p">,</span>
+</span><span id="__span-11-52"><span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mean_y</span><span class="p">,</span>
+</span><span id="__span-11-53"><span class="w">    </span><span class="n">VAR_SAMP</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">var_y</span>
+</span><span id="__span-11-54"><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">unit_metric_at_checkpoint</span>
+</span><span id="__span-11-55"><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">checkpoint_date</span><span class="p">,</span><span class="w"> </span><span class="n">information_fraction</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span>
+</span><span id="__span-11-56"><span class="p">)</span>
+</span><span id="__span-11-57">
+</span><span id="__span-11-58"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+</span><span id="__span-11-59"><span class="k">FROM</span><span class="w"> </span><span class="n">checkpoint_summary</span>
+</span><span id="__span-11-60"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">checkpoint_date</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>如果要和 CUPED 结合，可以先在 <code>unit_metric_at_checkpoint</code> 之前生成用户级 <code>y_cuped</code>，再对 <code>y_cuped</code> 做同样的检查点聚合。</p>
+<h2 id="_7">十、常见风险和误区<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="1-p_1">1. 把每天看普通 p 值当成序贯检验<a class="headerlink" href="#1-p_1" title="Permanent link">&para;</a></h3>
+<p>这是最常见误区。序贯检验不是“每天计算一次 p 值”，而是必须使用能控制多次查看错误率的边界、alpha spending 或 always-valid 方法。</p>
+<h3 id="2_3">2. 实验后才决定检查点<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
+<p>检查点、边界和最大样本量应在实验前确定。实验后根据结果选择“看哪一天”或“用哪个边界”，会重新引入选择偏差。</p>
+<h3 id="3_2">3. 只设置胜出早停，不设置无效和止损<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<p>如果只在显著时提前停，不显著就继续跑，会形成偏向正向结果的决策机制。更完整的设计应同时考虑 futility 和 guardrail。</p>
+<h3 id="4_2">4. 忽略指标成熟期<a class="headerlink" href="#4_2" title="Permanent link">&para;</a></h3>
+<p>很多指标不是实验开始后立刻成熟。比如 D7 留存、订阅续费、长期 LTV。如果过早使用未成熟指标早停，可能误判长期效果。</p>
+<h3 id="5">5. 多指标、多分层没有控制错误率<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>如果同时看多个主指标、多个国家、多个平台、多个版本，序贯检验只解决“时间维度上的多次查看”，不自动解决所有横向多重比较问题。需要结合 FDR、Bonferroni、层级指标策略或明确的主指标优先级。</p>
+<h3 id="6-bayesian-sequential-frequentist-alpha">6. 把 Bayesian sequential 和 frequentist alpha 混在一起解释<a class="headerlink" href="#6-bayesian-sequential-frequentist-alpha" title="Permanent link">&para;</a></h3>
+<p>Bayesian 方法可以自然地连续更新后验概率，但它控制的是后验风险，不一定等价于频率学的一类错误率。报告时要说明决策口径，避免把“后验胜率 95%”解释成“p = 0.05”。</p>
+<h2 id="_8">十一、与其他提效方法的关系<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>与序贯检验的关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CUPED</td>
+<td>降低指标方差</td>
+<td>可先做 CUPED，再对调整后指标做序贯检验</td>
+</tr>
+<tr>
+<td>分层随机</td>
+<td>提高分组平衡性</td>
+<td>可减少早期随机不平衡</td>
+</tr>
+<tr>
+<td>触发分析</td>
+<td>聚焦真正受实验影响的人群</td>
+<td>可提高每个检查点的信息质量</td>
+</tr>
+<tr>
+<td>指标线性化</td>
+<td>处理比率指标</td>
+<td>可在线性化指标上做序贯检验</td>
+</tr>
+<tr>
+<td>Guardrail 监控</td>
+<td>控制风险</td>
+<td>常作为序贯止损规则</td>
+</tr>
+<tr>
+<td>Bayesian 实验</td>
+<td>用后验概率和损失函数决策</td>
+<td>是另一类序贯决策框架</td>
+</tr>
+</tbody>
+</table>
+<p>如果目标是“更短时间评估实验效果”，推荐组合是：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1">CUPED 降低方差
+</span><span id="__span-12-2">+ 序贯检验合法早停
+</span><span id="__span-12-3">+ 触发分析聚焦受影响人群
+</span><span id="__span-12-4">+ guardrail 指标防止局部优化
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_9">十二、推荐落地方案<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="1_2">1. 第一阶段：离线模拟<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<p>目标：验证序贯检验在历史实验上的收益和错误率。</p>
+<p>工作项：</p>
+<ol>
+<li>选择历史 A/A 和历史 A/B 实验。</li>
+<li>模拟不同检查点：每天、每 2 天、25% / 50% / 75% / 100%。</li>
+<li>比较 Pocock、O’Brien-Fleming、Lan-DeMets 等边界。</li>
+<li>评估 false positive rate、平均停止时间、power、提前胜出比例、提前无效比例。</li>
+<li>选择一套默认策略。</li>
+</ol>
+<p>验收标准：</p>
+<ul>
+<li>A/A 实验中的 false positive rate 接近目标水平。</li>
+<li>历史正向实验能更早发现明显效果。</li>
+<li>历史无效实验能节省一定流量。</li>
+</ul>
+<h3 id="2_4">2. 第二阶段：实验报告接入<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h3>
+<p>目标：让序贯检验成为实验分析可选能力。</p>
+<p>工作项：</p>
+<ol>
+<li>在实验配置中增加 <code>sequential_enabled</code>。</li>
+<li>支持配置最大样本量、检查点、边界类型。</li>
+<li>每个检查点输出统计量、边界和决策建议。</li>
+<li>报告中展示检查点轨迹。</li>
+<li>如果结合 CUPED，同时展示 raw 与 CUPED 后的序贯结果。</li>
+</ol>
+<h3 id="3_3">3. 第三阶段：平台化治理<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
+<p>目标：规范团队中途查看实验的行为。</p>
+<p>能力清单：</p>
+<ul>
+<li>固定样本检验与序贯检验明确区分。</li>
+<li>启用序贯检验的实验才允许基于中途结果早停。</li>
+<li>早停记录可审计。</li>
+<li>支持 guardrail 止损。</li>
+<li>支持多指标错误率控制。</li>
+<li>提供“继续跑 / 提前胜出 / 提前无效 / 提前止损”的标准解释。</li>
+</ul>
+<h2 id="_10">十三、实验报告中的推荐表述<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>可以使用如下模板：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1">本实验主指标使用序贯检验进行分析，最大样本量为每组 100,000 用户，预设检查点为 25%、50%、75%、100% 信息量。
+</span><span id="__span-13-2">
+</span><span id="__span-13-3">本次采用 O’Brien-Fleming 风格边界，早期停止需要更强证据，以控制整体一类错误率在 5%。
+</span><span id="__span-13-4">
+</span><span id="__span-13-5">实验在第 3 个检查点达到 75% 信息量时，主指标跨过正向早停边界，触发提前胜出。当前主指标相对提升 2.1%，序贯检验结论为显著正向。
+</span><span id="__span-13-6">
+</span><span id="__span-13-7">Guardrail 指标未触发风险边界。若使用 CUPED，本次 CUPED 后方差降低 28%，序贯检验基于 CUPED 后主指标进行。
+</span><span id="__span-13-8">
+</span><span id="__span-13-9">由于部分长期指标尚未完全成熟，建议上线后继续观察 D7 留存和长期收入。
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_11">十四、决策建议<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>如果团队当前还没有序贯检验，建议按以下优先级推进：</p>
+<ol>
+<li>先明确哪些实验允许中途早停，哪些必须固定样本跑满。</li>
+<li>从 group sequential + O’Brien-Fleming 或 Lan-DeMets alpha spending 开始，避免一开始实现过复杂。</li>
+<li>主指标先支持序贯检验，guardrail 先支持止损规则。</li>
+<li>与 CUPED 结合时，必须在实验前固定 CUPED 口径。</li>
+<li>用历史 A/A 实验校准 false positive rate，再进入正式实验报告。</li>
+<li>在实验平台中明确提示：未启用序贯检验时，中途普通 p 值只作观察，不能作为提前上线依据。</li>
+</ol>
+<p>最重要的治理原则是：序贯检验应是预先定义的实验设计，而不是实验跑到一半后临时选择的解释方式。</p>
+<h2 id="_12">十五、参考资料<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Ramesh Johari, Leo Pekelis, David J. Walsh. “Always Valid Inference: Bringing Sequential Analysis to A/B Testing.” arXiv, 2015. https://arxiv.org/abs/1512.04922</li>
+<li>Ramesh Johari, Pete Koomen, Leonid Pekelis, David Walsh. “Peeking at A/B Tests: Why it matters, and what to do about it.” KDD 2017. https://dl.acm.org/doi/10.1145/3097983.3097992</li>
+<li>Stuart J. Pocock. “Group sequential methods in the design and analysis of clinical trials.” Biometrika, 1977. https://academic.oup.com/biomet/article/64/2/191/384776</li>
+<li>Peter C. O’Brien, Thomas R. Fleming. “A multiple testing procedure for clinical trials.” Biometrics, 1979. https://pubmed.ncbi.nlm.nih.gov/497341/</li>
+<li>David L. DeMets, K. K. Gordon Lan. “Interim analysis: The alpha spending function approach.” Statistics in Medicine, 1994. https://pubmed.ncbi.nlm.nih.gov/7973215/</li>
+<li>Optimizely. “The story behind Optimizely’s new Stats Engine.” https://www.optimizely.com/insights/blog/statistics-for-the-internet-age-the-story-behind-optimizelys-new-stats-engine/</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      贾云龙
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/jiayunlong228" target="_blank" rel="noopener" title="GitHub | Jia-Yunlong" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js"></script>
+      
+        <script src="../../mkdocs/javascripts/mermaid.js"></script>
+      
+        <script src="../../mkdocs/javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
