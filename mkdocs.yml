@@ -25,14 +25,14 @@ nav:
     - Hermes Agent 云服务器配置: ai_exploration/hermes-agent-cloud-server-setup.md
   - 产品思考:
     - product/index.md
-    - 从 Text2SQL 到取数插件: product/data-plugin-journey.md
-    - "AB实验进阶（一）: CUPED": product/cuped-introduction.md
-    - "AB实验进阶（二）: 序贯检验": product/sequential-testing-introduction.md
     - A/B 实验方法论:
       - 总览: product/ab_testing/index.md
       - 背景和操作流程: product/ab_testing/background-and-workflow.md
       - 数据处理流程与理论背景: product/ab_testing/data-and-theory.md
       - 如何解读实验结果: product/ab_testing/result-interpretation.md
+    - "AB实验进阶（一）: CUPED": product/cuped-introduction.md
+    - "AB实验进阶（二）: 序贯检验": product/sequential-testing-introduction.md
+    - 从 Text2SQL 到取数插件: product/data-plugin-journey.md
   - 编程思想:
     - programming/index.md
     - 基于 MkDocs 构建博客: code_share/create_new_blog.md
